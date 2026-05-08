@@ -340,6 +340,33 @@
     .hero .hero-subtitle{ font-family:'SuperGroteskC', 'SuperGroteskA', 'SuperGroteskB', sans-serif; font-size:clamp(18px, 2.2vw, 30px); margin-bottom:15px; font-style:normal; font-weight:500; letter-spacing:clamp(0.6px, 0.12vw, 1.5px); text-transform:uppercase; font-variant-caps:normal; line-height:1.25; }
     .hero p{ font-size:clamp(16px, 1.95vw, 28px); line-height:1.65; font-weight:300; }
 
+    /* Hero CTA button (base styles for all viewports) */
+    .hero .hero-cta{
+      display:inline-block;
+      margin-top:22px;
+      padding:14px 32px;
+      border-radius:999px;
+      background: var(--badiani-pink);
+      color:#fff !important;
+      text-decoration:none;
+      font-family:'SuperGroteskDigits', 'SuperGroteskC', 'SuperGroteskA', 'SuperGroteskB', sans-serif;
+      font-size:clamp(13px, 1.1vw, 16px);
+      letter-spacing:1.6px;
+      text-transform:uppercase;
+      font-weight:600;
+      box-shadow:0 10px 28px rgba(240,103,166,0.32);
+      transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+    }
+    .hero .hero-cta:hover,
+    .hero .hero-cta:focus-visible{
+      transform: translateY(-2px);
+      box-shadow:0 14px 36px rgba(240,103,166,0.42);
+      background:#ec4f9a;
+    }
+
+    /* Hero scroll hint is mobile-only (injected via JS) */
+    .hero-scroll-hint{ display:none; }
+
     /* SEZIONE STORIA CON SFONDO FIRENZE */
     .buontalenti-story{
         position: relative;
@@ -416,7 +443,9 @@
     .timeline-desc .highlight-pink{ white-space:normal; }
 
     .mission-vision{ padding:0; display:grid; grid-template-columns:1fr 1fr; }
-    .mission-box, .vision-box{ padding:70px 45px; color:#fff; min-height:480px; display:flex; flex-direction:column; justify-content:center; position:relative; overflow:hidden; }
+    /* Tabs are mobile-only: on desktop hide them and always show both boxes */
+    .mv-tabs{ display:none !important; }
+    .mission-box, .vision-box{ padding:70px 45px; color:#fff; min-height:480px; display:flex !important; flex-direction:column; justify-content:center; position:relative; overflow:hidden; }
     .mission-box{ background:linear-gradient(135deg, var(--badiani-blue), #2a4ab0); }
     .vision-box{ background:linear-gradient(135deg, var(--badiani-pink), #ff7ab7); }
     .mission-box::before, .vision-box::before{ content:""; position:absolute; inset:-20px; background-size:cover; background-position:center; opacity:0.18; pointer-events:none; transition: transform 0.5s ease, opacity 0.5s ease; }
@@ -1312,7 +1341,7 @@
         position:relative;
       }
       .mv-tabs{
-        display:flex;
+        display:flex !important;
         border-radius:12px;
         overflow:hidden;
         margin:0 auto 0;
@@ -1361,11 +1390,11 @@
       .mission-box, .vision-box{
         padding:80px 16px 20px;
         min-height:280px;
-        display:none;
+        display:none !important;
         text-align:center;
         align-items:center;
       }
-      .mission-box.is-active, .vision-box.is-active{ display:flex; }
+      .mission-box.is-active, .vision-box.is-active{ display:flex !important; }
       .mission-box h2, .vision-box h2{ font-size:clamp(16px, 5vw, 20px); margin-bottom:8px; }
       .mission-box p strong,
       .vision-box p strong{
@@ -1696,29 +1725,44 @@
       .stat-num{ font-size:clamp(17px, 6.8vw, 24px); }
     }
 
-    /* HERO BG: full-width photo (no crop). The image defines the hero height. */
-    .hero{
-      height:auto;
-      padding:0;
-      display:block;
-    }
+    /* HERO BG: full-width photo (no crop). Desktop only — mobile rules above handle small viewports. */
+    @media(min-width:901px){
+      .hero{
+        height:auto;
+        min-height:520px;
+        padding:60px 20px 50px;
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        overflow:hidden;
+      }
 
-    .hero .hero-bg{
-      position:relative;
-      top:auto; left:auto; right:auto; bottom:auto;
-      background-image: none;
-      background: none;
-      transform: none;
-      transform-origin: center;
-      width:100%;
-      height:auto;
-    }
+      .hero .hero-bg{
+        position:absolute;
+        top:0; left:0; right:0; bottom:0;
+        background-image: none;
+        background: none;
+        transform: none;
+        transform-origin: center;
+        width:100%;
+        height:100%;
+        z-index:0;
+      }
 
-    .hero .hero-bg img{
-      display:block;
-      width:100%;
-      height:auto;
-      max-width:none;
+      .hero .hero-bg img{
+        width:100%;
+        height:100%;
+        object-fit:cover;
+        object-position:center;
+        display:block;
+      }
+
+      .hero-content{
+        position:relative;
+        top:auto; left:auto; right:auto; bottom:auto;
+        padding:0 20px;
+        z-index:2;
+      }
     }
 
     /* Mobile: hero photo cropped sides, original height */
