@@ -1,4 +1,4 @@
-﻿/* Badiani Il Barattolo - lightweight i18n + language switcher
+/* Badiani Il Barattolo - lightweight i18n + language switcher
    Supports: en, it, es, fr
    - Persists selection in localStorage
    - Updates <html lang>
@@ -56,7 +56,7 @@
       'banner.story': 'the renaissance of gelato · born in florence 1932 · tradition meets innovation',
       'banner.heritage': 'from florence to the world · 93 years of excellence · a global legacy',
       'banner.barattolo': 'il barattolo · premium retail format · authentic florentine gelato at home',
-      'banner.products': 'award-winning flavours · classico · pistacchio · dolcevita',
+      'banner.products': 'award-winning flavours · classico · pistacchio · la dolcevita',
       'banner.mission': 'artisan craftsmanship · premium ingredients · unforgettable taste',
       'banner.gallery': 'artisan texture · handcrafted swirls · visual delight in every spoonful',
       'banner.locations': 'london · barcelona · paris · tokyo · florence · everywhere in style',
@@ -222,7 +222,7 @@
       'banner.story': 'il rinascimento del gelato · nato a firenze nel 1932 · tradizione e innovazione',
       'banner.heritage': 'da firenze al mondo · 93 anni di eccellenza · un’eredità globale',
       'banner.barattolo': 'il barattolo · formato retail premium · gelato fiorentino a casa',
-      'banner.products': 'gusti premiati · classico · pistacchio · dolcevita',
+      'banner.products': 'gusti premiati · classico · pistacchio · la dolcevita',
       'banner.mission': 'artigianalità · ingredienti premium · gusto indimenticabile',
       'banner.gallery': 'texture artigianale · variegature fatte a mano · bellezza in ogni cucchiaio',
       'banner.locations': 'londra · barcellona · parigi · tokyo · firenze · ovunque con stile',
@@ -388,7 +388,7 @@
       'banner.story': 'el renacimiento del helado · nacido en florencia 1932 · tradición e innovación',
       'banner.heritage': 'de florencia al mundo · 93 años de excelencia · un legado global',
       'banner.barattolo': 'il barattolo · formato retail premium · helado florentino en casa',
-      'banner.products': 'sabores premiados · classico · pistacchio · dolcevita',
+      'banner.products': 'sabores premiados · classico · pistacchio · la dolcevita',
       'banner.mission': 'artesanía · ingredientes premium · sabor inolvidable',
       'banner.gallery': 'textura artesanal · remolinos hechos a mano · belleza en cada cucharada',
       'banner.locations': 'londres · barcelona · parís · tokio · florencia · en todas partes con estilo',
@@ -554,7 +554,7 @@
       'banner.story': 'la renaissance du gelato · né à florence en 1932 · tradition et innovation',
       'banner.heritage': 'de florence au monde · 93 ans d’excellence · un héritage mondial',
       'banner.barattolo': 'il barattolo · format retail premium · gelato florentin à la maison',
-      'banner.products': 'saveurs primées · classico · pistacchio · dolcevita',
+      'banner.products': 'saveurs primées · classico · pistacchio · la dolcevita',
       'banner.mission': 'artisanat · ingrédients premium · goût inoubliable',
       'banner.gallery': 'texture artisanale · marbrages faits main · beauté à chaque cuillère',
       'banner.locations': 'londres · barcelone · paris · tokyo · florence · partout avec style',
