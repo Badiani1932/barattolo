@@ -843,7 +843,7 @@
     /* @media (hover:hover) and (pointer:fine){
       .card-img::before{ display: none; }
     } */
-    .card-img .card-btn{ position:absolute; bottom:18px; left:50%; transform:translateX(-50%) translateY(50px); background:rgba(30,57,141,0.95); color:#fff; padding:12px 28px; border-radius:25px; font-size:15px; letter-spacing:1.2px; text-transform:uppercase; opacity:0; transition:all 0.35s ease; pointer-events:none; font-weight:600; box-shadow:0 6px 22px rgba(30,57,141,0.35); text-decoration:none; display:inline-block; }
+    .card-img .card-btn{ position:absolute; bottom:18px; left:50%; transform:translateX(-50%) translateY(50px); background:rgba(30,57,141,0.95); color:#fff; padding:12px 28px; border-radius:25px; font-size:15px; letter-spacing:1.2px; text-transform:uppercase; opacity:0; transition:all 0.35s ease; pointer-events:none; font-weight:600; box-shadow:0 6px 22px rgba(30,57,141,0.35); text-decoration:none; display:inline-block; border:0; cursor:pointer; font-family:inherit; }
     .card-img:hover .card-btn{ transform:translateX(-50%) translateY(0); opacity:1; }
     @media (hover: none) and (pointer: coarse) {
       .card-img:hover .card-btn { transform:translateX(-50%) translateY(50px); opacity:0; }
@@ -2019,7 +2019,7 @@
 
     <article class="card classico">
       <div class="card-img" onclick="openSpecs('classico', 'BUONTALENTI CLASSICO')">
-        <a class="card-btn" href="#" aria-label="View Buontalenti Classico specs" onclick="event.stopPropagation(); return false;">View Specs</a>
+        <button class="card-btn" type="button" aria-label="View Buontalenti Classico specs" onclick="openSpecs('classico', 'BUONTALENTI CLASSICO'); event.stopPropagation();">View Specs</button>
         <img src="classico.webp" alt="Buontalenti Classico">
       </div>
       <div class="card-header">
@@ -2041,7 +2041,7 @@
 
     <article class="card dolcevita">
       <div class="card-img" onclick="openSpecs('dolcevita', 'BUONTALENTI LA DOLCEVITA')">
-        <a class="card-btn" href="#" aria-label="View Buontalenti La Dolcevita specs" onclick="event.stopPropagation(); return false;">View Specs</a>
+        <button class="card-btn" type="button" aria-label="View Buontalenti La Dolcevita specs" onclick="openSpecs('dolcevita', 'BUONTALENTI LA DOLCEVITA'); event.stopPropagation();">View Specs</button>
         <div class="card-award">Best Flavour 2015</div>
         <img src="dolcevita.webp" alt="Buontalenti La Dolcevita">
       </div>
@@ -2064,7 +2064,7 @@
 
     <article class="card pistacchio">
       <div class="card-img" onclick="openSpecs('pistacchio', 'BUONTALENTI PISTACCHIO')">
-        <a class="card-btn" href="#" aria-label="View Buontalenti Pistacchio specs" onclick="event.stopPropagation(); return false;">View Specs</a>
+        <button class="card-btn" type="button" aria-label="View Buontalenti Pistacchio specs" onclick="openSpecs('pistacchio', 'BUONTALENTI PISTACCHIO'); event.stopPropagation();">View Specs</button>
         <div class="card-award">World Best-Seller</div>
         <img src="pistacchio.webp" alt="Buontalenti Pistacchio">
       </div>
@@ -2124,16 +2124,16 @@
   <h2>Heritage-Inspired Texture</h2>
   <p class="gallery-subtitle">Beautiful variegated swirls capture the authentic look and feel of our boutique gelato, crafted for a superior sensory experience</p>
   <div class="gallery-grid">
-    <div class="gallery-item"><img src="top-classico.webp" alt="Buontalenti Classico top view" loading="lazy"></div>
-    <div class="gallery-item"><img src="top-dolcevita.webp" alt="Buontalenti La Dolcevita top view" loading="lazy"></div>
-    <div class="gallery-item"><img src="top-pistacchio.webp" alt="Buontalenti Pistacchio top view" loading="lazy"></div>
+    <div class="gallery-item"><img src="top-classico.webp" alt="Buontalenti Classico top view" loading="eager"></div>
+    <div class="gallery-item"><img src="top-dolcevita.webp" alt="Buontalenti La Dolcevita top view" loading="eager"></div>
+    <div class="gallery-item"><img src="top-pistacchio.webp" alt="Buontalenti Pistacchio top view" loading="eager"></div>
 </div>
 </section>
 
 
 <section id="locations" class="global-presence">
   <div class="global-presence-bg" aria-hidden="true">
-    <img src="worldwide.webp?v=20251222" alt="" loading="lazy" decoding="async">
+    <img src="worldwide.webp?v=20251222" alt="" loading="eager" decoding="async">
   </div>
   <div class="global-presence-arrows" aria-hidden="true"></div>
   <div class="global-presence-headline">
