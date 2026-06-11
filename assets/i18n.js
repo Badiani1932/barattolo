@@ -128,8 +128,22 @@
       'vision.strong': 'Inspiring the World with Gelato',
       'vision.body': 'To become the finest gelato brand in the world and inspire people with the taste of freshly-made artisan products.',
 
-      'gallery.title': 'Heritage-Inspired Texture',
-      'gallery.subtitle': 'Beautiful variegated swirls capture the authentic look and feel of our boutique gelato, crafted for a superior sensory experience',
+      'gallery.title': 'Inside the Barattolo',
+      'gallery.subtitle': 'Creamy texture, iconic recipes and retail-ready impact in every 500ml jar.',
+      'gallery.kicker': 'Retail texture story',
+      'gallery.classico.label': 'Classico',
+      'gallery.classico.title': 'Pure Florentine cream',
+      'gallery.classico.body': 'Only four ingredients, our signature Buontalenti identity.',
+      'gallery.dolcevita.label': 'La Dolcevita',
+      'gallery.dolcevita.title': 'Gianduia swirl',
+      'gallery.dolcevita.body': 'Custard gelato with hazelnut-cocoa spread and Madagascar vanilla.',
+      'gallery.pistacchio.label': 'Pistacchio',
+      'gallery.pistacchio.title': 'Pistachio depth',
+      'gallery.pistacchio.body': 'Creamy custard gelato with pistachio spread and pure pistachio paste.',
+      'gallery.badge.shelf': '24-month shelf life',
+      'gallery.badge.award': 'Award-winning',
+      'gallery.badge.retail': 'Retail ready',
+      'gallery.badge.global': 'Global favourite',
 
       'locations.aria': 'Badiani around the world means gelato',
       'locations.top': 'Badiani Around The World',
@@ -294,8 +308,22 @@
       'vision.strong': 'Ispirare il mondo con il gelato',
       'vision.body': 'Diventare il miglior brand di gelato al mondo e ispirare le persone con il gusto di prodotti artigianali appena fatti.',
 
-      'gallery.title': 'Texture ispirata alla tradizione',
-      'gallery.subtitle': 'Variegature bellissime catturano l’aspetto e la sensazione autentici del nostro gelato boutique, creato per un’esperienza sensoriale superiore',
+      'gallery.title': 'Dentro il Barattolo',
+      'gallery.subtitle': 'Texture cremosa, ricette iconiche e impatto retail in ogni barattolo da 500ml.',
+      'gallery.kicker': 'Texture story retail',
+      'gallery.classico.label': 'Classico',
+      'gallery.classico.title': 'Pura crema fiorentina',
+      'gallery.classico.body': 'Solo quattro ingredienti, la nostra identità Buontalenti.',
+      'gallery.dolcevita.label': 'La Dolcevita',
+      'gallery.dolcevita.title': 'Variegatura gianduia',
+      'gallery.dolcevita.body': 'Gelato alla crema con variegatura nocciola-cacao e vaniglia del Madagascar.',
+      'gallery.pistacchio.label': 'Pistacchio',
+      'gallery.pistacchio.title': 'Profondità pistacchio',
+      'gallery.pistacchio.body': 'Gelato cremoso alla crema con variegatura al pistacchio e pura pasta di pistacchio.',
+      'gallery.badge.shelf': 'Shelf life 24 mesi',
+      'gallery.badge.award': 'Premiato',
+      'gallery.badge.retail': 'Pronto retail',
+      'gallery.badge.global': 'Gusto globale',
 
       'locations.aria': 'Badiani nel mondo significa gelato',
       'locations.top': 'Badiani nel mondo',
@@ -460,8 +488,22 @@
       'vision.strong': 'Inspirar al mundo con helado',
       'vision.body': 'Convertirnos en la mejor marca de helado del mundo e inspirar a las personas con el sabor de productos artesanales recién hechos.',
 
-      'gallery.title': 'Textura inspirada en la tradición',
-      'gallery.subtitle': 'Hermosos remolinos variegados capturan el aspecto y la sensación auténticos de nuestro gelato boutique, elaborado para una experiencia sensorial superior',
+      'gallery.title': 'Dentro del Barattolo',
+      'gallery.subtitle': 'Textura cremosa, recetas icónicas e impacto retail en cada tarro de 500ml.',
+      'gallery.kicker': 'Historia de textura retail',
+      'gallery.classico.label': 'Classico',
+      'gallery.classico.title': 'Pura crema florentina',
+      'gallery.classico.body': 'Solo cuatro ingredientes, nuestra identidad Buontalenti.',
+      'gallery.dolcevita.label': 'La Dolcevita',
+      'gallery.dolcevita.title': 'Remolino de gianduia',
+      'gallery.dolcevita.body': 'Gelato de crema con avellana-cacao y vainilla de Madagascar.',
+      'gallery.pistacchio.label': 'Pistacchio',
+      'gallery.pistacchio.title': 'Profundidad de pistacho',
+      'gallery.pistacchio.body': 'Gelato cremoso con crema de pistacho y pasta pura de pistacho.',
+      'gallery.badge.shelf': '24 meses de vida útil',
+      'gallery.badge.award': 'Premiado',
+      'gallery.badge.retail': 'Listo para retail',
+      'gallery.badge.global': 'Favorito global',
 
       'locations.aria': 'Badiani alrededor del mundo significa helado',
       'locations.top': 'Badiani alrededor del mundo',
@@ -626,8 +668,22 @@
       'vision.strong': 'Inspirer le monde avec le gelato',
       'vision.body': 'Devenir la meilleure marque de gelato au monde et inspirer les gens avec le goût de produits artisanaux fraîchement préparés.',
 
-      'gallery.title': 'Texture inspirée par la tradition',
-      'gallery.subtitle': 'De magnifiques marbrures capturent l’aspect et la sensation authentiques de notre gelato boutique, élaboré pour une expérience sensorielle supérieure',
+      'gallery.title': 'Dans le Barattolo',
+      'gallery.subtitle': 'Texture crémeuse, recettes iconiques et impact retail dans chaque pot de 500ml.',
+      'gallery.kicker': 'Texture story retail',
+      'gallery.classico.label': 'Classico',
+      'gallery.classico.title': 'Pure crème florentine',
+      'gallery.classico.body': 'Seulement quatre ingrédients, notre identité Buontalenti.',
+      'gallery.dolcevita.label': 'La Dolcevita',
+      'gallery.dolcevita.title': 'Marbrage gianduia',
+      'gallery.dolcevita.body': 'Gelato crème avec noisette-cacao et vanille de Madagascar.',
+      'gallery.pistacchio.label': 'Pistacchio',
+      'gallery.pistacchio.title': 'Profondeur pistache',
+      'gallery.pistacchio.body': 'Gelato crémeux avec crème de pistache et pure pâte de pistache.',
+      'gallery.badge.shelf': '24 mois de conservation',
+      'gallery.badge.award': 'Primé',
+      'gallery.badge.retail': 'Prêt retail',
+      'gallery.badge.global': 'Favori mondial',
 
       'locations.aria': 'Badiani dans le monde signifie gelato',
       'locations.top': 'Badiani dans le monde',
@@ -1291,8 +1347,23 @@
     bindText('#mission .vision-box p:nth-of-type(2)', 'vision.body');
 
     // Gallery
+    bindText('#gallery .gallery-kicker', 'gallery.kicker');
     bindText('#gallery > h2', 'gallery.title');
     bindText('#gallery .gallery-subtitle', 'gallery.subtitle');
+    bindText('#gallery .texture-classico .texture-label', 'gallery.classico.label');
+    bindText('#gallery .texture-classico h3', 'gallery.classico.title');
+    bindText('#gallery .texture-classico p', 'gallery.classico.body');
+    bindText('#gallery .texture-dolcevita .texture-label', 'gallery.dolcevita.label');
+    bindText('#gallery .texture-dolcevita h3', 'gallery.dolcevita.title');
+    bindText('#gallery .texture-dolcevita p', 'gallery.dolcevita.body');
+    bindText('#gallery .texture-pistacchio .texture-label', 'gallery.pistacchio.label');
+    bindText('#gallery .texture-pistacchio h3', 'gallery.pistacchio.title');
+    bindText('#gallery .texture-pistacchio p', 'gallery.pistacchio.body');
+    bindText('#gallery [data-i18n="gallery.badge.shelf"]', 'gallery.badge.shelf');
+    bindText('#gallery [data-i18n="gallery.badge.award"]', 'gallery.badge.award');
+    document.querySelectorAll('#gallery [data-i18n="gallery.badge.retail"]').forEach((el) => { el.textContent = t('gallery.badge.retail'); });
+    bindText('#gallery [data-i18n="gallery.badge.global"]', 'gallery.badge.global');
+    bindText('#gallery .texture-cta', 'contact.cta');
 
     // Locations headline
     bindAttr('#locations .world-means-title', 'aria-label', 'locations.aria');
