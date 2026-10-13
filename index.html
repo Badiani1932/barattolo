@@ -3093,6 +3093,11 @@
       .logo-img{ aspect-ratio:1665/643; }
     }
 
+    /* email e sito: carattere normale anche per le cifre (niente «1932» nel carattere dei numeri) */
+    .contact-links, .contact-links a{ font-family:'SuperGroteskA', sans-serif !important; }
+    .contact-links a{ color:inherit; text-decoration:none; }
+    .contact-links a:hover, .contact-links a:focus-visible{ color:var(--badiani-blue); text-decoration:underline; text-underline-offset:3px; }
+
     /* ® nei titoli */
     .reg{ font-family:'SuperGroteskA', sans-serif; font-weight:400; font-style:normal; font-size:max(.32em, 8px); letter-spacing:0; line-height:1; vertical-align:top; position:relative; top:.35em; margin-inline-start:.04em; text-transform:none; }
   </style>
@@ -3417,7 +3422,7 @@
 <section id="contact" class="contact">
   <h2>Partner With Badiani</h2>
   <p class="highlight">Bring the authentic taste of Florence to your customers</p>
-  <p>retail@badiani1932.com &middot; www.badiani1932.com</p>
+  <p class="contact-links"><a href="mailto:retail@badiani1932.com">retail@badiani1932.com</a> &middot; <a href="https://www.badiani1932.com/">www.badiani1932.com</a></p>
   <a id="requestDistributionBtn" href="mailto:retail@badiani1932.com" class="cta-btn">REQUEST SAMPLES AND PRICES NOW</a>
 </section>
 
@@ -3742,12 +3747,8 @@ if (logoLink) {
       document.body.style.overflow = '';
     }
 
-    const hero = document.getElementById('hero');
-    if (hero && hero.scrollIntoView) {
-      hero.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    } else {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
+    // in cima alla pagina (con la barra fissa, scorrere alla copertina ne lasciava nascosta la parte alta)
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   });
 }
 
