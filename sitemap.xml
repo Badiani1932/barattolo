@@ -4,8 +4,4 @@
     <loc>https://barattolo.badiani1932.com/</loc>
     <priority>1.0</priority>
   </url>
-  <url>
-    <loc>https://barattolo.badiani1932.com/mobile/</loc>
-    <priority>0.6</priority>
-  </url>
 </urlset>
