@@ -46,7 +46,7 @@
       'flavor.mango': 'Mango',
       'flavor.blueberry': 'Blueberry',
 
-      'hero.titleHtml': 'The Barattolo <span>GELATO</span>',
+      'hero.titleHtml': 'Il Barattolo <span>GELATO</span>',
       'hero.subtitle': 'A Creative Flavour Journey from Florence',
       'hero.lead': 'Authentic Florentine gelato for premium retail distribution. Over 90 years of gelato-making excellence from the birthplace of gelato.',
       'hero.ctaExplore': 'Explore Flavours',
@@ -54,7 +54,7 @@
 
       'banner.hero': 'iconic italian gelato · since 1932 · from florence with love',
       'banner.story': 'the renaissance of gelato · born in florence 1932 · tradition meets innovation',
-      'banner.heritage': 'from florence to the world · 93 years of excellence · a global legacy',
+      'banner.heritage': 'from florence to the world · since 1932 · a global legacy',
       'banner.barattolo': 'il barattolo · premium retail format · authentic florentine gelato at home',
       'banner.products': 'award-winning flavours · classico · pistacchio · la dolcevita',
       'banner.mission': 'Florentine know-how · premium ingredients · unforgettable taste',
@@ -64,23 +64,24 @@
       'banner.contact': "partner with us · bring florence to your customers · let's grow together",
 
       'story.title': 'Buontalenti®: The Gelato That Made History',
-      'story.titleHtml': '<span class="story-title-main"><span class="story-title-buontalenti">Buontalenti®</span>:</span><br><span class="story-title-sub">The Gelato That Made History</span>',
-      'story.lead': 'In the 1960s, in Florence, Badiani dedicated a special flavour to Bernardo Buontalenti, the Renaissance architect to whom tradition attributes the birth of gelato in the 16th century.',
-      'story.leadHtml': 'In the 1960s, in Florence, Badiani dedicated a special flavour to <span class="highlight-pink">Bernardo Buontalenti</span>, the Renaissance architect to whom tradition attributes the birth of <span class="highlight-pink">gelato</span> in the 16th century.',
+      'story.titleHtml': '<span class="story-title-main"><span class="story-title-buontalenti">Buontalenti<sup class="reg">®</sup></span>:</span><br class="st-br"> <span class="story-title-sub">The Gelato That Made History</span>',
+      'story.lead': 'Florentine tradition says gelato was born at the Medici court in the 16th century, thanks to the architect Bernardo Buontalenti. Our signature flavour carries his name.',
+      'story.leadHtml': 'Florentine tradition says <span class="highlight-pink">gelato</span> was born at the Medici court in the 16th century, thanks to the architect <span class="highlight-pink">Bernardo Buontalenti</span>. Our signature flavour carries his name.',
       'story.tl.origin': 'The Origin',
-      'story.tl.originDesc': 'Bernardo Buontalenti invents gelato in Renaissance Florence, creating a frozen delicacy for the Medici court.',
-      'story.tl.originDescHtml': 'Bernardo Buontalenti invents gelato in <span class="highlight-pink">Renaissance Florence</span>, creating a frozen delicacy for the Medici court.',
-      'story.tl.tribute': 'The Tribute',
-      'story.tl.tributeDesc': 'Badiani creates the “Buontalenti®” gelato with 4 simple ingredients (cream, milk, sugar, eggs) honouring the inventor.',
-      'story.tl.tributeDescHtml': 'Badiani creates the “Buontalenti®” gelato with <span class="highlight-pink">4 simple ingredients</span> <span class="nowrap">(cream, milk, sugar, eggs)</span> honouring the inventor.',
+      'story.tl.originDesc': 'As tradition has it, Bernardo Buontalenti invents gelato in Renaissance Florence, for the Medici court.',
+      'story.tl.originDescHtml': 'As tradition has it, Bernardo Buontalenti invents gelato in <span class="highlight-pink">Renaissance Florence</span>, for the Medici court.',
+      'story.tl.tribute': 'The House',
+      'story.tl.tributeDesc': 'Idilio Badiani opens his gelateria in Florence. Later, Paolo Pomposi makes Buontalenti® the house signature: 4 simple ingredients (cream, milk, sugar, eggs).',
+      'story.tl.tributeDescHtml': 'Idilio Badiani opens his gelateria in Florence. Later, Paolo Pomposi makes Buontalenti® the house signature: <span class="highlight-pink">4 simple ingredients</span> <span class="nowrap">(cream, milk, sugar, eggs)</span>.',
       'story.tl.legacy': 'The Legacy',
       'story.tl.legacyDesc': 'Il Barattolo Gelato brings this iconic Florentine flavour to premium retail worldwide.',
       'story.tl.legacyDescHtml': 'Il Barattolo Gelato brings this iconic Florentine flavour to <span class="highlight-pink">premium retail</span> worldwide.',
       'story.tl.year.today': 'TODAY',
+      'story.tl.year.origin': '1500s',
 
       'heritage.title': 'A Legacy of Excellence',
-      'heritage.intro': "Born in Florence in 1932, Badiani is one of the world's most prestigious gelato producers. From the birthplace of gelato, we have built an international presence spanning five countries across three continents.",
-      'heritage.introHtml': "Born in <span class=\"highlight-pink\">Florence in 1932</span>, Badiani is one of the world's most prestigious gelato producers. From the birthplace of gelato, we have built an international presence spanning five countries across three continents.",
+      'heritage.intro': "Born in Florence in 1932, Badiani is one of the world's most prestigious gelato producers. From the birthplace of gelato, we have built an international presence spanning five countries on two continents.",
+      'heritage.introHtml': "Born in <span class=\"highlight-pink\">Florence in 1932</span>, Badiani is one of the world's most prestigious gelato producers. From the birthplace of gelato, we have built an international presence spanning five countries on two continents.",
       'heritage.stat.founded': 'Founded in Florence',
       'heritage.stat.stores': 'Stores Worldwide',
       'heritage.stat.quality': 'Italian Quality',
@@ -153,11 +154,11 @@
 
       'why.title': 'Why Choose Badiani',
       'why.b1.title': 'Heritage',
-      'why.b1.desc': '93 years of gelato-making excellence from Florence, the birthplace of gelato',
-      'why.b1.descHtml': '<span class="highlight-pink">93 years</span> of gelato-making excellence from Florence, the birthplace of gelato',
+      'why.b1.desc': 'Since 1932: gelato-making excellence from Florence, the birthplace of gelato',
+      'why.b1.descHtml': '<span class="highlight-pink">Since 1932</span>: gelato-making excellence from Florence, the birthplace of gelato',
       'why.b2.title': 'Global Presence',
-      'why.b2.desc': '30+ stores worldwide including the Louvre Museum in Paris',
-      'why.b2.descHtml': '30+ stores worldwide including the <span class="highlight-pink">Louvre Museum</span> in Paris',
+      'why.b2.desc': '30+ stores worldwide including the Carrousel du Louvre in Paris',
+      'why.b2.descHtml': '30+ stores worldwide including the <span class="highlight-pink">Carrousel du Louvre</span> in Paris',
       'why.b3.title': 'Authentic Quality',
       'why.b3.desc': 'Premium Italian ingredients and award-winning recipes, bringing the true heritage of Florence to the world.',
       'why.b4.title': 'Retail Ready',
@@ -169,7 +170,7 @@
       'contact.cta': 'REQUEST SAMPLES AND PRICES NOW',
       'contact.ctaAria': 'Request distribution information via email',
 
-      'footer.html': '&copy; {year} <span>Badiani Gelato Firenze 1932</span> &middot; MADE in Italy',
+      'footer.html': '&copy; {year} <span>Badiani Gelato Firenze 1932</span> &middot; Made in Italy',
 
       'spec.productCode': 'Product Code',
       'spec.description': 'Description',
@@ -194,7 +195,7 @@
       'nutrition.sugars': 'of which sugars',
       'nutrition.protein': 'Protein',
       'nutrition.salt': 'Salt',
-      'nutrition.fiber': 'Fiber',
+      'nutrition.fiber': 'Fibre',
 
       'hint.tapForSpecs': 'Tap for specs',
 
@@ -257,7 +258,7 @@
 
       'banner.hero': 'gelato italiano iconico · dal 1932 · da firenze con amore',
       'banner.story': 'il rinascimento del gelato · nato a firenze nel 1932 · tradizione e innovazione',
-      'banner.heritage': 'da firenze al mondo · 93 anni di eccellenza · un’eredità globale',
+      'banner.heritage': 'da firenze al mondo · dal 1932 · un’eredità globale',
       'banner.barattolo': 'il barattolo · formato retail premium · gelato fiorentino a casa',
       'banner.products': 'gusti premiati · classico · pistacchio · la dolcevita',
       'banner.mission': 'saper fare fiorentino · ingredienti premium · gusto indimenticabile',
@@ -267,23 +268,24 @@
       'banner.contact': 'collabora con noi · porta firenze ai tuoi clienti · cresciamo insieme',
 
       'story.title': 'Buontalenti®: il gelato che ha fatto la storia',
-      'story.titleHtml': '<span class="story-title-main"><span class="story-title-buontalenti">Buontalenti®</span>:</span><br><span class="story-title-sub">il gelato che ha fatto la storia</span>',
-      'story.lead': 'Negli anni ’60, a Firenze, Badiani dedicò un gusto speciale a Bernardo Buontalenti, l’architetto rinascimentale a cui la tradizione attribuisce la nascita del gelato nel XVI secolo.',
-      'story.leadHtml': 'Negli anni ’60, a Firenze, Badiani dedicò un gusto speciale a <span class="highlight-pink">Bernardo Buontalenti</span>, l’architetto rinascimentale a cui la tradizione attribuisce la nascita del <span class="highlight-pink">gelato</span> nel XVI secolo.',
+      'story.titleHtml': '<span class="story-title-main"><span class="story-title-buontalenti">Buontalenti<sup class="reg">®</sup></span>:</span><br class="st-br"> <span class="story-title-sub">il gelato che ha fatto la storia</span>',
+      'story.lead': 'Secondo la tradizione fiorentina il gelato nacque alla corte dei Medici, nel Cinquecento, grazie all’architetto Bernardo Buontalenti. Il nostro gusto simbolo porta il suo nome.',
+      'story.leadHtml': 'Secondo la tradizione fiorentina il <span class="highlight-pink">gelato</span> nacque alla corte dei Medici, nel Cinquecento, grazie all’architetto <span class="highlight-pink">Bernardo Buontalenti</span>. Il nostro gusto simbolo porta il suo nome.',
       'story.tl.origin': 'L’origine',
-      'story.tl.originDesc': 'Bernardo Buontalenti inventa il gelato nella Firenze rinascimentale, creando una delizia ghiacciata per la corte dei Medici.',
-      'story.tl.originDescHtml': 'Bernardo Buontalenti inventa il gelato nella <span class="highlight-pink">Firenze rinascimentale</span>, creando una delizia ghiacciata per la corte dei Medici.',
-      'story.tl.tribute': 'L’omaggio',
-      'story.tl.tributeDesc': 'Badiani crea il gelato “Buontalenti®” con 4 ingredienti semplici (panna, latte, zucchero, uova) in onore dell’inventore.',
-      'story.tl.tributeDescHtml': 'Badiani crea il gelato “Buontalenti®” con <span class="highlight-pink">4 ingredienti semplici</span> <span class="nowrap">(panna, latte, zucchero, uova)</span> in onore dell’inventore.',
+      'story.tl.originDesc': 'Secondo la tradizione, Bernardo Buontalenti inventa il gelato nella Firenze rinascimentale, per la corte dei Medici.',
+      'story.tl.originDescHtml': 'Secondo la tradizione, Bernardo Buontalenti inventa il gelato nella <span class="highlight-pink">Firenze rinascimentale</span>, per la corte dei Medici.',
+      'story.tl.tribute': 'La Casa',
+      'story.tl.tributeDesc': 'Idilio Badiani apre la sua gelateria a Firenze. Più tardi Paolo Pomposi fa del Buontalenti® la firma della casa: 4 ingredienti semplici (panna, latte, zucchero, uova).',
+      'story.tl.tributeDescHtml': 'Idilio Badiani apre la sua gelateria a Firenze. Più tardi Paolo Pomposi fa del Buontalenti® la firma della casa: <span class="highlight-pink">4 ingredienti semplici</span> <span class="nowrap">(panna, latte, zucchero, uova)</span>.',
       'story.tl.legacy': 'L’eredità',
       'story.tl.legacyDesc': 'Il Barattolo Gelato porta questo iconico gusto fiorentino nel retail premium in tutto il mondo.',
       'story.tl.legacyDescHtml': 'Il Barattolo Gelato porta questo iconico gusto fiorentino nel <span class="highlight-pink">retail premium</span> in tutto il mondo.',
       'story.tl.year.today': 'OGGI',
+      'story.tl.year.origin': 'XVI SECOLO',
 
       'heritage.title': 'Un’eredità di eccellenza',
-      'heritage.intro': 'Nata a Firenze nel 1932, Badiani è tra i produttori di gelato più prestigiosi al mondo. Dalla città in cui è nato il gelato, abbiamo costruito una presenza internazionale in cinque paesi su tre continenti.',
-      'heritage.introHtml': 'Nata a <span class="highlight-pink">Firenze nel 1932</span>, Badiani è tra i produttori di gelato più prestigiosi al mondo. Dalla città in cui è nato il gelato, abbiamo costruito una presenza internazionale in cinque paesi su tre continenti.',
+      'heritage.intro': 'Nata a Firenze nel 1932, Badiani è tra i produttori di gelato più prestigiosi al mondo. Dalla città in cui è nato il gelato, abbiamo costruito una presenza internazionale in cinque paesi su due continenti.',
+      'heritage.introHtml': 'Nata a <span class="highlight-pink">Firenze nel 1932</span>, Badiani è tra i produttori di gelato più prestigiosi al mondo. Dalla città in cui è nato il gelato, abbiamo costruito una presenza internazionale in cinque paesi su due continenti.',
       'heritage.stat.founded': 'Fondata a Firenze',
       'heritage.stat.stores': 'Negozi nel mondo',
       'heritage.stat.quality': 'Qualità Italiana',
@@ -320,7 +322,7 @@
       'card.pistacchio.f1': '5% pasta di pistacchio',
       'card.pistacchio.f2': 'Uova da allevamento all’aperto',
       'card.pistacchio.f3': 'Senza glutine',
-      'card.pistacchio.f4': 'Preferito globale',
+      'card.pistacchio.f4': 'Amato nel mondo',
 
       'mission.tab.mission': 'Missione',
       'mission.tab.vision': 'Visione',
@@ -346,7 +348,7 @@
       'gallery.badge.shelf': 'Shelf life 24 mesi',
       'gallery.badge.award': 'Premiato',
       'gallery.badge.retail': 'Pronto retail',
-      'gallery.badge.global': 'Gusto globale',
+      'gallery.badge.global': 'Amato nel mondo',
 
       'locations.aria': 'Badiani nel mondo significa gelato',
       'locations.top': 'Badiani nel mondo',
@@ -356,11 +358,11 @@
 
       'why.title': 'Perché scegliere Badiani',
       'why.b1.title': 'Tradizione',
-      'why.b1.desc': '93 anni di eccellenza nella gelateria da Firenze, la culla del gelato',
-      'why.b1.descHtml': '<span class="highlight-pink">93 anni</span>&nbsp;di eccellenza nella gelateria da Firenze, la culla del gelato',
+      'why.b1.desc': 'Dal 1932: eccellenza nella gelateria da Firenze, la culla del gelato',
+      'why.b1.descHtml': '<span class="highlight-pink">Dal 1932</span>: eccellenza nella gelateria da Firenze, la culla del gelato',
       'why.b2.title': 'Presenza globale',
-      'why.b2.desc': 'Oltre 30 negozi nel mondo, incluso il Museo del Louvre a Parigi',
-      'why.b2.descHtml': 'Oltre 30 negozi nel mondo, incluso il <span class="highlight-pink">Museo del Louvre</span> a Parigi',
+      'why.b2.desc': 'Oltre 30 negozi nel mondo, incluso il Carrousel du Louvre a Parigi',
+      'why.b2.descHtml': 'Oltre 30 negozi nel mondo, incluso il <span class="highlight-pink">Carrousel du Louvre</span> a Parigi',
       'why.b3.title': 'Qualità Autentica',
       'why.b3.desc': 'Ingredienti italiani premium e ricette premiate, che portano la vera eredità di Firenze nel mondo.',
       'why.b4.title': 'Pronto per il retail',
@@ -372,7 +374,7 @@
       'contact.cta': 'RICHIEDI CAMPIONI E PREZZI ORA',
       'contact.ctaAria': 'Richiedi informazioni sulla distribuzione via email',
 
-      'footer.html': '&copy; {year} <span>Badiani Gelato Firenze 1932</span> &middot; MADE in Italy',
+      'footer.html': '&copy; {year} <span>Badiani Gelato Firenze 1932</span> &middot; Made in Italy',
 
       'spec.productCode': 'Codice prodotto',
       'spec.description': 'Descrizione',
@@ -452,7 +454,7 @@
       'flavor.mango': 'Mango',
       'flavor.blueberry': 'Arándano',
 
-      'hero.titleHtml': 'El Barattolo <span>GELATO</span>',
+      'hero.titleHtml': 'Il Barattolo <span>GELATO</span>',
       'hero.subtitle': 'Un viaje creativo de sabores desde Florencia',
       'hero.lead': 'Helado florentino auténtico para distribución retail premium. Más de 90 años de excelencia heladera desde la cuna del helado.',
       'hero.ctaExplore': 'Explorar sabores',
@@ -460,7 +462,7 @@
 
       'banner.hero': 'helado italiano icónico · desde 1932 · desde florencia con amor',
       'banner.story': 'el renacimiento del helado · nacido en florencia 1932 · tradición e innovación',
-      'banner.heritage': 'de florencia al mundo · 93 años de excelencia · un legado global',
+      'banner.heritage': 'de florencia al mundo · desde 1932 · un legado global',
       'banner.barattolo': 'il barattolo · formato retail premium · helado florentino en casa',
       'banner.products': 'sabores premiados · classico · pistacchio · la dolcevita',
       'banner.mission': 'saber hacer florentino · ingredientes premium · sabor inolvidable',
@@ -470,23 +472,24 @@
       'banner.contact': 'colabora con nosotros · lleva florencia a tus clientes · crezcamos juntos',
 
       'story.title': 'Buontalenti®: el helado que hizo historia',
-      'story.titleHtml': '<span class="story-title-main"><span class="story-title-buontalenti">Buontalenti®</span>:</span><br><span class="story-title-sub">el helado que hizo historia</span>',
-      'story.lead': 'En los años 60, en Florencia, Badiani dedicó un sabor especial a Bernardo Buontalenti, el arquitecto renacentista a quien la tradición atribuye el nacimiento del helado en el siglo XVI.',
-      'story.leadHtml': 'En los años 60, en Florencia, Badiani dedicó un sabor especial a <span class="highlight-pink">Bernardo Buontalenti</span>, el arquitecto renacentista a quien la tradición atribuye el nacimiento del <span class="highlight-pink">helado</span> en el siglo XVI.',
+      'story.titleHtml': '<span class="story-title-main"><span class="story-title-buontalenti">Buontalenti<sup class="reg">®</sup></span>:</span><br class="st-br"> <span class="story-title-sub">el helado que hizo historia</span>',
+      'story.lead': 'Según la tradición florentina, el helado nació en la corte de los Médici, en el siglo XVI, gracias al arquitecto Bernardo Buontalenti. Nuestro sabor emblema lleva su nombre.',
+      'story.leadHtml': 'Según la tradición florentina, el <span class="highlight-pink">helado</span> nació en la corte de los Médici, en el siglo XVI, gracias al arquitecto <span class="highlight-pink">Bernardo Buontalenti</span>. Nuestro sabor emblema lleva su nombre.',
       'story.tl.origin': 'El origen',
-      'story.tl.originDesc': 'Bernardo Buontalenti inventa el helado en la Florencia renacentista, creando un postre helado para la corte de los Medici.',
-      'story.tl.originDescHtml': 'Bernardo Buontalenti inventa el helado en la <span class="highlight-pink">Florencia renacentista</span>, creando un postre helado para la corte de los Medici.',
-      'story.tl.tribute': 'El homenaje',
-      'story.tl.tributeDesc': 'Badiani crea el helado “Buontalenti®” con 4 ingredientes simples (nata, leche, azúcar, huevos) en honor al inventor.',
-      'story.tl.tributeDescHtml': 'Badiani crea el helado “Buontalenti®” con <span class="highlight-pink">4 ingredientes simples</span> <span class="nowrap">(nata, leche, azúcar, huevos)</span> en honor al inventor.',
+      'story.tl.originDesc': 'Según la tradición, Bernardo Buontalenti inventa el helado en la Florencia renacentista, para la corte de los Médici.',
+      'story.tl.originDescHtml': 'Según la tradición, Bernardo Buontalenti inventa el helado en la <span class="highlight-pink">Florencia renacentista</span>, para la corte de los Médici.',
+      'story.tl.tribute': 'La Casa',
+      'story.tl.tributeDesc': 'Idilio Badiani abre su heladería en Florencia. Más tarde, Paolo Pomposi hace del Buontalenti® la firma de la casa: 4 ingredientes simples (nata, leche, azúcar, huevos).',
+      'story.tl.tributeDescHtml': 'Idilio Badiani abre su heladería en Florencia. Más tarde, Paolo Pomposi hace del Buontalenti® la firma de la casa: <span class="highlight-pink">4 ingredientes simples</span> <span class="nowrap">(nata, leche, azúcar, huevos)</span>.',
       'story.tl.legacy': 'El legado',
       'story.tl.legacyDesc': 'Il Barattolo Gelato lleva este icónico sabor florentino al retail premium en todo el mundo.',
       'story.tl.legacyDescHtml': 'Il Barattolo Gelato lleva este icónico sabor florentino al <span class="highlight-pink">retail premium</span> en todo el mundo.',
       'story.tl.year.today': 'HOY',
+      'story.tl.year.origin': 'SIGLO XVI',
 
       'heritage.title': 'Un legado de excelencia',
-      'heritage.intro': 'Nacida en Florencia en 1932, Badiani es uno de los productores de helado más prestigiosos del mundo. Desde la cuna del helado, hemos construido una presencia internacional en cinco países de tres continentes.',
-      'heritage.introHtml': 'Nacida en <span class="highlight-pink">Florencia en 1932</span>, Badiani es uno de los productores de helado más prestigiosos del mundo. Desde la cuna del helado, hemos construido una presencia internacional en cinco países de tres continentes.',
+      'heritage.intro': 'Nacida en Florencia en 1932, Badiani es uno de los productores de helado más prestigiosos del mundo. Desde la cuna del helado, hemos construido una presencia internacional en cinco países de dos continentes.',
+      'heritage.introHtml': 'Nacida en <span class="highlight-pink">Florencia en 1932</span>, Badiani es uno de los productores de helado más prestigiosos del mundo. Desde la cuna del helado, hemos construido una presencia internacional en cinco países de dos continentes.',
       'heritage.stat.founded': 'Fundada en Florencia',
       'heritage.stat.stores': 'Tiendas en el mundo',
       'heritage.stat.quality': 'Calidad Italiana',
@@ -505,13 +508,13 @@
       'btn.viewSpecs': 'Ver ficha',
 
       'award.bestFlavour2015': 'Mejor sabor 2015',
-      'award.worldBestSeller': 'Súper ventas mundial',
+      'award.worldBestSeller': 'Superventas mundial',
 
       'card.classico.desc': 'Nuestro sabor insignia, famoso en todo el mundo. <br>Elaborado solo con cuatro ingredientes: nata, leche, azúcar y huevos de gallinas camperas.',
       'card.classico.f1': 'Solo 4 ingredientes',
       'card.classico.f2': 'Huevos camperos',
       'card.classico.f3': 'Sin gluten',
-      'card.classico.f4': 'Caducidad 24 meses',
+      'card.classico.f4': 'Vida útil 24 meses',
 
       'card.dolcevita.desc': 'Helado de crema con gianduia de avellana y cacao (20%). <br>Con pasta de avellana italiana y vainilla Bourbon de Madagascar.',
       'card.dolcevita.f1': 'Pasta de avellana italiana',
@@ -542,10 +545,10 @@
       'gallery.classico.body': 'Solo cuatro ingredientes, nuestra identidad Buontalenti®.',
       'gallery.dolcevita.label': 'La Dolcevita',
       'gallery.dolcevita.title': 'Remolino de gianduia',
-      'gallery.dolcevita.body': 'Gelato de crema con avellana-cacao y vainilla de Madagascar.',
+      'gallery.dolcevita.body': 'Helado de crema con gianduia de avellana y cacao, y vainilla de Madagascar.',
       'gallery.pistacchio.label': 'Pistacchio',
       'gallery.pistacchio.title': 'Profundidad de pistacho',
-      'gallery.pistacchio.body': 'Gelato cremoso con crema de pistacho y pasta pura de pistacho.',
+      'gallery.pistacchio.body': 'Helado de crema con crema de pistacho y pasta pura de pistacho.',
       'gallery.badge.shelf': '24 meses de vida útil',
       'gallery.badge.award': 'Premiado',
       'gallery.badge.retail': 'Listo para retail',
@@ -559,30 +562,30 @@
 
       'why.title': 'Por qué elegir Badiani',
       'why.b1.title': 'Herencia',
-      'why.b1.desc': '93 años de excelencia heladera desde Florencia, la cuna del helado',
-      'why.b1.descHtml': '<span class="highlight-pink">93 años</span> de excelencia heladera desde Florencia, la cuna del helado',
+      'why.b1.desc': 'Desde 1932: excelencia heladera nacida en Florencia, la cuna del helado',
+      'why.b1.descHtml': '<span class="highlight-pink">Desde 1932</span>: excelencia heladera nacida en Florencia, la cuna del helado',
       'why.b2.title': 'Presencia global',
-      'why.b2.desc': 'Más de 30 tiendas en el mundo, incluido el Museo del Louvre en París',
-      'why.b2.descHtml': 'Más de 30 tiendas en el mundo, incluido el <span class="highlight-pink">Museo del Louvre</span> en París',
+      'why.b2.desc': 'Más de 30 tiendas en el mundo, incluido el Carrousel du Louvre en París',
+      'why.b2.descHtml': 'Más de 30 tiendas en el mundo, incluido el <span class="highlight-pink">Carrousel du Louvre</span> en París',
       'why.b3.title': 'Calidad Auténtica',
       'why.b3.desc': 'Ingredientes italianos premium y recetas galardonadas, llevando la verdadera herencia de Florencia al mundo.',
       'why.b4.title': 'Listo para retail',
-      'why.b4.desc': 'Formato 500ml, caducidad 24 meses a -18°C, compatible con palets EUR/EPAL',
-      'why.b4.descHtml': 'Formato 500ml, <span class="highlight-pink">caducidad 24 meses</span> a -18°C, compatible con palets EUR/EPAL',
+      'why.b4.desc': 'Formato 500ml, vida útil 24 meses a -18°C, compatible con palets EUR/EPAL',
+      'why.b4.descHtml': 'Formato 500ml, <span class="highlight-pink">vida útil 24 meses</span> a -18°C, compatible con palets EUR/EPAL',
 
       'contact.title': 'Colabora con Badiani',
       'contact.highlight': 'Lleva el auténtico sabor de Florencia a tus clientes',
       'contact.cta': 'SOLICITA MUESTRAS Y PRECIOS AHORA',
       'contact.ctaAria': 'Solicitar información de distribución por email',
 
-      'footer.html': '&copy; {year} <span>Badiani Gelato Firenze 1932</span> &middot; MADE in Italy',
+      'footer.html': '&copy; {year} <span>Badiani Gelato Firenze 1932</span> &middot; Made in Italy',
 
       'spec.productCode': 'Código de producto',
       'spec.description': 'Descripción',
       'spec.netWeight': 'Peso neto',
       'spec.eanProduct': 'EAN producto',
       'spec.eanCarton': 'EAN caja',
-      'spec.shelfLife': 'Caducidad',
+      'spec.shelfLife': 'Vida útil',
       'spec.energy': 'Energía',
       'spec.allergens': 'Alérgenos',
       'spec.mayContain': 'Puede contener',
@@ -591,7 +594,7 @@
       'spec.storage': 'Conservación',
       'spec.packaging': 'Envase',
       'spec.nutrition': 'Valores nutricionales',
-      'spec.nutritionPer100g': 'valor medio por 100g',
+      'spec.nutritionPer100g': 'valores medios por 100 g',
 
       'nutrition.energy': 'Valor energético',
       'nutrition.fat': 'Grasas',
@@ -600,7 +603,7 @@
       'nutrition.sugars': 'de los cuales azúcares',
       'nutrition.protein': 'Proteínas',
       'nutrition.salt': 'Sal',
-      'nutrition.fiber': 'Fibras',
+      'nutrition.fiber': 'Fibra alimentaria',
 
       'hint.tapForSpecs': 'Toca para ver',
 
@@ -617,7 +620,7 @@
       'specValue.ingredients.dolcevita': 'NATA fresca italiana 36%, azúcar, LECHE entera fresca italiana 23%, aceite de girasol, LECHE desnatada en polvo, pasta de AVELLANAS italiana, yema de HUEVO italiana (de gallinas camperas) 1,6%, cacao sin grasas en polvo, MANTEQUILLA, extracto de vainilla Bourbon de Madagascar',
       'specValue.ingredients.pistacchio': 'NATA fresca italiana 36%, LECHE entera fresca italiana 24%, azúcar, LECHE desnatada en polvo, pasta de PISTACHO 5%, aceite de girasol, yema de HUEVO italiana (de gallinas camperas) 1,6%, MANTEQUILLA, sal',
       'specValue.storage': 'Conservar a -18°C (-0,4°F). Una vez descongelado no volver a congelar.',
-      'specValue.packaging': 'Envase PET01, tapa PP05 y sello PAP22. Verifica las reglas y normas de reciclaje de tu municipio.',
+      'specValue.packaging': 'Envase PET01, tapa PP05 y opérculo PAP22. Verifica las normas de reciclaje de tu municipio.',
       'specValue.allergens.classico': 'LECHE, HUEVOS',
       'specValue.allergens.dolcevita': 'LECHE, AVELLANAS, HUEVOS',
       'specValue.allergens.pistacchio': 'LECHE, PISTACHO'
@@ -655,15 +658,15 @@
       'flavor.mango': 'Mangue',
       'flavor.blueberry': 'Myrtille',
 
-      'hero.titleHtml': 'Le Barattolo <span>GELATO</span>',
+      'hero.titleHtml': 'Il Barattolo <span>GELATO</span>',
       'hero.subtitle': 'Un voyage créatif de saveurs depuis Florence',
       'hero.lead': 'Gelato florentin authentique pour la distribution retail premium. Plus de 90 ans d’excellence depuis le berceau du gelato.',
-      'hero.ctaExplore': 'Découvrir les saveurs',
+      'hero.ctaExplore': 'Découvrir les parfums',
       'hero.ctaAria': 'Aller aux produits',
 
       'banner.hero': 'gelato italien iconique · depuis 1932 · de florence avec amour',
       'banner.story': 'la renaissance du gelato · né à florence en 1932 · tradition et innovation',
-      'banner.heritage': 'de florence au monde · 93 ans d’excellence · un héritage mondial',
+      'banner.heritage': 'de florence au monde · depuis 1932 · un héritage mondial',
       'banner.barattolo': 'il barattolo · format retail premium · gelato florentin à la maison',
       'banner.products': 'saveurs primées · classico · pistacchio · la dolcevita',
       'banner.mission': 'savoir-faire florentin · ingrédients premium · goût inoubliable',
@@ -673,23 +676,24 @@
       'banner.contact': 'devenez partenaire · apportez florence à vos clients · grandissons ensemble',
 
       'story.title': 'Buontalenti® : le gelato qui a marqué l’histoire',
-      'story.titleHtml': '<span class="story-title-main"><span class="story-title-buontalenti">Buontalenti®</span> :</span><br><span class="story-title-sub">le gelato qui a marqué l’histoire</span>',
-      'story.lead': 'Dans les années 1960, à Florence, Badiani a dédié un parfum spécial à Bernardo Buontalenti, l’architecte de la Renaissance auquel la tradition attribue la naissance du gelato au XVIe siècle.',
-      'story.leadHtml': 'Dans les années 1960, à Florence, Badiani a dédié un parfum spécial à <span class="highlight-pink">Bernardo Buontalenti</span>, l’architecte de la Renaissance auquel la tradition attribue la naissance du <span class="highlight-pink">gelato</span> au XVIe siècle.',
+      'story.titleHtml': '<span class="story-title-main"><span class="story-title-buontalenti">Buontalenti<sup class="reg">®</sup></span> :</span><br class="st-br"> <span class="story-title-sub">le gelato qui a marqué l’histoire</span>',
+      'story.lead': 'Selon la tradition florentine, le gelato est né à la cour des Médicis, au XVIe siècle, grâce à l’architecte Bernardo Buontalenti. Notre parfum emblématique porte son nom.',
+      'story.leadHtml': 'Selon la tradition florentine, le <span class="highlight-pink">gelato</span> est né à la cour des Médicis, au XVIe siècle, grâce à l’architecte <span class="highlight-pink">Bernardo Buontalenti</span>. Notre parfum emblématique porte son nom.',
       'story.tl.origin': 'L’origine',
-      'story.tl.originDesc': 'Bernardo Buontalenti invente le gelato dans la Florence de la Renaissance, créant une gourmandise glacée pour la cour des Médicis.',
-      'story.tl.originDescHtml': 'Bernardo Buontalenti invente le gelato dans la <span class="highlight-pink">Florence de la Renaissance</span>, créant une gourmandise glacée pour la cour des Médicis.',
-      'story.tl.tribute': 'L’hommage',
-      'story.tl.tributeDesc': 'Badiani crée le gelato « Buontalenti® » avec 4 ingrédients simples (crème, lait, sucre, œufs) pour honorer l’inventeur.',
-      'story.tl.tributeDescHtml': 'Badiani crée le gelato « Buontalenti® » avec <span class="highlight-pink">4 ingrédients simples</span> <span class="nowrap">(crème, lait, sucre, œufs)</span> pour honorer l’inventeur.',
+      'story.tl.originDesc': 'Selon la tradition, Bernardo Buontalenti invente le gelato dans la Florence de la Renaissance, pour la cour des Médicis.',
+      'story.tl.originDescHtml': 'Selon la tradition, Bernardo Buontalenti invente le gelato dans la <span class="highlight-pink">Florence de la Renaissance</span>, pour la cour des Médicis.',
+      'story.tl.tribute': 'La Maison',
+      'story.tl.tributeDesc': 'Idilio Badiani ouvre sa gelateria à Florence. Plus tard, Paolo Pomposi fait du Buontalenti® la signature de la maison : 4 ingrédients simples (crème, lait, sucre, œufs).',
+      'story.tl.tributeDescHtml': 'Idilio Badiani ouvre sa gelateria à Florence. Plus tard, Paolo Pomposi fait du Buontalenti® la signature de la maison : <span class="highlight-pink">4 ingrédients simples</span> <span class="nowrap">(crème, lait, sucre, œufs)</span>.',
       'story.tl.legacy': 'L’héritage',
       'story.tl.legacyDesc': 'Il Barattolo Gelato apporte ce parfum florentin iconique au retail premium dans le monde entier.',
       'story.tl.legacyDescHtml': 'Il Barattolo Gelato apporte ce parfum florentin iconique au <span class="highlight-pink">retail premium</span> dans le monde entier.',
-      'story.tl.year.today': "AUJOURD'HUI",
+      'story.tl.year.today': 'AUJOURD’HUI',
+      'story.tl.year.origin': 'XVIe SIÈCLE',
 
       'heritage.title': 'Un héritage d’excellence',
-      'heritage.intro': 'Née à Florence en 1932, Badiani est l’un des producteurs de gelato les plus prestigieux au monde. Depuis le berceau du gelato, nous avons bâti une présence internationale dans cinq pays sur trois continents.',
-      'heritage.introHtml': 'Née à <span class="highlight-pink">Florence en 1932</span>, Badiani est l’un des producteurs de gelato les plus prestigieux au monde. Depuis le berceau du gelato, nous avons bâti une présence internationale dans cinq pays sur trois continents.',
+      'heritage.intro': 'Née à Florence en 1932, Badiani est l’un des producteurs de gelato les plus prestigieux au monde. Depuis le berceau du gelato, nous avons bâti une présence internationale dans cinq pays sur deux continents.',
+      'heritage.introHtml': 'Née à <span class="highlight-pink">Florence en 1932</span>, Badiani est l’un des producteurs de gelato les plus prestigieux au monde. Depuis le berceau du gelato, nous avons bâti une présence internationale dans cinq pays sur deux continents.',
       'heritage.stat.founded': 'Fondée à Florence',
       'heritage.stat.stores': 'Boutiques dans le monde',
       'heritage.stat.quality': 'Qualité Italienne',
@@ -707,14 +711,14 @@
 
       'btn.viewSpecs': 'Voir la fiche',
 
-      'award.bestFlavour2015': 'Meilleure saveur 2015',
+      'award.bestFlavour2015': 'Meilleur parfum 2015',
       'award.worldBestSeller': 'Best-seller mondial',
 
       'card.classico.desc': 'Notre parfum signature, célèbre dans le monde entier. <br>Élaboré avec seulement quatre ingrédients : crème, lait, sucre et œufs plein air.',
       'card.classico.f1': 'Seulement 4 ingrédients',
       'card.classico.f2': 'Œufs plein air',
       'card.classico.f3': 'Sans gluten',
-      'card.classico.f4': 'DLU 24 mois',
+      'card.classico.f4': 'Conservation 24 mois',
 
       'card.dolcevita.desc': 'Gelato à la crème avec gianduia noisette-cacao (20%). <br>Avec pâte de noisette italienne et vanille Bourbon de Madagascar.',
       'card.dolcevita.f1': 'Pâte de noisette italienne',
@@ -745,10 +749,10 @@
       'gallery.classico.body': 'Seulement quatre ingrédients, notre identité Buontalenti®.',
       'gallery.dolcevita.label': 'La Dolcevita',
       'gallery.dolcevita.title': 'Marbrage gianduia',
-      'gallery.dolcevita.body': 'Gelato crème avec noisette-cacao et vanille de Madagascar.',
+      'gallery.dolcevita.body': 'Gelato à la crème, gianduia noisette-cacao et vanille de Madagascar.',
       'gallery.pistacchio.label': 'Pistacchio',
       'gallery.pistacchio.title': 'Profondeur pistache',
-      'gallery.pistacchio.body': 'Gelato crémeux avec crème de pistache et pure pâte de pistache.',
+      'gallery.pistacchio.body': 'Gelato à la crème, crème de pistache et pâte de pistache pure.',
       'gallery.badge.shelf': '24 mois de conservation',
       'gallery.badge.award': 'Primé',
       'gallery.badge.retail': 'Prêt retail',
@@ -762,30 +766,30 @@
 
       'why.title': 'Pourquoi choisir Badiani',
       'why.b1.title': 'Héritage',
-      'why.b1.desc': '93 ans d’excellence depuis Florence, berceau du gelato',
-      'why.b1.descHtml': '<span class="highlight-pink">93 ans</span> d’excellence depuis Florence, berceau du gelato',
+      'why.b1.desc': 'Depuis 1932 : l’excellence née à Florence, berceau du gelato',
+      'why.b1.descHtml': '<span class="highlight-pink">Depuis 1932</span> : l’excellence née à Florence, berceau du gelato',
       'why.b2.title': 'Présence mondiale',
-      'why.b2.desc': '30+ boutiques dans le monde, dont le musée du Louvre à Paris',
-      'why.b2.descHtml': '30+ boutiques dans le monde, dont le <span class="highlight-pink">musée du Louvre</span> à Paris',
+      'why.b2.desc': 'Plus de 30 boutiques dans le monde, dont le Carrousel du Louvre à Paris',
+      'why.b2.descHtml': 'Plus de 30 boutiques dans le monde, dont le <span class="highlight-pink">Carrousel du Louvre</span> à Paris',
       'why.b3.title': 'Qualité Authentique',
       'why.b3.desc': 'Ingrédients italiens premium et recettes primées, apportant le véritable héritage de Florence au monde.',
       'why.b4.title': 'Prêt pour le retail',
-      'why.b4.desc': 'Format 500ml, DLU 24 mois à -18°C, compatible palettes EUR/EPAL',
-      'why.b4.descHtml': 'Format 500ml, <span class="highlight-pink">DLU 24 mois</span> à -18°C, compatible palettes EUR/EPAL',
+      'why.b4.desc': 'Format 500ml, conservation 24 mois à -18°C, compatible palettes EUR/EPAL',
+      'why.b4.descHtml': 'Format 500ml, <span class="highlight-pink">conservation 24 mois</span> à -18°C, compatible palettes EUR/EPAL',
 
       'contact.title': 'Devenez partenaire Badiani',
       'contact.highlight': 'Apportez le goût authentique de Florence à vos clients',
       'contact.cta': 'DEMANDEZ DES ÉCHANTILLONS ET LES PRIX MAINTENANT',
       'contact.ctaAria': 'Demander les informations de distribution par email',
 
-      'footer.html': '&copy; {year} <span>Badiani Gelato Firenze 1932</span> &middot; MADE in Italy',
+      'footer.html': '&copy; {year} <span>Badiani Gelato Firenze 1932</span> &middot; Made in Italy',
 
       'spec.productCode': 'Code produit',
       'spec.description': 'Description',
       'spec.netWeight': 'Poids net',
       'spec.eanProduct': 'EAN produit',
       'spec.eanCarton': 'EAN carton',
-      'spec.shelfLife': 'DLU',
+      'spec.shelfLife': 'Durée de conservation',
       'spec.energy': 'Énergie',
       'spec.allergens': 'Allergènes',
       'spec.mayContain': 'Peut contenir',
@@ -794,7 +798,7 @@
       'spec.storage': 'Conservation',
       'spec.packaging': 'Emballage',
       'spec.nutrition': 'Valeurs nutritionnelles',
-      'spec.nutritionPer100g': 'valeur moyenne pour 100g',
+      'spec.nutritionPer100g': 'valeurs moyennes pour 100 g',
 
       'nutrition.energy': 'Énergie',
       'nutrition.fat': 'Matières grasses',
@@ -803,7 +807,7 @@
       'nutrition.sugars': 'dont sucres',
       'nutrition.protein': 'Protéines',
       'nutrition.salt': 'Sel',
-      'nutrition.fiber': 'Fibres',
+      'nutrition.fiber': 'Fibres alimentaires',
 
       'hint.tapForSpecs': 'Appuyez pour voir',
 
@@ -816,11 +820,11 @@
       'specValue.mayContain.dolcevita': 'SOJA, autres FRUITS À COQUE, ARACHIDES',
       'specValue.mayContain.pistacchio': 'SOJA, autres FRUITS À COQUE, ARACHIDES',
 
-      'specValue.ingredients.classico': 'CRÈME fraîche italienne, LAIT frais entier italien, sucre, LAIT écrémé en poudre, jaune d’ŒUF de poules élevées au sol',
-      'specValue.ingredients.dolcevita': 'CRÈME fraîche italienne 36%, sucre, LAIT frais entier italien 23%, huile de tournesol, LAIT écrémé en poudre, pâte de NOISETTE italienne, jaune d’ŒUF italien (de poules élevées au sol) 1,6%, cacao maigre en poudre, BEURRE, extrait de vanille Bourbon de Madagascar',
-      'specValue.ingredients.pistacchio': 'CRÈME fraîche italienne 36%, LAIT frais entier italien 24%, sucre, LAIT écrémé en poudre, pâte de PISTACHE 5%, huile de tournesol, jaune d’ŒUF italien (de poules élevées au sol) 1,6%, BEURRE, sel',
+      'specValue.ingredients.classico': 'CRÈME fraîche italienne, LAIT frais entier italien, sucre, LAIT écrémé en poudre, jaune d’ŒUF de poules élevées en plein air',
+      'specValue.ingredients.dolcevita': 'CRÈME fraîche italienne 36%, sucre, LAIT frais entier italien 23%, huile de tournesol, LAIT écrémé en poudre, pâte de NOISETTE italienne, jaune d’ŒUF italien (de poules élevées en plein air) 1,6%, cacao maigre en poudre, BEURRE, extrait de vanille Bourbon de Madagascar',
+      'specValue.ingredients.pistacchio': 'CRÈME fraîche italienne 36%, LAIT frais entier italien 24%, sucre, LAIT écrémé en poudre, pâte de PISTACHE 5%, huile de tournesol, jaune d’ŒUF italien (de poules élevées en plein air) 1,6%, BEURRE, sel',
       'specValue.storage': 'Conserver à -18°C (-0,4°F). Ne pas recongeler après décongélation.',
-      'specValue.packaging': 'Bac PET01, couvercle PP05 et sceau PAP22. Vérifiez les règles et normes de recyclage de votre commune.',
+      'specValue.packaging': 'Bac PET01, couvercle PP05 et opercule PAP22. Vérifiez les consignes de tri de votre commune.',
       'specValue.allergens.classico': 'LAIT, ŒUFS',
       'specValue.allergens.dolcevita': 'LAIT, NOISETTES, ŒUFS',
       'specValue.allergens.pistacchio': 'LAIT, PISTACHE'
@@ -1129,7 +1133,7 @@
       const rect = btn.getBoundingClientRect();
       const vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
       const vh = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0);
-      const isMobile = window.matchMedia && window.matchMedia('(max-width: 900px)').matches;
+      const isMobile = window.matchMedia && window.matchMedia('(max-width: 900px), (max-height: 500px) and (hover: none)').matches;
       const navMenu = document.getElementById('navMenu');
       const navIsOpen = navMenu && navMenu.classList.contains('active');
 
@@ -1310,7 +1314,6 @@
     bindText('#hero .hero-subtitle', 'hero.subtitle');
     bindText('#hero .hero-content > p:not(.hero-subtitle)', 'hero.lead');
     bindText('#hero .hero-cta', 'hero.ctaExplore');
-    bindAttr('#hero .hero-cta', 'aria-label', 'hero.ctaAria');
 
     // Banners (data + visible divider paragraphs)
     bindDataTextForSection('hero', 'banner.hero');
@@ -1352,20 +1355,7 @@
     });
 
     // Story
-    bindings.push(() => {
-      const el = document.querySelector('#story .story-title');
-      if (!el) return;
-      const isMobile = window.matchMedia && window.matchMedia('(max-width: 900px)').matches;
-      if (isMobile) {
-        el.innerHTML = t('story.titleHtml');
-        return;
-      }
-      if (el.querySelector('.story-title-main')) {
-        el.innerHTML = t('story.titleHtml');
-      } else {
-        el.textContent = t('story.title');
-      }
-    });
+    bindHTML('#story .story-title', 'story.titleHtml');
     bindHTML('#story .story-lead', 'story.leadHtml');
 
     bindText('#story .timeline-item:nth-child(1) .timeline-title', 'story.tl.origin');
@@ -1513,11 +1503,9 @@
     bindText('#contact > h2', 'contact.title');
     bindText('#contact .highlight', 'contact.highlight');
     bindText('#requestDistributionBtn', 'contact.cta');
-    bindAttr('#requestDistributionBtn', 'aria-label', 'contact.ctaAria');
     bindings.push(() => {
       document.querySelectorAll('.barattolo-cta').forEach((el) => {
         el.textContent = t('contact.cta');
-        el.setAttribute('aria-label', t('contact.ctaAria'));
       });
     });
 
