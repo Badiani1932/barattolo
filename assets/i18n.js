@@ -169,6 +169,8 @@
       'contact.highlight': 'Bring the authentic taste of Florence to your customers',
       'contact.cta': 'REQUEST SAMPLES AND PRICES NOW',
       'contact.ctaAria': 'Request distribution information via email',
+      'mail.subject': 'Il Barattolo Gelato – request for samples and prices',
+      'mail.body': 'Hello,\n\nI would like to receive samples and prices for Il Barattolo Gelato.\n\nCompany:\nCountry / city:\nType of business (supermarket, delicatessen, distributor, HoReCa…):\nNumber of stores:\nFlavours of interest (Classico, La Dolcevita, Pistacchio):\nPhone:\n\nThank you,\n',
 
       'footer.html': '&copy; {year} <span>Badiani Gelato Firenze 1932</span> &middot; Made in Italy',
 
@@ -373,6 +375,8 @@
       'contact.highlight': 'Porta il gusto autentico di Firenze ai tuoi clienti',
       'contact.cta': 'RICHIEDI CAMPIONI E PREZZI ORA',
       'contact.ctaAria': 'Richiedi informazioni sulla distribuzione via email',
+      'mail.subject': 'Il Barattolo Gelato – richiesta campioni e prezzi',
+      'mail.body': 'Buongiorno,\n\nvorrei ricevere campioni e prezzi per Il Barattolo Gelato.\n\nAzienda:\nPaese / città:\nTipo di attività (supermercato, gastronomia, distributore, HoReCa…):\nNumero di punti vendita:\nGusti di interesse (Classico, La Dolcevita, Pistacchio):\nTelefono:\n\nGrazie,\n',
 
       'footer.html': '&copy; {year} <span>Badiani Gelato Firenze 1932</span> &middot; Made in Italy',
 
@@ -577,6 +581,8 @@
       'contact.highlight': 'Lleva el auténtico sabor de Florencia a tus clientes',
       'contact.cta': 'SOLICITA MUESTRAS Y PRECIOS AHORA',
       'contact.ctaAria': 'Solicitar información de distribución por email',
+      'mail.subject': 'Il Barattolo Gelato – solicitud de muestras y precios',
+      'mail.body': 'Hola:\n\nme gustaría recibir muestras y precios de Il Barattolo Gelato.\n\nEmpresa:\nPaís / ciudad:\nTipo de negocio (supermercado, tienda gourmet, distribuidor, HORECA…):\nNúmero de tiendas:\nSabores de interés (Classico, La Dolcevita, Pistacchio):\nTeléfono:\n\nGracias,\n',
 
       'footer.html': '&copy; {year} <span>Badiani Gelato Firenze 1932</span> &middot; Made in Italy',
 
@@ -781,6 +787,8 @@
       'contact.highlight': 'Apportez le goût authentique de Florence à vos clients',
       'contact.cta': 'DEMANDEZ DES ÉCHANTILLONS ET LES PRIX MAINTENANT',
       'contact.ctaAria': 'Demander les informations de distribution par email',
+      'mail.subject': 'Il Barattolo Gelato – demande d’échantillons et de prix',
+      'mail.body': 'Bonjour,\n\nje souhaiterais recevoir des échantillons et les prix d’Il Barattolo Gelato.\n\nSociété :\nPays / ville :\nType d’activité (supermarché, épicerie fine, distributeur, CHR…) :\nNombre de points de vente :\nParfums qui vous intéressent (Classico, La Dolcevita, Pistacchio) :\nTéléphone :\n\nMerci,\n',
 
       'footer.html': '&copy; {year} <span>Badiani Gelato Firenze 1932</span> &middot; Made in Italy',
 
@@ -1507,6 +1515,13 @@
       document.querySelectorAll('.barattolo-cta').forEach((el) => {
         el.textContent = t('contact.cta');
       });
+    });
+
+    // Pulsanti email: la mail si apre con oggetto e una traccia da compilare, nella lingua scelta
+    bindings.push(() => {
+      const href = 'mailto:retail@badiani1932.com?subject=' + encodeURIComponent(t('mail.subject')) +
+        '&body=' + encodeURIComponent(t('mail.body').replace(/\n/g, '\r\n'));
+      document.querySelectorAll('a[href^="mailto:retail@badiani1932.com"]').forEach((a) => a.setAttribute('href', href));
     });
 
     // Footer
