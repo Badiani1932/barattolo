@@ -12,11 +12,13 @@
   <meta property="og:title" content="Badiani Il Barattolo — Iconic Italian Gelato for Retail">
   <meta property="og:description" content="Badiani Il Barattolo Gelato brings authentic Florentine gelato to premium retail: iconic Buontalenti® flavours in a convenient 500ml format for distribution partners.">
   <meta property="og:url" content="https://barattolo.badiani1932.com/">
-  <meta property="og:image" content="https://barattolo.badiani1932.com/freezer-prodotti.webp">
+  <meta property="og:image" content="https://barattolo.badiani1932.com/assets/img/og-barattolo.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Badiani Il Barattolo — Iconic Italian Gelato for Retail">
   <meta name="twitter:description" content="Badiani Il Barattolo Gelato brings authentic Florentine gelato to premium retail: iconic Buontalenti® flavours in a convenient 500ml format for distribution partners.">
-  <meta name="twitter:image" content="https://barattolo.badiani1932.com/freezer-prodotti.webp">
+  <meta name="twitter:image" content="https://barattolo.badiani1932.com/assets/img/og-barattolo.jpg">
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -41,7 +43,7 @@
   <meta name="format-detection" content="telephone=no">
   <!-- Foto della copertina = immagine principale (LCP): un solo preload con le stesse misure dell'<img> della copertina, così il browser
        scarica una volta sola il file giusto per lo schermo -->
-  <link rel="preload" as="image" imagesrcset="assets/img/barattoli-diagonale-600.webp 600w, assets/img/barattoli-diagonale-900.webp 900w, assets/img/barattoli-diagonale-1333.webp 1333w" imagesizes="(min-width: 900.02px) and (min-height: 500.02px) 50vw, (min-width: 900.02px) and (hover: hover) 50vw, 100vw" fetchpriority="high">
+  <link rel="preload" as="image" imagesrcset="assets/img/copertina-tre-barattoli-600.webp 600w, assets/img/copertina-tre-barattoli-900.webp 900w, assets/img/copertina-tre-barattoli-1400.webp 1400w, assets/img/copertina-tre-barattoli-1900.webp 1900w" imagesizes="(min-width: 900.02px) and (min-height: 500.02px) 50vw, (min-width: 900.02px) and (hover: hover) 50vw, 100vw" fetchpriority="high">
   <link rel="preload" as="image" href="assets/img/firenze.webp" media="(min-width: 900.02px) and (min-height: 500.02px), (min-width: 900.02px) and (hover: hover)">
   <link rel="preload" as="image" href="assets/img/firenze-m.webp" media="(max-width: 900px), (max-height: 500px) and (hover: none)">
   <link rel="preload" as="font" type="font/woff2" href="fonts/SuperGroteskA-Rg[7511].woff2" crossorigin>
@@ -478,8 +480,6 @@
         font-weight:500;
         text-transform:uppercase;
       }
-      .mission-box::before{ background-image:url('assets/img/mission-1400.webp'); }
-      .vision-box::before{ background-image:url('assets/img/vision-1400.webp'); }
       .mission-box > *, .vision-box > *{ position:relative; z-index:1; }
       .mission-box h2, .vision-box h2{ font-size:48px; letter-spacing:3px; text-transform:uppercase; margin-bottom:25px; font-weight:700; text-shadow:2px 2px 8px rgba(0,0,0,0.3); }
       .mission-box p, .vision-box p{ font-size:24px; line-height:1.9; font-weight:300; text-shadow:1px 1px 4px rgba(0,0,0,0.3); }
@@ -1603,8 +1603,6 @@
         margin-bottom: var(--section-gap-sm);
         line-height:1.25;
       }
-      .mission-box::before{ background-image:url('assets/img/mission-1400.webp'); }
-      .vision-box::before{ background-image:url('assets/img/vision-1400.webp'); }
       .mission-box > *, .vision-box > *{ position:relative; z-index:1; }
       .mission-box h2, .vision-box h2{ font-size:48px; letter-spacing:3px; text-transform:uppercase; margin-bottom:25px; font-weight:700; text-shadow:2px 2px 8px rgba(0,0,0,0.3); }
       .mission-box p, .vision-box p{
@@ -3000,9 +2998,10 @@
        bordo) a tutta altezza e senza niente sopra, testo nelle prime 6 colonne su 12 del contenitore (1320px, margini --gutter) centrato
        in verticale: parte dallo stesso margine della casa nella barra. Lo swoosh copre solo la metà bianca. Occhiello nel C, titolo nel B
        («GELATO» rosa su una riga sua), paragrafo come .bd-lead del sito, pulsante blu pieno e link con la freccia.
-       Foto verticale 1333×2000 (barattoli in diagonale, 21/10/2026): object-fit cover, ritaglio in verticale centrato sul Pistacchio aperto
-       (600/900/1333 px, il browser sceglie). Il «tocca per scorrere la foto» e l'effetto al passaggio del mouse della vecchia copertina
-       sono tolti. ---- */
+       Foto 4:5 (i tre barattoli dello studio, servizio «Barattolini» del Drive, 21/10/2026; 600/900/1400/1900 px, il browser sceglie):
+       object-fit cover; i barattoli stanno fra il 28% e il 76% dell'altezza, quindi object-position 58% in verticale li tiene interi e
+       centrati sia nel riquadro quasi quadrato (computer, telefono) sia in quello largo del tablet (768×594). Il «tocca per scorrere la
+       foto» e l'effetto al passaggio del mouse della vecchia copertina sono tolti. ---- */
     .hero.bd-cover{
       position:relative; display:block; height:auto; min-height:0; margin:0; padding:0; overflow:hidden; grid-template-columns:none;
       place-items:normal; place-content:normal;   /* il vecchio .hero aveva place-items:center: Chrome applica justify-self anche ai blocchi in flusso e il corpo si stringeva al contenuto (1276,8px a 1440) */
@@ -3014,7 +3013,7 @@
     @media (min-width: 600px){ .bd-cover__media{ height:min(125vw, 58svh, 760px); height:round(down, min(125vw, 58svh, 760px), 1px); } }
     .bd-cover__media picture, .bd-cover__media img{ display:block; width:100%; height:100%; max-width:none; margin:0; padding:0; }
     .bd-cover__media picture{ overflow:hidden; }
-    .bd-cover__media img{ object-fit:cover; object-position:50% 50%; border:0; border-radius:0; box-shadow:none; filter:none; transform:none; }
+    .bd-cover__media img{ object-fit:cover; object-position:50% 58%; border:0; border-radius:0; box-shadow:none; filter:none; transform:none; }
     .bd-cover__body{ position:relative; z-index:1; isolation:isolate; }
     .bd-cover__sw{
       position:absolute; inset:0; z-index:-1; pointer-events:none;
@@ -3044,7 +3043,6 @@
     @media (min-width: 900.02px) and (min-height: 500.02px), (min-width: 900.02px) and (hover: hover){
       .hero.bd-cover{ min-height:min(max(calc(100svh - var(--header-h) - 4.5rem), 440px), 1000px); min-height:round(down, min(max(calc(100svh - var(--header-h) - 4.5rem), 440px), 1000px), 1px); }
       .bd-cover__media{ position:absolute; z-index:2; inset-block:0; inset-inline-start:calc(50% + var(--grid-gap) / 2); inset-inline-start:round(up, calc(50% + var(--grid-gap) / 2), 1px); inset-inline-end:0; width:auto; height:auto; }
-      .bd-cover__media img{ object-position:50% 50%; }   /* al centro il Pistacchio aperto, sopra il Classico e sotto la Dolcevita */
       .bd-cover__body{ display:flex; min-height:inherit; }
       .bd-cover__sw{ inset-inline-end:calc(50% - var(--grid-gap) / 2); }
       .bd-cover__inner{ display:grid; grid-template-columns:repeat(12, minmax(0, 1fr)); column-gap:var(--grid-gap); align-items:center; min-height:inherit; padding-block:0; }
@@ -3233,12 +3231,13 @@
     .texture-badges span{ display:inline-flex; align-items:center; min-height:24px; padding:calc(3px + .127em) 10px calc(3px - .127em); border:1px solid var(--badiani-blue); border-radius:0; background:#fff; color:var(--badiani-blue); font-family:var(--ff-c); font-weight:400; font-size:.75rem; line-height:1.2; letter-spacing:.16em; text-transform:uppercase; }
 
     /* ---- Missione / Visione: Missione blu; Visione col fondo rosa per staccare (Marco, 21/10/2026: «lo sfondo rosato in visione ci stava
-       bene per staccare, e il quadratino fallo blu»). Quadratino accanto al titolo: rosa sul blu, blu sul rosa ---- */
+       bene per staccare, e il quadratino fallo blu»). Quadratino accanto al titolo: rosa sul blu, blu sul rosa. Colore pieno, senza
+       foto sotto il testo: delle due di prima, il frigorifero del supermercato era AI e il Louvre dubbio (21/10/2026) ---- */
     .mission-box{ background:var(--badiani-blue); }
     .vision-box{ background:var(--badiani-pink); }
-    .mission-box:hover::before, .vision-box:hover::before{ transform:none; opacity:0.18; }
+    .mission-box::before, .vision-box::before{ content:none; }
     .mission-box h2, .vision-box h2, .mission-box p, .vision-box p{ text-shadow:none; }
-    .vision-box h2, .vision-box p{ text-shadow:0 1px 3px rgba(26,50,117,.28); }   /* bianco sul rosa con la foto: un'ombra blu leggerissima per leggerlo meglio */
+    .vision-box h2, .vision-box p{ text-shadow:0 1px 3px rgba(26,50,117,.28); }   /* bianco sul rosa: un'ombra blu leggerissima per leggerlo meglio */
     .mission-box h2::before, .vision-box h2::before{ content:""; display:inline-block; width:12px; height:12px; margin-right:14px; background:var(--badiani-pink); vertical-align:0.08em; }
     .vision-box h2::before{ background:var(--badiani-blue); }
     .mission-box p strong, .vision-box p strong{ font-weight:400; }
@@ -3248,14 +3247,10 @@
        destra, centrati in verticale (come «Per le aziende» del sito, specchiato). Titolo nel B blu a sinistra; quattro ragioni in griglia
        2×2 (una colonna sotto 600px): filetto sottile in alto, quadratino rosa pieno in alto a destra, titoletto nel C maiuscolo blu
        (come le voci di .hm-biz__points del sito), testo nell'A grigio con le evidenziazioni blu. Niente riquadri pieni né trasparenze.
-       Video del supermercato (1920×700; i tre barattoli stanno fra x 325 e 1550 a piena altezza) nella cornice blu piena sfalsata in
-       basso a destra (.bd-frame, l'opposto della rosa del Barattolo), riquadro 1,85:1 (il «flat» del cinema): è il rapporto più stretto
-       che tiene interi i tre barattoli (4:3 e 1:1 li tagliavano); object-position 47% perché stanno un po' a sinistra del centro
-       (centro a x 937). Bordi del filmato misurati con ffmpeg (fotogrammi ogni 0,25 s): 2 colonne nere a destra (x 1918–1919) in tutti
-       i fotogrammi, niente a sinistra, sopra e sotto; come nel Barattolo, video e immagine d'attesa (fotogramma a 0,5 s, <img> sotto il
-       video) sbordano dello 0,8% per lato e di 1px sopra e sotto, con le stesse misure: quando parte il video non c'è nessun salto.
-       Sul telefono il video non si carica (data-desktop-only) e non si disegna: resta l'immagine nella cornice, SOPRA il testo (come
-       il video del Barattolo e la copertina: la foto apre la sezione, poi titolo e ragioni).
+       Foto: due Buontalenti Classico, uno aperto (servizio in studio «Barattolini» del Drive, 21/10/2026), al posto del video del
+       supermercato che era AI; nella cornice blu piena sfalsata in basso a destra (.bd-frame, l'opposto della rosa del Barattolo),
+       riquadro 5:4 come il file, alto più o meno quanto il testo accanto. Sul telefono la foto sta SOPRA il testo (come il video del
+       Barattolo e la copertina: la foto apre la sezione, poi titolo e ragioni).
        Stacco da «Collabora» (anche lei bianca, con lo swoosh): un filetto in fondo al contenitore, come i filetti dentro il contenitore
        del sito (.bd-sechead, .hm-biz__points), con lo stesso spazio sopra e sotto (--space-xl: quello di Collabora). ---- */
     .why{ position:relative; overflow:visible; min-height:0; margin:0; padding:var(--section-y) 0 0; background:#fff; color:var(--badiani-gray); text-align:left; }
@@ -3266,10 +3261,8 @@
     }
     .why-media{ grid-area:media; min-width:0; }
     .bd-frame--blue{ --fc:var(--badiani-blue); }
-    .why-pila{ position:relative; display:block; aspect-ratio:37 / 20; width:100%; max-width:none; height:auto; max-height:none; margin:0; padding:0; overflow:hidden; background:var(--badiani-line); }
-    .why-pila .why-poster{ position:absolute; top:-1px; left:-0.8%; display:block; width:101.6%; height:calc(100% + 2px); max-width:none; margin:0; object-fit:cover; object-position:47% 50%; border:0; border-radius:0; box-shadow:none; filter:none; transform:none; }
-    .why-pila video{ position:relative; display:block; width:101.6%; height:calc(100% + 2px); max-width:none; max-height:none; min-height:0; margin:-1px -0.8%; padding:0; object-fit:cover; object-position:47% 50%; border:0; border-radius:0; box-shadow:none; filter:none; transform:none; background:transparent; }
-    .why-pila video::-webkit-media-controls-start-playback-button{ display:none !important; -webkit-appearance:none; }
+    .why-pila{ position:relative; display:block; aspect-ratio:5 / 4; width:100%; max-width:none; height:auto; max-height:none; margin:0; padding:0; overflow:hidden; background:var(--badiani-line); }
+    .why-pila img{ position:absolute; inset:0; display:block; width:100%; height:100%; max-width:none; margin:0; padding:0; object-fit:cover; object-position:50% 50%; border:0; border-radius:0; box-shadow:none; filter:none; transform:none; }
     .why-text{ grid-area:text; display:flex; flex-direction:column; align-items:flex-start; gap:24px; min-width:0; }
     .why .benefits{ transform:none; }   /* la vecchia regola del computer spostava la griglia in giù del 30% */
     .why h2{
@@ -3293,9 +3286,6 @@
     .why .highlight-pink, .benefit p .highlight-pink{ color:var(--badiani-blue); white-space:normal; margin:0; }
     @media (min-width: 900.02px) and (min-height: 500.02px), (min-width: 900.02px) and (hover: hover){
       .why-inner{ grid-template-areas:"text media"; grid-template-columns:minmax(0, 6fr) minmax(0, 5fr); column-gap:calc(var(--grid-gap) * 2); }
-    }
-    @media (max-width: 900px), (max-height: 500px) and (hover: none){
-      .why-pila video{ display:none; }   /* sul telefono il video non si carica: resta l'immagine d'attesa */
     }
 
     /* ---- Collabora ---- */
@@ -3455,13 +3445,14 @@
 <!-- Copertina COME la home del sito (.hm-cover; Marco, 21/10/2026: «la home con la foto sotto il testo non si legge bene»): da 900px metà
      bianca a sinistra con lo swoosh tono su tono e il testo, metà destra con la foto a tutta altezza e senza niente sopra;
      sul telefono foto in alto (al massimo metà schermo) e testo sotto, sul bianco. La foto resta l'immagine principale (LCP):
-     fetchpriority="high" e preload in testa. Foto: i barattoli in diagonale col Pistacchio aperto (rullino di Marco, 21/10/2026:
-     «in copertina metti la mia foto dei barattoli in diagonale»), bilanciata con balance-photo.py del sito sul piano bianco.
+     fetchpriority="high" e preload in testa. Foto: Pistacchio, Classico e Dolcevita dal servizio in studio «Barattolini» (Drive, già
+     ritoccato; 21/10/2026: gli scatti «Barattoli G7» e la foto in diagonale non sono ritoccati), bilanciata con balance-photo.py del
+     sito sul fondo grigio (tirava al rosa).
      Gli elementi interni hanno nomi nuovi (bd-cover__*): le vecchie regole di .hero-bg/.hero-content non li toccano. -->
 <section id="hero" class="hero bd-cover" aria-labelledby="hero-title">
   <div class="bd-cover__media" aria-hidden="true">
     <picture>
-      <img src="assets/img/barattoli-diagonale-1333.webp" srcset="assets/img/barattoli-diagonale-600.webp 600w, assets/img/barattoli-diagonale-900.webp 900w, assets/img/barattoli-diagonale-1333.webp 1333w" sizes="(min-width: 900.02px) and (min-height: 500.02px) 50vw, (min-width: 900.02px) and (hover: hover) 50vw, 100vw" width="1333" height="2000" alt="" fetchpriority="high" decoding="async">
+      <img src="assets/img/copertina-tre-barattoli-1400.webp" srcset="assets/img/copertina-tre-barattoli-600.webp 600w, assets/img/copertina-tre-barattoli-900.webp 900w, assets/img/copertina-tre-barattoli-1400.webp 1400w, assets/img/copertina-tre-barattoli-1900.webp 1900w" sizes="(min-width: 900.02px) and (min-height: 500.02px) 50vw, (min-width: 900.02px) and (hover: hover) 50vw, 100vw" width="1900" height="2375" alt="" fetchpriority="high" decoding="async">
     </picture>
   </div>
   <div class="bd-cover__body">
@@ -3740,18 +3731,14 @@
 
 
 <!-- Perché scegliere Badiani: sezione bianca pulita (Marco, 21/10/2026: il video a tutta larghezza col velo e le schede sopra «non mi
-     piace»). Testo a sinistra (titolo e quattro ragioni in griglia 2×2), video del supermercato a destra nella cornice blu sfalsata in
-     basso a destra (.bd-frame, l'opposto della cornice rosa del Barattolo). Sul telefono il video non si carica (data-desktop-only) e
-     resta l'immagine d'attesa nella cornice, sopra il testo. Immagine d'attesa = <img> sotto il video (fotogramma a 0,5 s), non poster. -->
+     piace»). Testo a sinistra (titolo e quattro ragioni in griglia 2×2), foto a destra nella cornice blu sfalsata in basso a destra
+     (.bd-frame, l'opposto della cornice rosa del Barattolo); sul telefono la foto sta sopra il testo. Foto: due Buontalenti Classico,
+     uno aperto (servizio in studio «Barattolini», 21/10/2026), al posto del video del supermercato che era AI. -->
 <section id="why" class="why" aria-labelledby="why-title">
   <div class="why-inner">
     <div class="bd-frame bd-frame--blue why-media" aria-hidden="true">
       <div class="why-pila">
-        <img class="why-poster" src="assets/img/spesa-poster.webp" alt="" width="1280" height="467" loading="lazy" decoding="async">
-        <video autoplay muted loop playsinline webkit-playsinline preload="none" width="1920" height="700" data-lazy-video data-desktop-only>
-          <source data-src="assets/video/spesa.webm" type="video/webm">
-          <source data-src="assets/video/spesa.mp4" type="video/mp4">
-        </video>
+        <img src="assets/img/perche-classico-1100.webp" srcset="assets/img/perche-classico-700.webp 700w, assets/img/perche-classico-1100.webp 1100w, assets/img/perche-classico-1600.webp 1600w" sizes="(min-width: 900.02px) and (min-height: 500.02px) 42vw, (min-width: 900.02px) and (hover: hover) 42vw, 100vw" width="1600" height="1280" alt="" loading="lazy" decoding="async">
       </div>
     </div>
     <div class="why-text">
