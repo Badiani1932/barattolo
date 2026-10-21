@@ -44,6 +44,7 @@
   <link rel="preload" as="font" type="font/woff2" href="fonts/SuperGroteskA-Rg[7511].woff2" crossorigin>
   <link rel="preload" as="font" type="font/woff2" href="fonts/SuperGroteskB-CdMed.woff2" crossorigin>
   <link rel="preload" as="font" type="font/woff2" href="fonts/SuperGroteskC-MedLF.woff2" crossorigin>
+  <link rel="preload" as="font" type="font/woff2" href="fonts/JostCifreBadiani-365.woff2" crossorigin>
   <script>document.documentElement.classList.add('js');</script>
   <script src="assets/i18n.js" defer></script>
   <script>
@@ -118,13 +119,50 @@
       font-style: normal;
       font-display: swap;
     }
+    /* Cifre nei testi (REGOLA di Marco del 21/10/2026, come sul sito, v2/head/fonts.njk: «con testi grigi è brutto vedere il 2 in
+       grassetto»): nell'A Regular le cifre sono «all'antica» e quelle alte come le maiuscole ci sono solo nei Medium (A Medium LF,
+       C Medium LF), con l'asta spessa 1,67 volte quella del testo. Le dieci cifre vengono dal Jost a peso 365 (gratuito, licenza OFL in
+       fonts/Jost-OFL.txt; 1,5 KB, lo stesso file del sito e del modulo), alte come le maiuscole e con l'asta dell'A; righe con le misure
+       dell'A Regular (ascent 920, descent 220), così una cifra non sposta la riga. «SuperGroteskDigits» (in testa alle famiglie dei
+       testi) e la seconda @font-face «SuperGroteskA» (dove l'A è chiamato da solo: contatti, piè di pagina, indirizzi) sono lo stesso
+       file. I titoli in B e le scritte tutte nel C (bottoni, etichette, bollini, numeri grandi, anni della storia, evidenziazioni)
+       tengono le cifre del C: famiglia «SuperGroteskCDigits» in testa alle loro famiglie. */
     @font-face {
       font-family: 'SuperGroteskDigits';
+      src: url('fonts/JostCifreBadiani-365.woff2') format('woff2');
+      font-weight: 1 1000;
+      font-style: normal;
+      unicode-range: U+0030-0039;
+      ascent-override: 92%; descent-override: 22%; line-gap-override: 0%;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'SuperGroteskA';
+      src: url('fonts/JostCifreBadiani-365.woff2') format('woff2');
+      font-weight: normal;
+      font-style: normal;
+      unicode-range: U+0030-0039;
+      ascent-override: 92%; descent-override: 22%; line-gap-override: 0%;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'SuperGroteskCDigits';
       src: url('fonts/SuperGroteskC-MedLF.woff2') format('woff2'),
            url('fonts/SuperGroteskC-MedLF.otf') format('opentype');
       font-weight: 1 1000;
       font-style: normal;
       unicode-range: U+0030-0039;
+      font-display: swap;
+    }
+    /* Maiuscole accentate del C (À È É Ì Ò Ù…): nel C Medium LF l'accento è schiacciato sulla lettera; si prendono dall'A Medium LF,
+       identico per il resto, come sul sito (20/10/2026; stesso file). Stesse misure verticali del C, così la riga non si sposta. */
+    @font-face {
+      font-family: 'SuperGroteskC';
+      src: url('fonts/SuperGroteskA-MedLF-caps.woff2') format('woff2');
+      font-weight: 1 1000;
+      font-style: normal;
+      unicode-range: U+C0-C5, U+C7-CF, U+D1-D6, U+D9-DC;
+      ascent-override: 80.5%; descent-override: 24%; line-gap-override: 0%;
       font-display: swap;
     }
     @font-face {
@@ -143,7 +181,7 @@
 
 
 
-      /* Digits-only font: use SuperGroteskC just for numbers (0-9) everywhere. */
+      /* Cifre: Jost 365 nei testi (SuperGroteskDigits), C nei titoli e nelle etichette (SuperGroteskCDigits): @font-face in testa. */
 
       /* Lowercase-only font: use SuperGroteskA (regular) just for lowercase letters everywhere. */
 
@@ -182,7 +220,7 @@
       /* Titles: use SuperGrotesk Medium and show as uppercase */
       h1, h2, h3, .hero h1, .section-title, .story-title, .card-name, .stat-num, .barattolo-text h2,
       .mission-title, .heritage h2 {
-        font-family: 'SuperGroteskDigits', 'SuperGroteskLower', 'SuperGroteskB', 'SuperGroteskA';
+        font-family: 'SuperGroteskCDigits', 'SuperGroteskLower', 'SuperGroteskB', 'SuperGroteskA';
         font-weight: 600;
         text-transform: uppercase;
         letter-spacing: 0.6px;
@@ -292,16 +330,6 @@
         line-height:1.6;
       }
 
-      .header-wrapper{ position:sticky; top:0; z-index:1000; box-shadow:0 2px 10px rgba(0,0,0,0.1); overflow:visible; }
-      header{ background:var(--badiani-blue); padding:18px clamp(16px, 3.2vw, 40px); display:grid; grid-template-columns:auto 1fr auto; align-items:center; gap:clamp(10px, 1.6vw, 24px); position:relative; overflow:visible; }
-      .logo-link{ display:flex; align-items:center; text-decoration:none; cursor:pointer; -webkit-tap-highlight-color: transparent; }
-      /* Remove the pink focus ring that appears on click; keep a subtle ring for keyboard navigation only */
-      .logo-link:focus{ outline:none; }
-      .logo-link:focus-visible{ outline:2px solid rgba(255,255,255,0.6); outline-offset:2px; border-radius:10px; }
-      .logo-img{ height:clamp(42px, 4.0vw, 55px); width:auto; object-fit:contain; filter: invert(1) grayscale(1) brightness(200%); mix-blend-mode: screen; }
-      .nav-menu{ display:flex; gap:clamp(8px, 1.2vw, 20px); align-items:center; justify-self:end; position:relative; z-index:2; }
-      .nav-menu a{ color:#fff; text-decoration:none; font-size:clamp(12px, 0.9vw, 14px); letter-spacing:clamp(0.5px, 0.1vw, 1px); text-transform:uppercase; transition:all 0.3s; padding:clamp(6px, 0.6vw, 8px) clamp(8px, 1.0vw, 14px); border-radius:25px; font-weight:500; }
-      .nav-menu a:hover{ background:var(--badiani-pink); transform:translateY(-2px); }
 
     
 
@@ -327,7 +355,7 @@
           opacity: 0;
           pointer-events: none;
       }
-      .hero h1{ font-family:'SuperGroteskDigits', 'SuperGroteskB'; font-size:clamp(42px, 6.2vw, 86px); font-weight:700; letter-spacing:clamp(1px, 0.35vw, 5px); text-transform:uppercase; margin-bottom:18px; line-height:1.08; }
+      .hero h1{ font-family:'SuperGroteskCDigits', 'SuperGroteskB'; font-size:clamp(42px, 6.2vw, 86px); font-weight:700; letter-spacing:clamp(1px, 0.35vw, 5px); text-transform:uppercase; margin-bottom:18px; line-height:1.08; }
       .hero h1 span{ color:var(--badiani-pink); font-style:normal; }
       .hero .hero-subtitle{ font-family:'SuperGroteskC', 'SuperGroteskA', 'SuperGroteskB', sans-serif; font-size:clamp(18px, 2.2vw, 30px); margin-bottom:15px; font-style:normal; font-weight:500; letter-spacing:clamp(0.6px, 0.12vw, 1.5px); text-transform:uppercase; font-variant-caps:normal; line-height:1.25; }
       .hero p{ font-size:clamp(16px, 1.95vw, 28px); line-height:1.65; font-weight:300; }
@@ -425,7 +453,7 @@
         text-align:center;
       }
       .timeline-item:hover{ transform:translateY(-8px); box-shadow:0 20px 50px rgba(236,65,140,0.2); }
-      .timeline-year{ font-size:50px; font-weight:700; color:var(--badiani-pink); margin-bottom:12px; letter-spacing:2px; font-family:'SuperGroteskC', 'SuperGroteskDigits', 'SuperGroteskB', 'SuperGroteskA', sans-serif; text-align:center; }
+      .timeline-year{ font-size:50px; font-weight:700; color:var(--badiani-pink); margin-bottom:12px; letter-spacing:2px; font-family:'SuperGroteskC', 'SuperGroteskCDigits', 'SuperGroteskB', 'SuperGroteskA', sans-serif; text-align:center; }
       .timeline-item:nth-child(1) .timeline-year{ color:var(--badiani-blue); }
       .timeline-item:nth-child(2) .timeline-year{ color:var(--badiani-pink); }
       .timeline-item:nth-child(3) .timeline-year{ color:var(--badiani-blue); }
@@ -443,7 +471,7 @@
       /* Only these two strong lines should always use SuperGroteskC */
       .mission-box p strong,
       .vision-box p strong{
-        font-family:'SuperGroteskDigits', 'SuperGroteskC', 'SuperGroteskA', 'SuperGroteskB', sans-serif;
+        font-family:'SuperGroteskCDigits', 'SuperGroteskC', 'SuperGroteskA', 'SuperGroteskB', sans-serif;
         font-weight:500;
         text-transform:uppercase;
       }
@@ -521,7 +549,7 @@
       }
       .global-presence-headline .world-means-title .wmt-top{
         display:block;
-        font-family:'SuperGroteskDigits', 'SuperGroteskLower', 'SuperGroteskB', 'SuperGroteskA', sans-serif;
+        font-family:'SuperGroteskCDigits', 'SuperGroteskLower', 'SuperGroteskB', 'SuperGroteskA', sans-serif;
         font-weight:700;
         font-size:clamp(18px, 3.24vw, 45.6px);
         letter-spacing:0.08em;
@@ -538,77 +566,12 @@
       .global-presence-headline .world-means-title .wmt-bottom{
         display:block;
         margin-top:10px;
-        font-family:'SuperGroteskDigits', 'SuperGroteskLower', 'SuperGroteskB', 'SuperGroteskA', sans-serif;
+        font-family:'SuperGroteskCDigits', 'SuperGroteskLower', 'SuperGroteskB', 'SuperGroteskA', sans-serif;
         font-weight:800;
         font-size:clamp(56.16px, 9.828vw, 152.88px);
         letter-spacing:0.06em;
       }
 
-      /* BARATTOLO SHOWCASE - Full width video separator */
-      .barattolo-showcase{ width:100%; padding:0; line-height:0; background:#000; overflow:hidden; }
-      .barattolo-showcase video{ width:100%; height:auto; display:block; object-fit:cover; }
-
-      /* BARATTOLO INTRO CON SFONDO CALLIGRAFICO */
-      .barattolo-intro{ 
-        background: #214098 url('assets/barattolo-tab.webp?v=20251222') center/cover no-repeat; 
-        padding:0; 
-        text-align:left; 
-        position:relative; 
-        overflow:hidden; 
-        color:#fff;
-      }
-      .barattolo-intro::before{ 
-        content:""; 
-        position:absolute; 
-        inset:0; 
-        background:rgba(33,64,152,0.5);
-        z-index:0;
-      }
-      .barattolo-intro > * {
-        position: relative;
-        z-index: 2;
-      }
-      /* Let the video column auto-size from the video's aspect ratio when height is 100% */
-      .barattolo-intro-content{ max-width:1400px; margin:0 auto; display:grid; grid-template-columns:auto 1fr; gap:70px; align-items:stretch; text-align:left; padding:0 20px; min-height:auto; }
-      /* Bigger video column on desktop (keeps aspect ratio via object-fit:contain on the <video>) */
-      .barattolo-image-pila{ position:relative; aspect-ratio:9/16; width:auto; height:auto; max-height:80vh; display:flex; align-items:center; justify-content:center; overflow:hidden; background:#000; margin:0; padding:0; }
-
-      .barattolo-image-pila img, .barattolo-image-pila video{ width:100%; border-radius:15px; box-shadow:0 15px 50px rgba(0,0,0,0.2); transition:transform 0.4s ease; display:block; }
-      .barattolo-image-pila img{ height:auto; border:6px solid #fff; }
-      /* Video: show full frame without cropping on desktop */
-      .barattolo-image-pila video{
-        display:block;
-        width:100%;
-        height:100%;
-        max-width:100%;
-        object-fit:contain;
-        object-position:center center;
-        border:0;
-        border-radius:0;
-        box-shadow:none;
-        transform:none;
-        position:relative;
-        z-index:0;
-        margin:0;
-        padding:0;
-        filter:brightness(0.96);
-      }
-      .barattolo-image-pila:hover img{ transform:scale(1.05); }
-      .barattolo-text{ text-align:left; color:#fff; display:flex; flex-direction:column; justify-content:center; padding:30px 0; }
-      .barattolo-text h2{ position:relative; display:inline-block; padding-left:0; font-size:50px; letter-spacing:1px; text-transform:uppercase; color:#fff; margin-bottom:22px; font-weight:700; text-shadow:2px 2px 8px rgba(0,0,0,0.2); }
-      .barattolo-text h2 span{ color:var(--badiani-pink); font-style:normal; }
-      .barattolo-text p{ font-size:19px; line-height:1.9; margin-bottom:18px; font-weight:400; text-shadow:1px 1px 3px rgba(0,0,0,0.2); }
-      .barattolo-text .highlight-pink{ background:var(--badiani-pink); color:#fff; padding:2px 6px; border-radius:3px; font-family:'SuperGroteskC', 'SuperGroteskA', 'SuperGroteskB', sans-serif; font-weight:500; text-transform:uppercase; font-variant-caps:normal; }
-      .barattolo-text strong{ color:#fff; font-weight:600; }
-      .barattolo-text .barattolo-cta{ align-self:flex-start; width:auto; }
-
-      /* Desktop-only: give the section more height and slightly bigger text next to the video */
-      @media (min-width: 901px){
-        .barattolo-intro-content{ min-height: auto; }
-        .barattolo-text{ padding:40px 0; }
-        .barattolo-text h2{ font-size:56px; }
-        .barattolo-text p{ font-size:21px; }
-      }
 
       .products{ padding:var(--space-xxl) 20px; }
       .products > *{ position:relative; z-index:1; }
@@ -767,23 +730,6 @@
         transform: translateX(-50%) translateY(0);
       }
 
-      /* TABLET HEADER: Increase all elements by 25% */
-      .force-desktop-on-tablet header {
-        padding: 22px clamp(20px, 4vw, 50px);
-        gap: clamp(12px, 2vw, 30px);
-      }
-      .force-desktop-on-tablet .logo-img {
-        height: clamp(52px, 5vw, 69px);
-      }
-      .force-desktop-on-tablet .nav-menu {
-        gap: clamp(10px, 1.5vw, 25px);
-      }
-      .force-desktop-on-tablet .nav-menu a {
-        font-size: clamp(15px, 1.1vw, 18px);
-        letter-spacing: clamp(0.6px, 0.12vw, 1.25px);
-        padding: clamp(8px, 0.75vw, 10px) clamp(10px, 1.25vw, 18px);
-      }
-
       /* Prevent the three jar product cards from scaling on card hover */
       .card.classico:hover,
       .card.dolcevita:hover,
@@ -842,7 +788,7 @@
       /* Specs boxes: digits in Grotesk C, lowercase in SuperGrotesk A, uppercase labels in Grotesk B */
       .specs-panel-fullscreen .specs-grid,
       .specs-panel-fullscreen .specs-grid *{
-        font-family: 'SuperGroteskDigits', 'SuperGroteskLower', 'SuperGroteskB', 'SuperGroteskA', sans-serif !important;
+        font-family: 'SuperGroteskCDigits', 'SuperGroteskLower', 'SuperGroteskB', 'SuperGroteskA', sans-serif !important;
       }
       /* Values and nutrition rows: whole text in SuperGrotesk A (avoids per-letter font mixing) */
       .specs-panel-fullscreen .spec-value,
@@ -1032,11 +978,6 @@
       footer{ background:var(--badiani-blue); color:#fff; padding:36px; text-align:center; font-size:14px; font-weight:300; }
       footer span{ color:var(--badiani-pink); font-weight:500; }
 
-      .menu-toggle{ display:none; width:32px; height:28px; flex-direction:column; justify-content:space-between; cursor:pointer; z-index:1001; }
-      .menu-toggle span{ display:block; width:100%; height:4px; background:#fff; border-radius:3px; transition:all 0.3s; }
-      .menu-toggle.active span:nth-child(1){ transform:translateY(12px) rotate(45deg); }
-      .menu-toggle.active span:nth-child(2){ opacity:0; }
-      .menu-toggle.active span:nth-child(3){ transform:translateY(-12px) rotate(-45deg); }
 
       /* ===== RESPONSIVE MOBILE - COMPLETAMENTE PROPORZIONATO ===== */
     
@@ -1046,38 +987,6 @@
       }
     
       @media(max-width:900px){ 
-        /* Menu mobile */
-        .menu-toggle{display:flex;} 
-        .nav-menu{
-          position:fixed;
-          top:0;
-          right:-100%;
-          width:75vw;
-          max-width:280px;
-          height:100vh;
-          background:var(--badiani-blue);
-          flex-direction:column;
-          padding:80px 20px 30px;
-          transition:right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-          box-shadow:-10px 0 30px rgba(0,0,0,0.5);
-          gap:10px;
-          align-items:stretch;
-          z-index:1000;
-          overflow-y:auto;
-        } 
-        .nav-menu.active{right:0;} 
-        .nav-menu a{
-          font-size:14px;
-          padding:14px 16px;
-          width:100%;
-          border-bottom:1px solid rgba(255,255,255,0.15);
-          background:rgba(255,255,255,0.05);
-          border-radius:8px;
-          text-align:left;
-          letter-spacing:1px;
-        }
-        header{padding:12px 15px; display:flex; justify-content:space-between;} 
-        .logo-img{height:40px;} 
       
         /* Hero proporzionato */
         .hero{height:auto; min-height:50vh; padding:40px 15px 35px;} 
@@ -1106,15 +1015,6 @@
         .gallery-item:hover{ transform:scale(1.2); }
         .gallery-grid:hover .gallery-item:not(:hover){ transform:scale(0.9); opacity:0.6; }
       
-        /* Barattolo proporzionato */
-        .barattolo-intro{ padding:0; }
-        .barattolo-intro-content{ grid-template-columns:1fr; gap:18px; padding:0; } 
-        .barattolo-image-pila{ max-width:none; width:100%; margin:0; background:rgba(0,0,0,0.18); display:flex; justify-content:center; } 
-        .barattolo-image-pila video{ height:min(75vh, 560px); width:100%; max-width:100%; } 
-        .barattolo-text{ text-align:center; padding:40px 15px; } 
-        .barattolo-text h2{font-size:6vw;}
-        .barattolo-text p{ font-size:3.5vw; line-height:1.6; }
-        .barattolo-text .barattolo-cta{ align-self:center; }
       
         /* Mission/Vision proporzionato */
         .mission-vision{grid-template-columns:1fr; gap:0;} 
@@ -1181,8 +1081,6 @@
       
         .gallery-item{ width:20vw; height:20vw; max-width:85px; max-height:85px; border-width:2px; }
       
-        .nav-menu{ width:80vw; padding:70px 15px 25px; }
-        .nav-menu a{ font-size:13px; padding:12px 14px; }
       
         .card-img{ height:40vw; max-height:180px; }
       
@@ -1193,8 +1091,6 @@
     
       @media(max-width:400px){
         /* Ultra-piccolo per schermi molto stretti */
-        header{ padding:10px 12px; }
-        .logo-img{ height:35px; }
       
         .hero{min-height:40vh; padding:25px 10px;} 
         .hero h1{font-size:7.2vw;} 
@@ -1205,12 +1101,7 @@
       
         .gallery-item{ width:18vw; height:18vw; max-width:70px; max-height:70px; }
       
-        .barattolo-image-pila{max-width:55vw;} 
-        .barattolo-image-pila video{ height:280px; width:100%; }
-        .barattolo-text h2{font-size:5.5vw;}
       
-        .nav-menu{ width:85vw; }
-        .nav-menu a{ font-size:12px; padding:10px 12px; }
       
         .cta-btn{ padding:10px 20px; font-size:3.2vw; }
       
@@ -1286,7 +1177,6 @@
       @media (min-width: 1280px){ .timeline-desc .highlight-pink{ white-space:nowrap; } }
       @media (max-width: 1279.98px){ .timeline-year{ font-size:min(50px, 3.4vw); } } /* «AUJOURD'HUI» resta dentro il riquadro */
       .story-timeline .timeline-item{ flex-shrink:1; min-width:0; }
-      .logo-img{ aspect-ratio:1665/643; }
     }
 
     /* ===== TELEFONO (fino a 900 px, e telefoni in orizzontale): stile della vecchia pagina /mobile/ ===== */
@@ -1294,7 +1184,7 @@
 
 
 
-      /* Digits-only font: use SuperGroteskC just for numbers (0-9) everywhere. */
+      /* Cifre: Jost 365 nei testi (SuperGroteskDigits), C nei titoli e nelle etichette (SuperGroteskCDigits): @font-face in testa. */
 
       /* Lowercase-only font: use SuperGroteskA (regular) just for lowercase letters everywhere. */
 
@@ -1333,7 +1223,7 @@
       /* Titles: use SuperGrotesk Medium and show as uppercase */
       h1, h2, h3, .hero h1, .section-title, .story-title, .card-name, .stat-num, .barattolo-text h2,
       .mission-title, .heritage h2 {
-        font-family: 'SuperGroteskDigits', 'SuperGroteskLower', 'SuperGroteskB', 'SuperGroteskA';
+        font-family: 'SuperGroteskCDigits', 'SuperGroteskLower', 'SuperGroteskB', 'SuperGroteskA';
         font-weight: 600;
         text-transform: uppercase;
         letter-spacing: 0.6px;
@@ -1521,18 +1411,12 @@
 
       /* Mobile-first / mobile-only optimizations */
       body, html { cursor: auto; }
-      a, button, .card-img, .nav-menu a, .cta-btn, .menu-toggle { cursor: pointer; touch-action: manipulation; -webkit-touch-callout: none; }
+      a, button, .card-img, .cta-btn { cursor: pointer; touch-action: manipulation; -webkit-touch-callout: none; }
       * { -webkit-tap-highlight-color: transparent; }
 
-      /* Spanish labels are longer: slightly tighten nav buttons when lang=es */
-      html[lang="es"] .nav-menu a{
-        font-size: 9px;
-        padding: 5px 7px;
-        letter-spacing: 0.7px;
-      }
 
       /* Cross-browser flexbox fixes */
-      .nav-menu, .products-grid, .benefits, .gallery-grid, .mv-tabs {
+      .products-grid, .benefits, .gallery-grid, .mv-tabs {
         display: -webkit-box;
         display: -webkit-flex;
         display: -ms-flexbox;
@@ -1549,13 +1433,6 @@
         padding-right: var(--safe-area-right);
       }
 
-      .header-wrapper{ position:sticky; top:0; z-index:1000; box-shadow:0 2px 10px rgba(0,0,0,0.1); will-change: transform; -webkit-backface-visibility: hidden; backface-visibility: hidden; -webkit-perspective: 1000px; perspective: 1000px; padding-top: var(--safe-area-top); overflow:visible; }
-      header{ background:var(--badiani-blue); padding:18px clamp(16px, 3.2vw, 40px); display:-webkit-flex; display:flex; -webkit-align-items:center; align-items:center; -webkit-justify-content:space-between; justify-content:space-between; gap:clamp(10px, 1.6vw, 24px); position:relative; overflow:visible; }
-      .logo-link{ display:-webkit-flex; display:flex; -webkit-align-items:center; align-items:center; text-decoration:none; }
-      .logo-img{ height:clamp(42px, 4.0vw, 55px); width:auto; -o-object-fit:contain; object-fit:contain; -webkit-filter: invert(1) grayscale(1) brightness(200%); filter: invert(1) grayscale(1) brightness(200%); mix-blend-mode: screen; }
-      .nav-menu{ display:-webkit-flex; display:flex; gap:clamp(12px, 2.4vw, 35px); -webkit-align-items:center; align-items:center; white-space:nowrap; }
-      .nav-menu a{ color:#fff; text-decoration:none; font-size:clamp(13px, 1.15vw, 16px); letter-spacing:clamp(1px, 0.18vw, 2px); text-transform:uppercase; -webkit-transition:all 0.3s; transition:all 0.3s; padding:clamp(9px, 1.0vw, 12px) clamp(12px, 1.6vw, 20px); border-radius:25px; font-weight:500; }
-      .nav-menu a:hover{ background:var(--badiani-pink); -webkit-transform:translateY(-2px); transform:translateY(-2px); }
 
     
 
@@ -1595,7 +1472,7 @@
           filter: blur(10px);
           pointer-events: none;
       }
-      .hero h1{ font-family:'SuperGroteskDigits', 'SuperGroteskB'; font-size:clamp(42px, 6.2vw, 86px); font-weight:700; letter-spacing:clamp(1px, 0.35vw, 5px); text-transform:uppercase; margin-bottom:18px; line-height:1.08; }
+      .hero h1{ font-family:'SuperGroteskCDigits', 'SuperGroteskB'; font-size:clamp(42px, 6.2vw, 86px); font-weight:700; letter-spacing:clamp(1px, 0.35vw, 5px); text-transform:uppercase; margin-bottom:18px; line-height:1.08; }
       .hero h1 span{ color:var(--badiani-pink); font-style:normal; }
       .hero .hero-subtitle{ font-family:'SuperGroteskC', 'SuperGroteskA', 'SuperGroteskB', sans-serif; font-size:clamp(18px, 2.2vw, 30px); margin-bottom:15px; font-style:normal; font-weight:500; letter-spacing:clamp(0.6px, 0.12vw, 1.5px); text-transform:uppercase; font-variant-caps:normal; line-height:1.25; }
       .hero p{ font-size:clamp(16px, 1.95vw, 28px); line-height:1.65; font-weight:300; }
@@ -1609,7 +1486,7 @@
         background: var(--badiani-pink);
         color:#fff !important;
         text-decoration:none;
-        font-family:'SuperGroteskDigits', 'SuperGroteskC', 'SuperGroteskA', 'SuperGroteskB', sans-serif;
+        font-family:'SuperGroteskCDigits', 'SuperGroteskC', 'SuperGroteskA', 'SuperGroteskB', sans-serif;
         font-size:clamp(13px, 1.1vw, 16px);
         letter-spacing:1.6px;
         text-transform:uppercase;
@@ -1694,7 +1571,7 @@
       @media (hover:hover) and (pointer:fine){
         .timeline-item:hover{ transform:translateY(-10px); box-shadow:0 20px 60px rgba(236,65,140,0.3); }
       }
-      .timeline-year{ font-size:48px; font-weight:700; color:var(--badiani-pink); margin-bottom:18px; letter-spacing:2px; font-family:'SuperGroteskC', 'SuperGroteskDigits', 'SuperGroteskB', 'SuperGroteskA', sans-serif; }
+      .timeline-year{ font-size:48px; font-weight:700; color:var(--badiani-pink); margin-bottom:18px; letter-spacing:2px; font-family:'SuperGroteskC', 'SuperGroteskCDigits', 'SuperGroteskB', 'SuperGroteskA', sans-serif; }
       .timeline-item:nth-child(1) .timeline-year{ color:var(--badiani-blue); }
       .timeline-item:nth-child(2) .timeline-year{ color:var(--badiani-pink); }
       .timeline-item:nth-child(3) .timeline-year{ color:var(--badiani-blue); }
@@ -1714,7 +1591,7 @@
       /* Only these two strong lines should always use SuperGroteskC */
       .mission-box p strong,
       .vision-box p strong{
-        font-family:'SuperGroteskDigits', 'SuperGroteskC', 'SuperGroteskA', 'SuperGroteskB', sans-serif;
+        font-family:'SuperGroteskCDigits', 'SuperGroteskC', 'SuperGroteskA', 'SuperGroteskB', sans-serif;
         font-weight:500;
         text-transform:uppercase;
       }
@@ -1840,7 +1717,7 @@
       }
       .global-presence-headline .world-means-title .wmt-top{
         display:block;
-        font-family:'SuperGroteskDigits', 'SuperGroteskLower', 'SuperGroteskB', 'SuperGroteskA', sans-serif;
+        font-family:'SuperGroteskCDigits', 'SuperGroteskLower', 'SuperGroteskB', 'SuperGroteskA', sans-serif;
         font-weight:700;
         font-size:clamp(18px, 3.24vw, 45.6px);
         letter-spacing:0.08em;
@@ -1857,7 +1734,7 @@
       .global-presence-headline .world-means-title .wmt-bottom{
         display:block;
         margin-top:10px;
-        font-family:'SuperGroteskDigits', 'SuperGroteskLower', 'SuperGroteskB', 'SuperGroteskA', sans-serif;
+        font-family:'SuperGroteskCDigits', 'SuperGroteskLower', 'SuperGroteskB', 'SuperGroteskA', sans-serif;
         font-weight:800;
         font-size:clamp(56.16px, 9.828vw, 152.88px);
         letter-spacing:0.06em;
@@ -1921,64 +1798,6 @@
         opacity: 0;
       }
 
-      /* BARATTOLO SHOWCASE - Full width video separator */
-      .barattolo-showcase{ width:100%; padding:0; line-height:0; background:#000; overflow:hidden; }
-      .barattolo-showcase video{ width:100%; height:auto; display:block; object-fit:cover; }
-
-      /* BARATTOLO INTRO CON SFONDO CALLIGRAFICO */
-      .barattolo-intro{ 
-        background: #214098 url('assets/barattolo-tab.webp?v=20251222') center/cover no-repeat; 
-        padding:0; 
-        text-align:left; 
-        position:relative; 
-        overflow:hidden; 
-        color:#fff;
-        border-top:0;
-        border-bottom:0;
-      }
-      .barattolo-intro::before{ 
-        content:""; 
-        position:absolute; 
-        inset:0; 
-        background:rgba(33,64,152,0.5);
-        z-index:0;
-      }
-      .barattolo-intro > * {
-        position: relative;
-        z-index: 2;
-      }
-      /* Let the video column auto-size from the video's aspect ratio when height is 100% */
-      .barattolo-intro-content{ max-width:1200px; margin:0 auto; display:grid; grid-template-columns:auto 1fr; gap:80px; align-items:stretch; text-align:left; padding:0 20px; }
-      .barattolo-image-pila{ position:relative; aspect-ratio:9/16; width:auto; height:auto; max-height:70vh; display:flex; align-items:center; justify-content:center; overflow:hidden; background:#fff; }
-
-      .barattolo-image-pila img, .barattolo-image-pila video{ width:100%; border-radius:15px; box-shadow:0 15px 50px rgba(0,0,0,0.2); transition:transform 0.4s ease; display:block; }
-      .barattolo-image-pila img{ height:auto; border:6px solid #fff; }
-      /* Video: full visible frame (no crop) inside a tall vertical strip */
-      .barattolo-image-pila video{
-        display:block;
-        width:auto;
-        height:100%;
-        max-width:100%;
-        object-fit:contain;
-        object-position:center -20px;
-        border:0;
-        border-radius:0;
-        box-shadow:none;
-        transform:none;
-        position:relative;
-        z-index:0;
-        filter:brightness(0.96);
-      }
-      @media (hover:hover) and (pointer:fine){
-        .barattolo-image-pila:hover img{ transform:scale(1.05); }
-      }
-      .barattolo-text{ text-align:left; color:#fff; display:flex; flex-direction:column; justify-content:center; padding:90px 0; }
-      .barattolo-text h2{ position:relative; display:inline-block; padding-left:0; font-size:50px; letter-spacing:1px; text-transform:uppercase; color:#fff; margin-bottom:22px; font-weight:700; text-shadow:2px 2px 8px rgba(0,0,0,0.2); }
-      .barattolo-text h2 span{ color:var(--badiani-pink); font-style:normal; }
-      .barattolo-text p{ font-size:19px; line-height:1.9; margin-bottom:18px; font-weight:400; text-shadow:1px 1px 3px rgba(0,0,0,0.2); }
-      .barattolo-text .highlight-pink{ background:var(--badiani-pink); color:#fff; padding:2px 6px; border-radius:3px; font-family:'SuperGroteskC', 'SuperGroteskA', 'SuperGroteskB', sans-serif; font-weight:500; text-transform:uppercase; font-variant-caps:normal; }
-      .barattolo-text strong{ color:#fff; font-weight:600; }
-      .barattolo-text .barattolo-cta{ align-self:flex-start; width:auto; }
 
       .products{ padding:var(--space-xxl) 20px; }
       .products > *{ position:relative; z-index:1; }
@@ -2110,7 +1929,7 @@
         opacity:.85;
         letter-spacing:0.8px;
         font-style:normal;
-        font-family:'SuperGroteskDigits', 'SuperGroteskC', 'SuperGroteskA', 'SuperGroteskB', sans-serif;
+        font-family:'SuperGroteskCDigits', 'SuperGroteskC', 'SuperGroteskA', 'SuperGroteskB', sans-serif;
         font-weight:500;
         text-transform:uppercase;
         line-height:1.2;
@@ -2179,7 +1998,7 @@
       /* Specs boxes: digits in Grotesk C, lowercase in SuperGrotesk A, uppercase labels in Grotesk B */
       .specs-panel-fullscreen .specs-grid,
       .specs-panel-fullscreen .specs-grid *{
-        font-family: 'SuperGroteskDigits', 'SuperGroteskLower', 'SuperGroteskB', 'SuperGroteskA', sans-serif !important;
+        font-family: 'SuperGroteskCDigits', 'SuperGroteskLower', 'SuperGroteskB', 'SuperGroteskA', sans-serif !important;
       }
       /* Values and nutrition rows: whole text in SuperGrotesk A (avoids per-letter font mixing) */
       .specs-panel-fullscreen .spec-value,
@@ -2323,11 +2142,6 @@
       footer{ background:var(--badiani-blue); color:#fff; padding:36px; padding-bottom: calc(36px + var(--safe-area-bottom)); text-align:center; font-size:16px; font-weight:300; }
       footer span{ color:var(--badiani-pink); font-weight:500; }
 
-      .menu-toggle{ display:none; width:32px; height:28px; -webkit-flex-direction:column; flex-direction:column; -webkit-justify-content:space-between; justify-content:space-between; cursor:pointer; z-index:1001; }
-      .menu-toggle span{ display:block; width:100%; height:4px; background:#fff; border-radius:3px; -webkit-transition:all 0.3s; transition:all 0.3s; }
-      .menu-toggle.active span:nth-child(1){ -webkit-transform:translateY(12px) rotate(45deg); transform:translateY(12px) rotate(45deg); }
-      .menu-toggle.active span:nth-child(2){ opacity:0; }
-      .menu-toggle.active span:nth-child(3){ transform:translateY(-12px) rotate(-45deg); }
 
       /* ===== RESPONSIVE MOBILE - COMPLETAMENTE PROPORZIONATO ===== */
     
@@ -2337,66 +2151,6 @@
       }
     
       @media(max-width:900px){ 
-        /* Menu mobile */
-        .menu-toggle{display:none !important;} 
-        header{ flex-wrap:nowrap; gap:6px; overflow:visible; }
-        .logo-link{ flex:0 0 auto; }
-      
-        .nav-menu{
-          position:static !important;
-          top:auto;
-          right:auto;
-          width:100%;
-          max-width:none;
-          height:auto;
-          max-height:none;
-          background:transparent;
-          flex-direction:row;
-          padding:0 4px 0 4px;
-          transition:none;
-          box-shadow:none;
-          gap:4px;
-          align-items:center;
-          justify-content:flex-end;
-          z-index:auto;
-          overflow-x:auto;
-          overflow-y:visible;
-          border-radius:0;
-          flex-wrap:nowrap;
-          flex:1;
-          min-width:0;
-          white-space:nowrap;
-          scroll-padding-left:10px;
-          margin-left:auto;
-          padding-top:4px;
-        } 
-        .nav-menu.active{right:auto;} 
-        .nav-menu a{
-          font-size:10px;
-          padding:5px 7px;
-          line-height:1;
-          display:flex;
-          align-items:center;
-          width:auto;
-          border-top:none;
-          background:rgba(255,255,255,0.08);
-          border-radius:20px;
-          text-align:center;
-          letter-spacing:1px;
-        }
-        .nav-menu a:hover{
-          transform:none;
-        }
-        .nav-menu::-webkit-scrollbar{ display:none; }
-        .nav-menu{ scrollbar-width:none; }
-
-        .menu-overlay{ display:none !important; }
-
-        .nav-menu a:first-child{
-          border-top:none;
-        }
-        header{padding:12px 15px;} 
-        .logo-img{height:46px;} 
       
         /* Hero proporzionato */
         .hero{height:auto; min-height:50vh; padding:40px 15px 35px;} 
@@ -2548,21 +2302,6 @@
         .gallery-item{ width:22vw; height:22vw; max-width:100px; max-height:100px; border-width:3px; }
         /* Mobile sizes only (hover behavior is handled globally via hover media queries) */
       
-        /* Barattolo proporzionato */
-        .barattolo-intro{ padding:0; margin:0; background:transparent !important; }
-        .barattolo-intro::before{ display:none !important; }
-        .barattolo-intro-content{ grid-template-columns:1fr; gap:0; padding:0; margin:0; background:transparent; } 
-        .barattolo-image-pila{ aspect-ratio:9/16; max-width:100%; width:100%; max-height:none; margin:0 auto; padding:0; display:flex; align-items:center; justify-content:center; line-height:0; font-size:0; overflow:hidden; background:#fff !important; border-bottom: 0; }
-        .barattolo-image-pila video{ width:100%; height:100%; min-height:0; max-height:none; object-fit:contain; object-position:center; border-radius:0; box-shadow:none; display:block; margin:0; padding:0; background:#fff; } 
-        .barattolo-image-pila video::-webkit-media-controls-start-playback-button,
-        .barattolo-image-pila video::-webkit-media-controls{
-          display:none !important;
-          -webkit-appearance:none;
-        }
-        .barattolo-text{ text-align:center; padding:40px 15px; background:#214098 url('assets/barattolo-tab.webp?v=20251222') center/cover no-repeat; border-top: none; } 
-        .barattolo-text h2{font-size:6vw;}
-        .barattolo-text p{ font-size:3.5vw; line-height:1.6; }
-        .barattolo-text .barattolo-cta{ align-self:center; }
       
         /* Mission/Vision proporzionato */
         /* Mission/Vision: tab system to save vertical space */
@@ -2601,7 +2340,7 @@
           transition:all 0.3s ease;
           border-radius:10px;
           border-bottom:3px solid transparent;
-          font-family:'SuperGroteskDigits', 'SuperGroteskC', 'SuperGroteskA', 'SuperGroteskB', sans-serif;
+          font-family:'SuperGroteskCDigits', 'SuperGroteskC', 'SuperGroteskA', 'SuperGroteskB', sans-serif;
         }
         .mv-tab[data-target="mission-box"].is-active{
           background:var(--badiani-blue);
@@ -2628,7 +2367,7 @@
         .mission-box h2, .vision-box h2{ font-size:clamp(16px, 5vw, 20px); margin-bottom:8px; }
         .mission-box p strong,
         .vision-box p strong{
-          font-family:'SuperGroteskDigits', 'SuperGroteskB', 'SuperGroteskA', 'SuperGroteskC', sans-serif;
+          font-family:'SuperGroteskCDigits', 'SuperGroteskB', 'SuperGroteskA', 'SuperGroteskC', sans-serif;
           font-weight:600;
           text-transform:uppercase;
           letter-spacing:0.8px;
@@ -2912,8 +2651,6 @@
       
         .gallery-item{ width:20vw; height:20vw; max-width:85px; max-height:85px; border-width:2px; }
       
-        .nav-menu{ width:100%; padding:0 4px 6px; gap:4px; }
-        .nav-menu a{ font-size:9px; padding:5px 7px; letter-spacing:0.8px; }
       
         .card-img{ aspect-ratio: auto; }
       
@@ -2924,8 +2661,6 @@
     
       @media(max-width:400px){
         /* Ultra-piccolo per schermi molto stretti */
-        header{ padding:10px 12px; }
-        .logo-img{ height:40px; }
       
         .hero{min-height:40vh; padding:25px 10px;} 
         .hero h1{font-size:6vw;} 
@@ -2944,12 +2679,7 @@
       
         .gallery-item{ width:18vw; height:18vw; max-width:70px; max-height:70px; }
       
-        .barattolo-image-pila{ width:100vw; max-width:none; } 
-        .barattolo-image-pila video{ min-height:auto; }
-        .barattolo-text h2{font-size:5.5vw;}
       
-        .nav-menu{ width:100%; padding:0 4px 6px; gap:4px; }
-        .nav-menu a{ font-size:9px; padding:4px 6px; letter-spacing:0.7px; }
       
         .cta-btn{ padding:10px 20px; font-size:3.2vw; }
       
@@ -3060,7 +2790,7 @@
 
       /* High contrast mode support */
       @media (prefers-contrast: high) {
-        .nav-menu a, .cta-btn, .mv-tab {
+        .cta-btn, .mv-tab {
           border: 2px solid currentColor;
         }
       }
@@ -3085,9 +2815,6 @@
 
       /* Pagina unica: gli elementi del computer qui non si vedono */
       .specs-hint, .why-video-bg, .mission-box > h2, .vision-box > h2{ display:none !important; }
-      .cta-wrap{ align-self:center; }
-      #navMenu a[href="#products"]{ order:-1; } /* sul telefono Products viene prima, come nella vecchia pagina */
-      .logo-img{ aspect-ratio:1665/643; }
     }
 
     /* email e sito: carattere normale anche per le cifre (niente «1932» nel carattere dei numeri) */
@@ -3095,7 +2822,6 @@
     .contact-links a{ color:inherit; text-decoration:none; }
     .contact-links a:hover, .contact-links a:focus-visible{ color:var(--badiani-blue); text-decoration:underline; text-underline-offset:3px; }
 
-    .cta-wrap{ display:flex; flex-direction:column; align-items:center; align-self:flex-start; }
 
     /* ® nei titoli */
     .reg{ font-family:'SuperGroteskA', sans-serif; font-weight:400; font-style:normal; font-size:max(.32em, 8px); letter-spacing:0; line-height:1; vertical-align:top; position:relative; top:.35em; margin-inline-start:.04em; text-transform:none; }
@@ -3117,7 +2843,14 @@
       --ease-standard:cubic-bezier(.2,0,0,1); --ease-out-soft:cubic-bezier(.16,1,.3,1);
       --dur-1:150ms; --dur-2:280ms; --dur-3:520ms;
       --cap:.078em;                                        /* centratura ottica delle maiuscole del font C nei bottoni (come sul sito) */
+      --header-h:64px;                                     /* barra: 64px, 80px da 900px (tokens.css del sito) */
+      --gutter:clamp(20px, 4vw, 56px); --container:1320px; --grid-gap:clamp(16px, 2vw, 32px);
+      --section-y:clamp(4rem, 2.5rem + 6vw, 9rem);
+      --ease-organic:cubic-bezier(.45,.05,.25,1); --dur-4:900ms;
     }
+    @media (min-width: 900px){ :root{ --header-h:80px; } }
+    html{ scroll-padding-top:calc(var(--header-h) + 24px); }   /* i link alle sezioni atterrano sotto la barra */
+    html.bd-lock{ overflow:hidden; scrollbar-gutter:stable; }   /* pagina ferma col menu aperto */
 
     /* ---- base: niente grassetti finti (i tre font hanno un solo peso), fondo bianco, angoli vivi, movimento ridotto ---- */
     html{ font-synthesis:none; }
@@ -3133,20 +2866,162 @@
       *, *::before, *::after{ animation-duration:.01ms !important; animation-iteration-count:1 !important; transition-duration:.01ms !important; scroll-behavior:auto !important; }
     }
 
-    /* ---- intestazione: voci come .bd-hd__link (font C, maiuscolo, sottolineatura al passaggio), hamburger come bottone ---- */
-    .header-wrapper{ box-shadow:0 10px 24px -18px rgba(26,50,117,.7); }
-    .logo-link:focus-visible{ outline:3px solid #fff; outline-offset:3px; border-radius:0; }
-    .nav-menu{ gap:clamp(14px, 1.2vw, 24px); }
-    html[lang] .nav-menu a{
-      position:relative; display:inline-flex; align-items:center; min-height:44px; width:auto; margin:0; padding:calc(2 * .085em) 0 0; border:0; border-radius:0;
-      background:none !important; color:#fff; font-family:var(--ff-c); font-weight:400; font-size:.8125rem; line-height:1; letter-spacing:.08em;
-      text-transform:uppercase; text-align:center; white-space:nowrap; text-decoration:none; transform:none !important; transition:none;
+    /* ---- .bd-btn del sito (stessi valori di .cta-btn): li usano la barra e il menu; stanno PRIMA della barra, come nel sito, così .bd-hd__order vince su .bd-btn--sm ---- */
+    .bd-btn{
+      --btn-bg:transparent; --btn-fg:var(--badiani-blue); --btn-bd:var(--badiani-blue); --cap:.078em;
+      display:inline-flex; align-items:center; justify-content:center; gap:12px; min-height:48px; padding:calc(2 * var(--cap)) 24px 0;
+      border:2px solid var(--btn-bd); border-radius:0; background-color:var(--btn-bg); color:var(--btn-fg);
+      font-family:var(--ff-c); font-weight:400; font-size:.875rem; line-height:1.15; letter-spacing:.08em; text-transform:uppercase; text-align:center; text-decoration:none; text-wrap:balance;
+      cursor:pointer; -webkit-appearance:none; appearance:none;
+      transition:background-color var(--dur-2) var(--ease-standard), color var(--dur-2) var(--ease-standard), border-color var(--dur-2) var(--ease-standard), transform var(--dur-1) var(--ease-standard);
     }
-    html[lang] .nav-menu a::after{ content:""; position:absolute; left:0; right:0; bottom:6px; height:2px; background:#fff; transform:scaleX(0); transform-origin:left center; transition:transform var(--dur-2) var(--ease-out-soft); }
-    html[lang] .nav-menu a:hover::after, html[lang] .nav-menu a:focus-visible::after{ transform:scaleX(1); }
-    html[lang] .nav-menu a:focus-visible{ outline:3px solid #fff; outline-offset:3px; }
-    .menu-toggle{ background:none; border:0; padding:0; color:#fff; }
-    .menu-toggle span{ border-radius:0; }
+    .bd-btn > svg{ position:relative; top:calc(-1 * var(--cap)); }
+    .bd-btn:hover .bd-btn__icon{ translate:4px 0; }
+    .bd-btn:active{ transform:translateY(1px); }
+    .bd-btn--onblue{ --btn-bg:#fff; --btn-fg:var(--badiani-blue); --btn-bd:#fff; }
+    .bd-btn--onblue:hover, .bd-btn--onblue:active{ --btn-bg:transparent; --btn-fg:#fff; }
+    .bd-btn--sm{ --cap:.1025em; min-height:40px; padding-inline:16px; font-size:.75rem; }
+    @media (pointer: coarse){ .bd-btn--sm{ min-height:44px; } }
+    .bd-btn--block{ display:flex; width:100%; }
+
+
+    /* ---- intestazione COME IL SITO (components.css «Intestazione del sito», v2/header.njk): barra blu sempre visibile, compatta
+       scorrendo (−12px, logo ridotto, ombra morbida); griglia 1fr · logo · 1fr; da 1200px (75em) casa + voci a inizio riga e lingua +
+       pulsante in fondo; sotto, il bottone «Menu» (pannello .bd-menu) e il pulsante con l'etichetta corta (lingua in barra solo da 900px).
+       Il giallo del sito («Ordina») qui NON si usa: il pulsante è bianco (.bd-btn--onblue). ---- */
+    .bd-hd{
+      --bar-h:var(--header-h); --logo-h:46px; --logo-k:.8;   /* logo: 46px (telefono), 55px (da 900px), 62px (da 1200px); compatto × --logo-k */
+      position:sticky; top:0; z-index:1000; height:var(--header-h); pointer-events:none;
+    }
+    .bd-hd.is-compact{ --bar-h:calc(var(--header-h) - 12px); }
+    @media (min-width: 900px){ .bd-hd{ --logo-h:55px; --logo-k:.78; } }
+    @media (min-width: 75em){ .bd-hd{ --logo-h:62px; } }
+    .bd-hd__bar{
+      position:absolute; inset-block-start:0; inset-inline:0; height:var(--bar-h); pointer-events:auto;
+      display:grid; grid-template-columns:minmax(0,1fr) auto minmax(0,1fr); align-items:center; column-gap:16px;
+      padding-inline:max(var(--gutter), calc((100% - var(--container)) / 2 + var(--gutter)));
+      background:var(--badiani-blue); color:#fff;
+      transition:height var(--dur-3) var(--ease-organic), box-shadow var(--dur-3) var(--ease-organic);
+    }
+    .bd-hd.is-compact .bd-hd__bar{ box-shadow:0 10px 24px -18px rgba(26,50,117,.7); }
+    .bd-hd__start{ display:flex; align-items:center; min-width:0; }
+    .bd-logo{ display:block; }
+    .bd-hd__logo{ display:block; justify-self:center; color:#fff; line-height:0; text-decoration:none; transition:scale var(--dur-3) var(--ease-organic); }
+    .bd-hd__logo .bd-logo{ height:var(--logo-h); width:calc(var(--logo-h) * 2.5916); }
+    .bd-hd.is-compact .bd-hd__logo{ scale:var(--logo-k); }
+    .bd-hd__end{ display:flex; align-items:center; justify-content:flex-end; gap:12px; min-width:0; }
+    .bd-hd__end .bd-lang{ display:none; }
+    @media (min-width: 900px){ .bd-hd__end .bd-lang{ display:block; } }
+    .bd-hd__order{ white-space:nowrap; }
+    .bd-hd__order-l{ display:none; }
+    @media (min-width: 900px){ .bd-hd__order-l{ display:inline; } .bd-hd__order-s{ display:none; } }
+    @media (max-width: 599.98px){
+      .bd-hd__order{ padding-inline:12px; font-size:.6875rem; letter-spacing:.05em; }
+      .bd-hd__order .bd-btn__icon{ display:none; }
+    }
+    /* telefoni: il logo resta centrato e il pulsante non lo tocca in nessuna lingua (verificato a 320px in en/it/es/fr): 46px da 375px,
+       38px da 350px, 34px sotto; dove manca spazio «Menu» e il pulsante si stringono */
+    @media (max-width: 399.98px){
+      .bd-hd__bar{ column-gap:8px; }
+      .bd-hd__order{ padding-inline:8px; letter-spacing:.02em; }
+    }
+    @media (max-width: 374.98px){ .bd-hd{ --logo-h:38px; --logo-k:.9; } }
+    @media (max-width: 349.98px){
+      .bd-hd{ --logo-h:34px; --logo-k:.88; }
+      .bd-hd__menubtn{ gap:8px; font-size:.75rem; }
+      .bd-hd__order{ padding-inline:6px; letter-spacing:0; }
+    }
+    @media (max-width: 399.98px){
+      :root:lang(fr) .bd-hd__order{ font-size:.625rem; }   /* «ÉCHANTILLONS» è lungo: a 320px stava a 3px dal logo e a 350px a 6px; così resta a più di 10px (come fa il sito col giapponese) */
+    }
+    /* bottone Menu (sotto 1200px): due linee di 22 e 15px, la seconda si allunga al passaggio */
+    .bd-hd__menubtn{
+      --cap:.151em;
+      display:inline-flex; align-items:center; gap:12px; min-height:44px; margin-inline-start:-4px; padding:calc(2 * var(--cap)) 4px 0;
+      background:none; border:0; color:#fff; cursor:pointer;
+      font-family:var(--ff-c); font-weight:400; font-size:.8125rem; letter-spacing:.08em; text-transform:uppercase; white-space:nowrap;
+    }
+    .bd-hd__burger{ position:relative; top:calc(-1 * var(--cap)); display:block; width:22px; height:10px; }
+    .bd-hd__burger i{ position:absolute; inset-inline-start:0; display:block; height:2px; background:currentColor; transition:width var(--dur-2) var(--ease-out-soft); }
+    .bd-hd__burger i:first-child{ top:0; width:22px; }
+    .bd-hd__burger i:last-child{ bottom:0; width:15px; }
+    .bd-hd__menubtn:hover .bd-hd__burger i:last-child{ width:22px; }
+    /* voci (da 1200px): font C maiuscolo, sottolineatura bianca di 2px che entra da sinistra al passaggio e resta sulla sezione in vista */
+    .bd-hd__nav{ display:none; }
+    @media (min-width: 75em){ .bd-hd__menubtn{ display:none; } .bd-hd__nav{ display:block; } }
+    .bd-hd__list{ display:flex; align-items:center; gap:clamp(14px, 1.2vw, 24px); margin:0; padding:0; list-style:none; }
+    .bd-hd__link{
+      --cap:.161em;
+      position:relative; display:inline-flex; align-items:center; min-height:44px; padding-block-start:calc(2 * var(--cap)); color:#fff; text-decoration:none; white-space:nowrap;
+      font-family:var(--ff-c); font-weight:400; font-size:.8125rem; letter-spacing:.08em; text-transform:uppercase;
+    }
+    .bd-hd__link::after{ content:""; position:absolute; inset-inline:0; inset-block-end:6px; height:2px; background:#fff; transform:scaleX(0); transform-origin:left center; transition:transform var(--dur-2) var(--ease-out-soft); }
+    .bd-hd__link:hover::after, .bd-hd__link[aria-current]::after{ transform:scaleX(1); }
+    .bd-hd__home{ padding-block-start:0; }
+    .bd-hd__home .bd-icon{ width:20px; height:20px; }
+    /* senza JS il bottone «Menu» non apre niente: le voci stanno in questa riga */
+    .bd-hd__ns{ display:flex; flex-wrap:wrap; gap:8px 24px; padding:12px var(--gutter); background:#fff; border-block-end:1px solid var(--badiani-line); }
+    .bd-hd__ns a{ color:var(--badiani-blue); font-family:var(--ff-c); font-size:.875rem; letter-spacing:.08em; text-transform:uppercase; text-decoration:none; }
+    @media (min-width: 75em){ .bd-hd__ns{ display:none; } }
+    .bd-hd :focus-visible, .bd-menu :focus-visible{ outline:3px solid #fff; outline-offset:3px; }
+
+    /* ---- selettore lingua (.bd-lang del sito): «IT» + chevron, tendina bianca di link veri (?lang=…) ---- */
+    .bd-lang{ position:relative; }
+    .bd-lang__btn{
+      --cap:.161em;
+      display:inline-flex; align-items:center; gap:8px; min-height:44px; padding:calc(2 * var(--cap)) 8px 0;
+      background:none; border:0; color:#fff; cursor:pointer;
+      font-family:var(--ff-c); font-weight:400; font-size:.8125rem; letter-spacing:.08em; text-transform:uppercase;
+    }
+    .bd-lang__chev{ position:relative; top:calc(-1 * var(--cap)); width:10px; height:10px; transition:rotate var(--dur-2) var(--ease-out-soft); }
+    .bd-lang__btn[aria-expanded="true"] .bd-lang__chev{ rotate:180deg; }
+    .bd-lang__list{
+      position:absolute; inset-block-start:calc(100% + 8px); inset-inline-end:0; min-width:11rem; margin:0; padding:8px;
+      list-style:none; background:#fff; border:1px solid var(--badiani-line-strong); box-shadow:var(--badiani-shadow-float);
+      animation:bar-rise var(--dur-2) var(--ease-out-soft);
+    }
+    .bd-lang__list a{ display:flex; align-items:center; gap:12px; min-height:44px; padding:0 12px; color:var(--badiani-gray); font-family:var(--ff-a); font-size:.875rem; text-decoration:none; white-space:nowrap; }
+    .bd-lang__list a::before{ content:""; width:6px; height:6px; flex:none; background:transparent; }
+    .bd-lang__list a:hover, .bd-lang__list a:focus-visible{ color:var(--badiani-blue); text-decoration:underline; text-decoration-thickness:1px; text-underline-offset:5px; }
+    .bd-hd .bd-lang__list a:focus-visible{ outline:3px solid var(--badiani-blue); outline-offset:-3px; }
+    .bd-lang__list a[aria-current]{ color:var(--badiani-blue); }
+    .bd-lang__list a[aria-current]::before{ background:var(--badiani-blue); }
+
+    /* ---- menu telefono / tablet (.bd-menu del sito): pannello blu a tutto schermo, dialog modale (vedi lo script in fondo) ---- */
+    .bd-menu{
+      position:fixed; inset:0; z-index:1200; display:flex; flex-direction:column; overflow-y:auto; overscroll-behavior:contain;
+      background:var(--badiani-blue); color:#fff; visibility:hidden; opacity:0;
+      transition:opacity var(--dur-2) var(--ease-standard), visibility 0s linear var(--dur-2);
+    }
+    .bd-menu.is-open{ visibility:visible; opacity:1; transition-delay:0s; }
+    .bd-menu__inner{ display:flex; flex-direction:column; flex:1 0 auto; padding:0 var(--gutter) 32px; }
+    .bd-menu__top{ display:flex; align-items:center; justify-content:space-between; flex:none; height:var(--header-h); }
+    .bd-menu__logo{ display:block; color:#fff; line-height:0; text-decoration:none; }
+    .bd-menu__logo .bd-logo{ height:46px; width:calc(46px * 2.5916); }
+    .bd-menu__close{ display:inline-flex; align-items:center; justify-content:center; width:44px; height:44px; margin-inline-end:-10px; padding:0; background:none; border:0; color:#fff; cursor:pointer; }
+    .bd-menu__close .bd-icon{ width:22px; height:22px; }
+    .bd-menu__nav{ margin-block-start:24px; }
+    .bd-menu__list{ margin:0; padding:0; list-style:none; }
+    .bd-menu__list--main{ border-block-start:1px solid var(--badiani-line-onblue); }
+    .bd-menu__list--main li{ border-block-end:1px solid var(--badiani-line-onblue); }
+    .bd-menu__link{
+      display:flex; align-items:center; min-height:56px; padding-block:12px; color:#fff; text-decoration:none;
+      font-family:'SuperGroteskCDigits', var(--ff-b); font-weight:400; font-size:clamp(2rem, 1.4rem + 3.4vw, 3.5rem); line-height:1; letter-spacing:0; text-transform:uppercase;
+      transition:translate var(--dur-3) var(--ease-out-soft);
+    }
+    .bd-menu__link:hover, .bd-menu__link:focus-visible{ translate:10px 0; }
+    .bd-menu__link .bd-icon{ width:.4em; height:.4em; margin-inline-start:.3em; }   /* freccia obliqua: si apre in una nuova scheda */
+    .bd-menu__foot{ display:flex; flex-direction:column; gap:24px; margin-block-start:auto; padding-block-start:48px; }
+    .bd-menu__row{ display:flex; align-items:center; justify-content:space-between; gap:16px; }
+    .bd-menu__langs{ display:flex; flex-wrap:wrap; gap:0 24px; margin:0; padding:0; list-style:none; }
+    .bd-menu__langs a{ display:inline-flex; align-items:center; min-height:44px; color:#fff; text-decoration:none; font-family:var(--ff-a); font-size:.875rem; }
+    .bd-menu__langs a:hover{ text-decoration:underline; text-underline-offset:4px; }
+    .bd-menu__langs a[aria-current]{ text-decoration:underline; text-decoration-thickness:2px; text-underline-offset:6px; }
+    /* accento del sito: rombo rosa PIENO (quadrato ruotato di 45°), mai cerchi o contorni */
+    .bd-acc{ --k:1; position:absolute; display:block; pointer-events:none; z-index:2; background:var(--badiani-pink); width:calc(var(--s, 28px) * var(--k)); height:calc(var(--s, 28px) * var(--k)); }
+    @media (max-width: 899.98px){ .bd-acc{ --k:.7; } }
+    .bd-acc--pink{ background:var(--badiani-pink); } .bd-acc--dia{ rotate:45deg; } .bd-acc--m{ --s:28px; }
+    .bd-menu .bd-acc{ position:static; flex:none; margin-inline:12px; }
 
     /* ---- copertina: il testo resta (prima spariva al passaggio del mouse, ma ora c'è un pulsante); due azioni ---- */
     .hero:hover .hero-content{ opacity:1; pointer-events:auto; transform:none; filter:none; }
@@ -3181,7 +3056,6 @@
     .cta-btn--onblue{ --btn-bg:#fff; --btn-fg:var(--badiani-blue); --btn-bd:#fff; }
     .cta-btn--onblue:hover, .cta-btn--onblue:focus-visible{ --btn-bg:transparent; --btn-bd:#fff; color:#fff; }
     .cta-btn--onblue:focus-visible{ outline-color:#fff; }
-    .cta-wrap{ margin-top:28px; }
     #contact .cta-btn{ margin-top:24px; }
     .texture-cta{ margin-top:40px; }
     /* bottone «Scheda tecnica» sulla foto (resta l'animazione di comparsa) e suggerimento sul tablet */
@@ -3213,14 +3087,44 @@
     .heritage::before{ background-position:center 20%; }
     .contact::before{ background-position:center 80%; }
     .gallery::before{ background-position:70% center; }
-    .barattolo-intro{ background:var(--badiani-blue); }
-    .barattolo-intro::before{ background:url('assets/img/swoosh-white.webp') center / cover no-repeat; opacity:var(--sw-white); }
-    .barattolo-image-pila{ background:#fff; }
-    .barattolo-image-pila img, .barattolo-image-pila video{ border:0; border-radius:0; box-shadow:none; }
-    .barattolo-image-pila:hover img{ transform:none; }
-    .barattolo-text h2, .barattolo-text p{ text-shadow:none; }
+    /* ---- Il Barattolo: COME «Per le aziende» della home del sito (.hm-biz + .bd-frame): fascia blu con lo swoosh bianco tono su tono,
+       contenuto nel contenitore del sito (1320px, margini --gutter), da 900px griglia 5fr · 6fr col video a sinistra e il testo a destra
+       centrati in verticale; il video in un riquadro 4:5 (object-fit:cover, il poster resta finché non parte) dentro la cornice rosa
+       piena sfalsata in basso a sinistra (--off 10px, 16px da 900px). Testo a sinistra: occhiello .bd-kicker, titolo B, paragrafi,
+       pulsante bianco che apre la finestra del modulo e link bianco con la freccia. Sul telefono: video in alto, testo sotto. ---- */
+    .barattolo-intro{ position:relative; isolation:isolate; overflow:hidden; background:var(--badiani-blue); color:#fff; padding:var(--section-y) 0; margin:0; text-align:left; border:0; }
+    .barattolo-intro::before{ content:""; position:absolute; inset:0; z-index:-1; background:url('assets/img/swoosh-white.webp') center / cover no-repeat; opacity:var(--sw-white); pointer-events:none; }
+    .barattolo-intro-content{ display:grid; gap:48px; width:100%; max-width:var(--container); min-height:0; margin:0 auto; padding:0 var(--gutter); align-items:center; text-align:left; }
+    .bd-frame{ --off:10px; --fc:var(--badiani-blue); position:relative; isolation:isolate; margin-block-end:var(--off); margin-inline-end:var(--off); }
+    @media (min-width: 900px){ .bd-frame{ --off:16px; } }
+    .bd-frame::before{ content:""; position:absolute; z-index:-1; background:var(--fc); inset-block-start:var(--off); inset-block-end:calc(var(--off) * -1); inset-inline-start:var(--off); inset-inline-end:calc(var(--off) * -1); }
+    .bd-frame--pink{ --fc:var(--badiani-pink); }
+    .bd-frame--offset-start{ margin-inline-end:0; margin-inline-start:var(--off); }
+    .bd-frame--offset-start::before{ inset-inline-start:calc(var(--off) * -1); inset-inline-end:var(--off); }
+    .barattolo-image-pila{ display:block; aspect-ratio:4/5; width:100%; max-width:none; height:auto; max-height:none; margin:0; padding:0; overflow:hidden; background:var(--badiani-line-onblue); }
+    /* il video sborda di 1px per lato nel riquadro che lo ritaglia: finché si vede il poster, Chrome dipinge il fondo nero del <video> in una
+       riga di ~1px ai due lati dell'immagine scalata con object-fit (misurato a 2× il 21/10/2026: colonne a 0,0,0); col video in moto no.
+       Così il bordo è rosa → immagine e immagine → blu, senza fili, in tutti gli stati. */
+    .barattolo-image-pila video{ display:block; width:calc(100% + 2px); height:calc(100% + 2px); max-width:none; max-height:none; min-height:0; margin:-1px; padding:0; object-fit:cover; object-position:center; border:0; border-radius:0; box-shadow:none; filter:none; transform:none; background:transparent; }
+    .barattolo-image-pila video::-webkit-media-controls-start-playback-button{ display:none !important; -webkit-appearance:none; }
+    .barattolo-text{ display:flex; flex-direction:column; align-items:flex-start; gap:16px; min-width:0; padding:0; background:none; color:#fff; text-align:left; }
+    .barattolo-text .bd-kicker{ margin:0; color:#fff; font-family:var(--ff-c); font-weight:400; font-size:.8125rem; line-height:1.3; letter-spacing:.16em; text-transform:uppercase; }
+    .barattolo-text h2{ display:block; margin:0; padding:0; color:#fff; font-family:'SuperGroteskCDigits', var(--ff-b); font-weight:400; font-size:clamp(2rem, 1.5rem + 2.6vw, 4rem); line-height:1; letter-spacing:0; text-transform:uppercase; text-shadow:none; text-wrap:balance; }
     .barattolo-text h2 span{ color:#fff; }
+    .barattolo-text p{ margin:0; max-width:56ch; color:#fff; font-size:clamp(1rem, .96rem + .2vw, 1.125rem); line-height:1.6; text-shadow:none; }
     .barattolo-text strong{ font-family:var(--ff-c); font-weight:400; }
+    .barattolo-text .bar-actions{ display:grid; gap:4px; width:100%; margin:8px 0 0; }   /* telefono: un'azione per riga, a tutta larghezza (.hm-actions) */
+    .barattolo-text .bar-actions .cta-btn{ display:flex; width:100%; }
+    .barattolo-text .bar-actions .arrow-link{ justify-content:center; color:#fff; }
+    .barattolo-text .arrow-link:focus-visible{ outline:3px solid #fff; outline-offset:3px; }
+    @media (min-width: 600px){
+      .barattolo-text .bar-actions{ display:flex; flex-wrap:wrap; align-items:center; gap:16px 32px; width:auto; }
+      .barattolo-text .bar-actions .cta-btn{ display:inline-flex; width:auto; }
+      .barattolo-text .bar-actions .arrow-link{ justify-content:flex-start; }
+    }
+    @media (min-width: 900px){
+      .barattolo-intro-content{ grid-template-columns:minmax(0,5fr) minmax(0,6fr); column-gap:calc(var(--grid-gap) * 2); align-items:center; }
+    }
 
     /* ---- storia: schede bianche con filetto, niente ombre né sollevamento; «OGGI» in blu come «XVI SECOLO» ---- */
     .timeline-item, .timeline-item:hover, .story-timeline .timeline-item{
@@ -3228,7 +3132,7 @@
       -webkit-backdrop-filter:none; backdrop-filter:none;
     }
     .timeline-item:nth-child(1), .timeline-item:nth-child(2), .timeline-item:nth-child(3){ border-left:1px solid var(--badiani-line-strong); }
-    .timeline-year{ font-family:var(--ff-c); font-weight:400; letter-spacing:0; }
+    .timeline-year, .timeline-year.sgc-has-lower{ font-family:var(--ff-c) !important; font-weight:400; letter-spacing:0; }   /* «1500s» tutto nel C */
     .timeline-item:nth-child(1) .timeline-year, .timeline-item:nth-child(3) .timeline-year{ color:var(--badiani-blue); }
     .timeline-item:nth-child(2) .timeline-year{ color:var(--badiani-pink); }
 
@@ -3321,8 +3225,8 @@
     }
     .site-footer::before{ content:""; position:absolute; inset:0; z-index:-1; background:url('assets/img/swoosh-white.webp') center / cover no-repeat; opacity:var(--sw-white); pointer-events:none; }
     .site-footer__inner{ display:flex; flex-direction:column; align-items:center; gap:24px; max-width:1320px; margin:0 auto; }
-    .site-footer__logo{ display:block; line-height:0; }
-    .site-footer__logo img{ display:block; height:56px; width:auto; aspect-ratio:1665/643; filter:invert(1) grayscale(1) brightness(200%); mix-blend-mode:screen; }
+    .site-footer__logo{ display:block; color:#fff; line-height:0; }   /* logo vettoriale del sito (<use> dei simboli in testa alla pagina), bianco */
+    .site-footer__logo .bd-logo{ height:56px; width:calc(56px * 2.5916); }
     .site-footer__social{ display:flex; gap:12px; margin:0; padding:0; list-style:none; }
     .site-footer__social a{ display:inline-flex; align-items:center; justify-content:center; width:44px; height:44px; border:1px solid var(--badiani-line-onblue); color:#fff; text-decoration:none; transition:background-color var(--dur-2) var(--ease-standard), color var(--dur-2) var(--ease-standard); }
     .site-footer__social a:hover, .site-footer__social a:focus-visible{ background:#fff; color:var(--badiani-blue); }
@@ -3360,27 +3264,18 @@
 
     /* ---- telefono (stessa soglia di MOBILE_MQ): numeri 2×2 senza accavallamenti, fascia blu del Barattolo, frecce quadrate ---- */
     @media (max-width: 900px), (max-height: 500px) and (hover: none){
-      .nav-menu{ gap:10px; padding:0 2px; }
-      html[lang] .nav-menu a{ min-height:40px; padding:calc(2 * .161em) 2px 0; font-size:11px; letter-spacing:.05em; }
-      html[lang] .nav-menu a::after{ bottom:5px; }
       .hero .hero-actions{ justify-content:flex-start; gap:12px 22px; margin-top:16px; }
       .hero .hero-cta, .hero .hero-cta:hover, .hero .hero-cta:focus-visible{ font-size:1rem; }
       .stats{ grid-template-columns:repeat(2, minmax(0, 1fr)); gap:10px; }
       .stat, .stat:nth-child(2), .stat:nth-child(3), .stat:nth-child(4){ padding:28px 10px 22px; gap:8px; }
       .stat-num{ font-size:clamp(1.75rem, 8vw, 2.25rem); }
       .stat-label{ font-size:.6875rem; letter-spacing:.1em; line-height:1.35; }
-      .barattolo-text{ position:relative; isolation:isolate; background:var(--badiani-blue); }
-      .barattolo-text::before{ content:""; position:absolute; inset:0; z-index:-1; background:url('assets/img/swoosh-white.webp') center / cover no-repeat; opacity:var(--sw-white); pointer-events:none; }
       .mission-box p strong::before, .vision-box p strong::before{ content:""; display:inline-block; width:9px; height:9px; margin-right:10px; background:var(--badiani-pink); vertical-align:0.08em; }
       .benefit p{ display:block; }   /* era un flex: l'evidenziazione («Dal 1932») finiva su una riga a sé */
       .contact p.highlight{ white-space:normal; }   /* a 320px la frase usciva dallo schermo */
     }
-    /* telefoni stretti (fino a 360px): voci della barra un filo più piccole, così stanno su una riga in it/en/fr (es scorre di poco) */
+    /* telefoni stretti (fino a 360px): frecce quadrate della copertina e della mappa */
     @media (max-width: 360px){
-      header{ padding:10px 10px; gap:4px; }
-      .logo-img{ height:36px; }
-      .nav-menu{ gap:8px; padding:0; }
-      html[lang] .nav-menu a{ font-size:10px; letter-spacing:.02em; padding-left:0; padding-right:0; }
       .hero.scroll-mode::before, .hero.scroll-mode::after,
       .global-presence.is-expanded .global-presence-arrows::before, .global-presence.is-expanded .global-presence-arrows::after{
         content:""; border-radius:0; background-color:rgba(26,50,117,.6); box-shadow:none; text-shadow:none; font-size:0;
@@ -3396,25 +3291,85 @@
 </head>
 <body>
 
-<div class="header-wrapper">
-  <header>
-    <a class="logo-link" id="logoLink" href="#hero" aria-label="Back to top">
-      <img src="assets/img/logo-480.webp" width="480" height="185" alt="Badiani Gelato Firenze 1932" class="logo-img">
-    </a>
+<!-- Tracciati del logo ufficiale (v2/swoosh-defs.njk del sito, copiati senza toccare un punto: il logo è un marchio), definiti UNA volta:
+     la barra, il menu e il piè di pagina li richiamano con <use href="#bd-script"/> e <use href="#bd-logo-rest"/>, colore ereditato (bianco sul blu). -->
+<svg class="bd-defs" width="0" height="0" aria-hidden="true" focusable="false" style="position:absolute"><defs><g id="bd-script" fill="currentColor"><path d="M27.3779 48.9776C35.643 40.8923 40.0056 31.3845 40.0056 24.2193C40.0056 17.0541 35.0454 15.6316 32.9302 15.6316C24.8555 15.6316 11.7149 32.3046 11.7149 32.3046C11.4664 31.1373 11.2898 29.9559 11.1861 28.7669C11.001 26.6517 10.4986 26.5618 10.1761 26.7469C9.8535 26.932 10.7049 34.3246 10.7049 34.3246C10.7049 34.3246 6.1572 39.7924 4.13719 44.9482C2.11718 50.1039 0.276966 57.6393 0.0918862 60.5953C-0.0931931 63.5513 -0.230681 70.7006 2.11718 70.7006C4.46505 70.7006 8.1825 60.0929 8.1825 60.0929C8.1825 60.0929 15.1626 64.6406 20.8102 64.6406C26.4578 64.6406 32.9355 60.7804 32.9355 55.5453C32.9355 50.3102 27.3832 48.9776 27.3832 48.9776H27.3779ZM2.64598 63.583C1.31341 62.7581 4.23238 54.3978 5.16835 51.9494C6.10432 49.5011 9.39873 41.8494 10.726 40.3159C10.726 40.3159 9.62612 48.9987 8.20365 53.4512C6.78118 57.9037 3.95211 64.4079 2.64598 63.583ZM18.7637 61.0553C11.2813 61.0553 8.65842 59.0353 8.65842 59.0353C8.65842 59.0353 10.0862 53.8901 10.6837 49.94C11.2813 45.9899 12.2172 37.8147 12.2172 37.8147C12.2172 37.8147 17.3624 30.0519 19.7949 27.207C22.2274 24.362 27.5577 18.6193 31.4285 18.6193C31.4285 18.6193 35.4685 18.2015 35.4685 24.6793C35.4685 31.1571 31.016 39.0098 29.9108 40.85C28.8056 42.6902 24.8555 48.4277 24.8555 48.4277C24.8555 48.4277 19.9853 48.0099 16.7702 49.4377C13.5551 50.8654 10.6097 52.7902 11.2072 54.4665C11.8048 56.1428 15.665 56.0529 18.7849 54.4665C20.6273 53.5298 22.3291 52.339 23.8402 50.9289C23.8402 50.9289 24.755 50.5164 25.3526 50.9289C25.9501 51.3413 28.3879 52.8801 28.3879 54.9953C28.3879 57.1105 26.2727 61.0553 18.7849 61.0553H18.7637ZM21.8202 51.0082C21.0506 51.7681 20.2034 52.4451 19.2925 53.0282C17.7326 54.0382 13.8724 55.2333 13.2272 54.0382C12.5821 52.8431 14.2372 52.2932 16.7649 51.5158C18.404 51.0345 20.117 50.8553 21.8202 50.987"/><path d="M107.523 20.8244C108.168 19.9043 109.268 17.2867 108.051 16.3666C106.534 15.2667 105.153 16.4142 104.101 17.8367C102.811 19.5341 102.171 21.5383 103.504 22.7492C104.879 24.0395 106.899 21.7392 107.544 20.8244"/><path d="M124.423 38.7559C126.586 38.7136 131.636 33.616 133.656 31.4109C134.214 30.9128 134.744 30.3832 135.242 29.8245C134.597 32.7646 134.459 33.9121 135.517 34.5837C136.707 35.2711 137.902 34.6736 139.467 32.6112C141.032 30.5489 144.47 25.6258 145.897 24.2034C147.325 22.7809 148.79 20.8984 149.34 21.2209C149.89 21.5435 148.145 24.4783 147.367 27.1435C146.812 28.9784 147.135 31.3739 148.377 32.1036C149.62 32.8333 151.407 32.0137 152.83 31.0936C154.252 30.1735 157.013 27.281 158.25 25.6734C158.848 24.8908 160.043 23.3784 161.053 22.0459C160.683 23.8385 160.524 26.5459 163.025 27.6035C166.658 29.026 170.561 24.5735 173.405 21.4483C176.785 17.678 180.851 11.6338 179.677 11.2002C178.99 11.2901 173.94 19.0529 170.862 21.5329C167.784 24.013 165.854 25.1182 164.987 24.4307C164.12 23.7433 164.664 20.7979 165.352 19.1428C166.039 17.4876 169.302 12.2049 169.302 12.2049C168.251 11.8405 167.249 11.3467 166.32 10.7349C166.32 10.7349 164.733 13.4899 163.839 15.1926C163.565 15.7214 163.284 16.2925 163.009 16.8425C162.703 17.1019 162.426 17.3945 162.184 17.715C159.429 20.8878 154.194 29.2481 151.804 28.603C149.414 27.9578 153.549 21.2527 154.284 20.1951C155.019 19.1375 157.314 15.6051 155.754 14.7802C154.194 13.9552 151.302 16.2449 149.324 17.7626C147.346 19.2802 144.226 23.1828 142.391 25.2028C140.557 27.2228 139.864 28.0953 139.404 27.6828C138.944 27.2704 139.451 26.2604 140.414 24.7004C141.609 22.7227 142 22.0829 142.846 20.6128C143.491 19.46 143.904 18.7726 143.904 18.7726C143.279 18.6453 142.675 18.4299 142.111 18.1327C141.632 17.9202 141.185 17.6407 140.784 17.3025C140.784 17.3025 137.283 23.2674 135.903 27.3233C135.781 27.3967 135.672 27.4896 135.581 27.5982C133.148 30.5384 127.955 36.0008 125.29 35.8633C122.625 35.7259 126.025 29.8932 126.67 28.6981C127.315 27.5031 130.441 21.1522 130.441 21.1522L126.49 21.2421C126.49 21.2421 125.988 24.2298 125.068 24.2298C124.066 23.4363 122.852 22.9561 121.578 22.8496C119.695 22.8073 114 24.8696 109.913 30.6124C109.165 31.6335 108.546 32.7437 108.072 33.9174C107.11 35.2076 105.09 36.995 102.515 39.0626C99.4372 41.5426 98.0147 42.3729 97.1422 41.6801C96.2697 40.9874 97.4172 38.4227 98.1522 36.72C98.8872 35.0173 102.102 29.7875 102.102 29.7875C101.052 29.4206 100.051 28.9269 99.1199 28.3174C99.1199 28.3174 99.0247 28.5025 98.8396 28.8462C98.8396 28.8462 95.4871 33.5789 94.2973 35.049C93.1075 36.5191 91.5369 38.4915 89.8395 40.4692C88.1421 42.4469 84.7895 46.286 83.4093 45.4293C82.0291 44.5727 85.4769 37.2065 88.3694 31.5589C90.23 27.9709 92.5634 24.6486 95.3073 21.681L92.3196 20.2109C92.3196 20.2109 91.2197 22.0036 89.3371 24.6687C87.7507 27.0113 85.5668 31.0143 84.3717 33.0713C83.1766 35.1283 82.3993 35.5514 82.3993 35.5514C82.3993 35.5514 82.1243 33.764 79.9193 33.5789C77.7142 33.3939 71.0989 37.0161 67.5612 41.971C66.8535 42.9541 66.2675 44.0195 65.8162 45.1438C65.7263 45.2337 65.5888 45.3288 65.4513 45.4663C63.1987 47.6661 57.7362 52.5839 55.071 52.3989C52.4059 52.2138 54.8859 48.1262 55.5998 46.9787C56.3137 45.8312 59.5447 39.5385 59.5447 39.5385H55.5787C55.5787 39.5385 54.9811 42.5262 54.1086 42.5262C53.1315 41.7036 51.9309 41.1917 50.6609 41.0561C48.7783 40.961 43.0356 42.8911 38.8105 48.4963C35.0454 53.4565 34.8181 56.7192 35.8281 57.9089C36.4155 58.618 37.2278 59.1048 38.13 59.2885C39.0323 59.4723 39.9703 59.3418 40.7882 58.9189C42.1631 58.2315 50.6609 49.3213 51.1685 49.0463C51.6761 48.7713 50.9834 51.024 51.1685 52.034C51.3536 53.044 52.4535 55.0164 54.611 55.0164C56.7685 55.0164 60.4277 52.2614 62.5112 50.0563C63.4943 49.124 64.4297 48.1427 65.3138 47.1162C64.785 50.0087 65.7263 52.2614 67.5612 52.4888C70.4115 52.769 76.6566 46.1432 78.4492 44.0862C80.2418 42.0291 80.9081 41.0985 80.9081 41.0985C80.2207 44.6837 80.4057 46.3388 81.9181 47.5286C83.4305 48.7184 84.7683 48.3113 86.8782 46.5186C88.5334 45.0962 92.3883 40.2259 94.5035 37.381C94.366 37.7459 94.2285 38.0684 94.1386 38.3434C93.7209 39.676 92.8484 43.5362 95.6034 44.7736C98.2474 45.9687 103.186 41.4686 105.984 38.3434C106.477 37.8059 106.938 37.239 107.364 36.646C107.179 38.4809 107.729 39.7712 108.284 40.3476C109.844 42.0979 112.372 41.2677 113.704 40.5326C115.037 39.7976 120.409 33.7799 120.869 33.4626C121.329 33.1453 121.049 34.2875 121.282 35.2499C121.557 36.0326 122.244 38.7876 124.402 38.74L124.423 38.7559ZM49.6033 47.83C47.1232 50.675 42.0732 56.3278 40.7194 55.7303C39.5296 55.2015 40.307 53.3401 42.1895 50.7702C44.072 48.2002 46.5362 45.35 48.5932 43.8323C50.6503 42.3147 51.9458 42.8699 52.5434 43.3035C53.0722 43.716 52.0833 44.9534 49.6033 47.8036V47.83ZM80.4269 38.8458C78.7791 41.1182 76.9675 43.2673 75.0067 45.276C73.2141 47.0686 70.6388 49.041 69.5865 47.756C68.5342 46.471 73.4415 41.0509 74.8216 39.5808C76.2018 38.1107 78.5867 36.1383 80.4269 35.8792C82.907 35.5619 81.4369 37.307 80.4269 38.8669V38.8458ZM112.07 37.9045C110.875 37.4445 111.658 35.4668 113.45 32.8492C115.243 30.2316 117.628 27.3867 119.648 25.8215C121.668 24.2562 123.138 24.5841 123.598 25.2239C124.243 26.0964 123.598 27.704 121.208 30.6441C118.818 33.5842 113.45 38.4545 112.07 37.9045Z"/><path d="M173.384 4.42638C174.03 3.50628 175.087 1.43867 173.844 0.518566C172.332 -0.581334 170.725 0.201287 169.614 1.62375C168.329 3.3212 167.917 4.79654 169.202 5.98634C170.624 7.27132 172.739 5.3412 173.379 4.39994"/></g><g id="bd-logo-rest" fill="currentColor"><path d="M183.077 20.6235C182.854 20.2164 182.521 19.8808 182.115 19.6558C181.728 19.4171 181.282 19.2908 180.827 19.2908C180.372 19.2908 179.927 19.4171 179.54 19.6558C179.134 19.8808 178.8 20.2164 178.577 20.6235C178.335 21.0085 178.207 21.4539 178.207 21.9085C178.207 22.3631 178.335 22.8084 178.577 23.1934C178.8 23.6005 179.134 23.9361 179.54 24.1611C179.93 24.3907 180.372 24.5164 180.825 24.526C181.282 24.5409 181.733 24.4134 182.115 24.1611C182.521 23.9361 182.854 23.6005 183.077 23.1934C183.312 22.8055 183.44 22.362 183.447 21.9085C183.446 21.454 183.318 21.0088 183.077 20.6235ZM182.295 23.3785C182.107 23.5723 181.883 23.7265 181.635 23.8319C181.387 23.9373 181.12 23.9917 180.851 23.9919C180.579 24.0008 180.307 23.9521 180.055 23.8492C179.803 23.7462 179.575 23.5913 179.386 23.3944C179.191 23.2033 179.038 22.9742 178.935 22.7214C178.832 22.4685 178.782 22.1972 178.789 21.9243C178.778 21.6509 178.826 21.3783 178.929 21.1249C179.032 20.8714 179.188 20.6428 179.386 20.4543C179.577 20.2605 179.805 20.1076 180.057 20.0049C180.309 19.9021 180.579 19.8517 180.851 19.8567C181.124 19.8471 181.396 19.8954 181.65 19.9984C181.903 20.1014 182.132 20.2567 182.321 20.4543C182.516 20.6453 182.67 20.8744 182.772 21.1273C182.875 21.3802 182.925 21.6514 182.919 21.9243C182.936 22.1985 182.891 22.473 182.787 22.7275C182.684 22.982 182.525 23.2099 182.321 23.3944"/><path d="M181.38 22.2099C181.308 22.1556 181.229 22.1095 181.147 22.0724C181.361 22.0575 181.561 21.9587 181.702 21.7975C181.764 21.7384 181.812 21.6667 181.843 21.5873C181.874 21.5078 181.887 21.4225 181.882 21.3374C181.878 21.1382 181.797 20.9483 181.655 20.8086C181.547 20.7193 181.414 20.6648 181.274 20.6526C181.134 20.6403 180.994 20.6707 180.872 20.7399H179.508V23.0031H180.428V22.0883C180.523 22.1993 180.613 22.2469 180.703 22.3368C180.793 22.4267 181.258 23.0031 181.258 23.0031H182.083L181.623 22.5219C181.552 22.4105 181.47 22.3061 181.38 22.2099ZM180.645 21.6388H180.428V20.7081H180.687C180.777 20.8829 180.925 21.0211 181.105 21.0994C181.147 21.1205 181.182 21.153 181.206 21.1932C181.231 21.2335 181.243 21.2798 181.242 21.3268C181.243 21.3745 181.231 21.4215 181.206 21.4625C181.182 21.5036 181.147 21.5371 181.105 21.5595C181.043 21.6135 180.966 21.6486 180.885 21.6608C180.803 21.673 180.72 21.6617 180.645 21.6282"/><path d="M137.252 46.889H134.163L133.931 48.2639H135.417V49.8027C135.131 50.129 134.774 50.3854 134.373 50.5523C133.972 50.7191 133.539 50.7919 133.106 50.7651C131.519 50.7651 130.462 49.3849 130.462 47.7774C130.462 46.1699 131.519 44.795 133.106 44.795C133.597 44.7501 134.091 44.832 134.541 45.033C134.991 45.2339 135.382 45.5471 135.676 45.9425L136.733 44.8849C136.094 44.0124 135.036 43.2297 133.106 43.2297C131.938 43.2861 130.836 43.7898 130.029 44.6365C129.222 45.4832 128.772 46.6079 128.772 47.7774C128.772 48.9469 129.222 50.0716 130.029 50.9183C130.836 51.765 131.938 52.2687 133.106 52.3251C135.263 52.3251 136.231 51.4525 137.252 50.2575V46.889Z"/><path d="M140.927 48.2638H143.682V46.8889H140.927V45.0487H143.898L143.671 43.6738H139.092V51.9389H143.809L144.036 50.5641H140.927V48.2638Z"/><path d="M147.817 43.6738H145.982V51.9389H149.779L149.99 50.5641H147.817V43.6738Z"/><path d="M155.622 43.2136H153.946L151.053 51.9388H152.946L153.475 50.1039H156.119L156.648 51.9388H158.541L155.622 43.2136ZM153.882 48.7237L154.808 45.5086H154.85L155.775 48.7237H153.882Z"/><path d="M162.972 51.9389V45.0487H164.617L164.432 43.6738H159.514L159.334 45.0487H161.137V51.9389H162.972Z"/><path d="M170.217 43.1927C169.623 43.1811 169.034 43.2917 168.485 43.5176C167.935 43.7435 167.439 44.0799 167.025 44.5059C166.612 44.9319 166.29 45.4384 166.08 45.9939C165.871 46.5494 165.778 47.1421 165.807 47.7351C165.807 48.9047 166.271 50.0265 167.098 50.8536C167.926 51.6806 169.047 52.1453 170.217 52.1453C171.387 52.1453 172.508 51.6806 173.335 50.8536C174.162 50.0265 174.627 48.9047 174.627 47.7351C174.656 47.1421 174.563 46.5494 174.353 45.9939C174.144 45.4384 173.822 44.9319 173.409 44.5059C172.995 44.0799 172.498 43.7435 171.949 43.5176C171.4 43.2917 170.811 43.1811 170.217 43.1927ZM170.217 50.7228C168.657 50.7228 167.414 49.5753 167.414 47.7351C167.39 47.3522 167.444 46.9683 167.574 46.6073C167.703 46.2462 167.906 45.9157 168.169 45.6361C168.432 45.3565 168.749 45.1338 169.101 44.9818C169.453 44.8299 169.833 44.7519 170.217 44.7527C171.777 44.7527 173.02 45.9002 173.02 47.7351C173.02 49.57 171.777 50.7228 170.217 50.7228Z"/><path d="M109.045 56.9941L108.945 56.074H104.646V64.7991H105.561V60.6639H108.168L108.12 59.7491H105.561V56.9941H109.045Z"/><path d="M111.536 56.074H110.616V64.7991H111.536V56.074Z"/><path d="M118.818 58.5012C118.818 56.8196 117.554 56.074 116.174 56.074H114.307V64.7991H115.222V61.0976H115.465L118.173 64.7991H119.204L116.496 60.9283C117.554 60.8332 118.834 60.225 118.834 58.5012H118.818ZM115.222 60.2092V56.9941H116.216C117.115 56.9941 118.014 57.3695 118.014 58.5805C118.014 59.7914 117.163 60.1669 116.216 60.1669L115.222 60.2092Z"/><path d="M122.096 60.6639H124.851V59.7491H122.096V56.9941H125.174L125.084 56.074H121.181V64.7991H125.391L125.481 63.8843H122.096V60.6639Z"/><path d="M133.582 63.3079L128.31 56.074H127.606V64.7991H128.526V57.6128L133.534 64.7991H134.496V56.074H133.582V63.3079Z"/><path d="M141.847 56.7879V56.074H137.024L136.797 56.9941H140.662L136.797 64.5823V64.7991H141.741L141.968 63.8843H137.881L141.847 56.7879Z"/><path d="M145.062 60.6639H147.817V59.7491H145.062V56.9941H148.187L148.05 56.074H144.142V64.7991H148.171L148.261 63.8843H145.062V60.6639Z"/><path d="M153.327 61.3673V62.4566L154.707 61.124V64.7992H155.627V60.2092H154.781L153.327 61.3673Z"/><path d="M157.732 62.7422C157.745 63.1343 157.852 63.5175 158.044 63.8595C158.237 64.2015 158.508 64.4923 158.836 64.7074C159.164 64.9226 159.539 65.0557 159.93 65.0956C160.32 65.1355 160.714 65.081 161.079 64.9367L159.101 67.5807H160.159L162.042 64.9367C162.628 64.277 162.969 63.4342 163.004 62.5518C163.01 62.2061 162.945 61.8628 162.814 61.543C162.682 61.2233 162.486 60.9338 162.239 60.6926C161.991 60.4513 161.697 60.2633 161.373 60.1402C161.05 60.017 160.705 59.9614 160.36 59.9766C160.005 59.9805 159.654 60.0558 159.329 60.1981C159.004 60.3404 158.711 60.5468 158.467 60.8049C158.223 61.063 158.034 61.3675 157.91 61.7004C157.787 62.0332 157.731 62.3875 157.748 62.7422H157.732ZM160.36 64.2281C160.005 64.2292 159.658 64.1249 159.363 63.9286C159.067 63.7322 158.836 63.4526 158.7 63.1252C158.564 62.7977 158.527 62.4371 158.596 62.089C158.664 61.7409 158.835 61.421 159.085 61.1698C159.336 60.9186 159.655 60.7473 160.003 60.6777C160.351 60.6081 160.712 60.6433 161.039 60.7788C161.367 60.9143 161.648 61.1441 161.845 61.439C162.042 61.7339 162.147 62.0807 162.147 62.4355C162.151 62.6714 162.107 62.9057 162.019 63.1244C161.93 63.3432 161.799 63.542 161.632 63.7091C161.465 63.8762 161.267 64.0082 161.049 64.0974C160.83 64.1865 160.596 64.231 160.36 64.2281Z"/><path d="M167.509 63.2128C167.83 63.0931 168.105 62.8753 168.294 62.5906C168.484 62.3058 168.58 61.9685 168.567 61.6264C168.567 60.664 167.832 59.8814 166.409 59.8814C165.982 59.8748 165.559 59.9771 165.182 60.1788C164.804 60.3804 164.484 60.6748 164.252 61.0342L164.849 61.489C165.024 61.2361 165.257 61.029 165.528 60.8854C165.8 60.7418 166.102 60.6659 166.409 60.664C167.144 60.664 167.742 61.0342 167.742 61.6264C167.742 62.4567 167.007 62.8215 166.319 62.9855H165.738V63.9056H166.319C166.525 63.8296 166.747 63.8057 166.964 63.8359C167.182 63.8661 167.388 63.9495 167.565 64.0788C167.743 64.208 167.886 64.379 167.981 64.5767C168.076 64.7743 168.121 64.9924 168.112 65.2117C168.112 66.1741 167.282 66.6342 166.457 66.6342C166.054 66.6174 165.664 66.494 165.325 66.2765C164.985 66.0591 164.71 65.7555 164.527 65.3968L163.929 65.9256C164.171 66.3823 164.536 66.7621 164.983 67.022C165.43 67.2818 165.94 67.4113 166.457 67.3956C168.043 67.3956 168.985 66.3856 168.985 65.1905C168.977 64.7543 168.83 64.332 168.565 63.9849C168.301 63.6378 167.933 63.384 167.515 63.2604"/><path d="M174.537 61.3778C174.537 60.4154 173.707 59.9077 172.512 59.9077C171.681 59.9103 170.88 60.2212 170.265 60.7802L170.725 61.5153C171.2 61.0324 171.836 60.7392 172.512 60.6903C173.384 60.6903 173.707 61.0552 173.707 61.4254C173.707 62.6205 170.354 62.0229 170.323 64.2703V64.7991H174.4L174.537 63.8843H171.333C171.333 62.8267 174.548 63.3978 174.548 61.3778"/></g></defs></svg>
 
-    <nav class="nav-menu" id="navMenu">
-      <a href="#story">Story</a>
-      <a href="#products">Products</a>
-      <a href="#contact">Contact</a>
+<!-- Intestazione COME IL SITO (v2/header.njk): da 1200px casa + voci a inizio riga · logo al centro · lingua + pulsante in fondo;
+     sotto 1200px il bottone «Menu» apre il pannello .bd-menu (dialog modale, fratello dell'intestazione: col menu aperto il resto della
+     pagina diventa inerte, vedi lo script in fondo). I testi li lega assets/i18n.js (data-i18n e attributi). -->
+<header class="bd-hd" id="siteHeader">
+  <div class="bd-hd__bar">
+    <div class="bd-hd__start">
+      <button class="bd-hd__menubtn" type="button" aria-expanded="false" aria-controls="bd-menu" data-bd-menu-open>
+        <span class="bd-hd__burger" aria-hidden="true"><i></i><i></i></span>
+        <span data-i18n="nav.menu">Menu</span>
+      </button>
+      <nav class="bd-hd__nav" id="navMenu" aria-label="Main navigation">
+        <ul class="bd-hd__list">
+          <li><a class="bd-hd__link bd-hd__home" href="#hero" data-nav="home" aria-label="Home" title="Home"><svg class="bd-icon bd-icon--home" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M2 9.5L10 3l8 6.5M4.5 8v9h4v-5h3v5h4V8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square"/></svg></a></li>
+          <li><a class="bd-hd__link" href="#story" data-nav="story" data-i18n="nav.story">Story</a></li>
+          <li><a class="bd-hd__link" href="#products" data-nav="products" data-i18n="nav.products">Products</a></li>
+          <li><a class="bd-hd__link" href="#contact" data-nav="contact" data-i18n="nav.contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+    <a class="bd-hd__logo" id="logoLink" href="#hero" aria-label="Badiani — Home"><svg class="bd-logo" viewBox="0 0 184 71" width="184" height="71" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><use href="#bd-script"/><use href="#bd-logo-rest"/></svg></a>
+    <div class="bd-hd__end">
+      <div class="bd-lang" id="langSwitcher">
+        <button class="bd-lang__btn" type="button" aria-expanded="false" aria-controls="bd-lang-list" aria-label="EN — Language"><span class="bd-lang__code" aria-hidden="true">EN</span><svg class="bd-icon bd-lang__chev" viewBox="0 0 10 10" aria-hidden="true" focusable="false"><path d="M1 3l4 4 4-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square"/></svg></button>
+        <ul class="bd-lang__list" id="bd-lang-list" hidden>
+          <li><a href="?lang=en" hreflang="en" lang="en" data-lang="en" aria-current="true">English</a></li>
+          <li><a href="?lang=it" hreflang="it" lang="it" data-lang="it">Italiano</a></li>
+          <li><a href="?lang=es" hreflang="es" lang="es" data-lang="es">Español</a></li>
+          <li><a href="?lang=fr" hreflang="fr" lang="fr" data-lang="fr">Français</a></li>
+        </ul>
+      </div>
+      <a class="bd-btn bd-btn--onblue bd-btn--sm bd-hd__order" href="https://eventi.badiani1932.com/?lang=en&amp;tipo=barattolo" target="_blank" rel="noopener noreferrer" data-form-link data-modal-open="formModal"><span class="bd-hd__order-l" data-i18n="cta.samplesBar">Request samples</span><span class="bd-hd__order-s" data-i18n="cta.samplesShort">Samples</span><svg class="bd-icon bd-btn__icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M1 8h13M9 3l5 5-5 5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square"/></svg></a>
+    </div>
+  </div>
+</header>
+
+<div class="bd-menu" id="bd-menu" role="dialog" aria-modal="true" aria-label="Menu">
+  <div class="bd-menu__inner">
+    <div class="bd-menu__top">
+      <a class="bd-menu__logo" href="#hero" aria-label="Badiani — Home"><svg class="bd-logo" viewBox="0 0 184 71" width="184" height="71" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><use href="#bd-script"/><use href="#bd-logo-rest"/></svg></a>
+      <button class="bd-menu__close" type="button" data-bd-menu-close aria-label="Close menu"><svg class="bd-icon" viewBox="0 0 22 22" aria-hidden="true" focusable="false"><path d="M3 3l16 16M19 3L3 19" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square"/></svg></button>
+    </div>
+    <nav class="bd-menu__nav" aria-label="Main navigation">
+      <ul class="bd-menu__list bd-menu__list--main">
+        <li><a class="bd-menu__link" href="#story" data-i18n="nav.story">Story</a></li>
+        <li><a class="bd-menu__link" href="#products" data-i18n="nav.products">Products</a></li>
+        <li><a class="bd-menu__link" href="#contact" data-i18n="nav.contact">Contact</a></li>
+        <li><a class="bd-menu__link" href="https://www.badiani1932.com/" target="_blank" rel="noopener noreferrer">badiani1932.com<svg class="bd-icon bd-icon--arrow" viewBox="0 0 10 10" aria-hidden="true" focusable="false"><path d="M2 8l6-6M3 2h5v5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square"/></svg></a></li>
+      </ul>
     </nav>
-
-    <button class="menu-toggle" id="menuToggle" type="button" aria-label="Menu" aria-expanded="false" aria-controls="navMenu">
-      <span></span>
-      <span></span>
-      <span></span>
-    </button>
-  </header>
+    <div class="bd-menu__foot">
+      <a class="bd-btn bd-btn--onblue bd-btn--block" href="https://eventi.badiani1932.com/?lang=en&amp;tipo=barattolo" target="_blank" rel="noopener noreferrer" data-form-link data-modal-open="formModal"><span data-i18n="cta.samples">Request samples and prices</span><svg class="bd-icon bd-btn__icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M1 8h13M9 3l5 5-5 5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square"/></svg></a>
+      <div class="bd-menu__row">
+        <nav class="bd-menu__langnav" aria-label="Language">
+          <ul class="bd-menu__langs">
+            <li><a href="?lang=en" hreflang="en" lang="en" data-lang="en" aria-current="true">English</a></li>
+            <li><a href="?lang=it" hreflang="it" lang="it" data-lang="it">Italiano</a></li>
+            <li><a href="?lang=es" hreflang="es" lang="es" data-lang="es">Español</a></li>
+            <li><a href="?lang=fr" hreflang="fr" lang="fr" data-lang="fr">Français</a></li>
+          </ul>
+        </nav>
+        <span class="bd-acc bd-acc--pink bd-acc--dia bd-acc--m" aria-hidden="true"></span>
+      </div>
+    </div>
+  </div>
 </div>
+
+<!-- Senza JS il bottone «Menu» non può aprire il pannello: la navigazione resta raggiungibile da qui. -->
+<noscript>
+  <nav class="bd-hd__ns" aria-label="Main navigation">
+    <a href="#story">Story</a>
+    <a href="#products">Products</a>
+    <a href="#contact">Contact</a>
+    <a href="https://www.badiani1932.com/">badiani1932.com</a>
+  </nav>
+</noscript>
 
 
 <section id="hero" class="hero">
@@ -3426,7 +3381,7 @@
     <p class="hero-subtitle">A Creative Flavour Journey from Florence</p>
     <p>Authentic Florentine gelato for premium retail distribution. Over 90 years of gelato-making excellence from the birthplace of gelato.</p>
     <div class="hero-actions">
-      <a class="cta-btn cta-btn--onblue hero-cta-main" href="https://eventi.badiani1932.com/?lang=en" target="_blank" rel="noopener noreferrer" data-form-link data-modal-open="formModal"><span class="btn-label" data-i18n="contact.cta">REQUEST SAMPLES AND PRICES NOW</span><svg class="bd-icon bd-btn__icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M1 8h13M9 3l5 5-5 5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square"/></svg></a>
+      <a class="cta-btn cta-btn--onblue hero-cta-main" href="https://eventi.badiani1932.com/?lang=en&amp;tipo=barattolo" target="_blank" rel="noopener noreferrer" data-form-link data-modal-open="formModal"><span class="btn-label" data-i18n="contact.cta">REQUEST SAMPLES AND PRICES NOW</span><svg class="bd-icon bd-btn__icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M1 8h13M9 3l5 5-5 5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square"/></svg></a>
       <a class="hero-cta arrow-link" href="#products"><span class="btn-label" data-i18n="hero.ctaExplore">Explore Flavours</span><svg class="bd-icon bd-btn__icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M1 8h13M9 3l5 5-5 5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square"/></svg></a>
     </div>
   </div>
@@ -3493,14 +3448,18 @@
 
 
 
+<!-- Il Barattolo, come «Per le aziende» della home del sito: video nella cornice rosa (.bd-frame), testo a destra -->
 <section id="barattolo" class="barattolo-intro">
   <div class="barattolo-intro-content">
-    <div class="barattolo-image-pila">
-      <video id="barattoloVideo" autoplay muted loop playsinline webkit-playsinline preload="none" poster="assets/img/barattolo-poster.webp" width="720" height="1280" data-lazy-video>
-        <source data-src="1220-web.mp4" type="video/mp4">
-      </video>
+    <div class="bd-frame bd-frame--pink bd-frame--offset-start">
+      <div class="barattolo-image-pila">
+        <video id="barattoloVideo" autoplay muted loop playsinline webkit-playsinline preload="none" poster="assets/img/barattolo-poster.webp" width="720" height="1280" data-lazy-video>
+          <source data-src="1220-web.mp4" type="video/mp4">
+        </video>
+      </div>
     </div>
     <div class="barattolo-text">
+      <p class="bd-kicker" data-i18n="barattolo.kicker">For retail</p>
       <h2>Il Barattolo <span>GELATO</span></h2>
       <p>
         Thanks to the success of our Buontalenti®, Buontalenti® Pistacchio, and La Dolcevita flavours, we have developed <span class="highlight-pink">Il Barattolo GELATO</span> — a premium line designed for <span class="highlight-pink">large-scale distribution</span>.
@@ -3511,8 +3470,9 @@
       <p>
         With Il Barattolo Gelato, everyone can enjoy the rich, creamy flavours that have made Badiani famous, now in a convenient <span class="highlight-pink">500ml format</span>.
       </p>
-      <div class="cta-wrap">
-        <a class="cta-btn cta-btn--onblue barattolo-cta" href="https://eventi.badiani1932.com/?lang=en" target="_blank" rel="noopener noreferrer" data-form-link data-modal-open="formModal"><span class="btn-label" data-i18n="contact.cta">REQUEST SAMPLES AND PRICES NOW</span><svg class="bd-icon bd-btn__icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M1 8h13M9 3l5 5-5 5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square"/></svg></a>
+      <div class="bar-actions">
+        <a class="cta-btn cta-btn--onblue" href="https://eventi.badiani1932.com/?lang=en&amp;tipo=barattolo" target="_blank" rel="noopener noreferrer" data-form-link data-modal-open="formModal"><span class="btn-label" data-i18n="cta.samples">Request samples and prices</span><svg class="bd-icon bd-btn__icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M1 8h13M9 3l5 5-5 5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square"/></svg></a>
+        <a class="arrow-link" href="#products"><span class="btn-label" data-i18n="hero.ctaExplore">Explore Flavours</span><svg class="bd-icon bd-btn__icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M1 8h13M9 3l5 5-5 5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square"/></svg></a>
       </div>
     </div>
   </div>
@@ -3665,7 +3625,7 @@
       </div>
     </article>
   </div>
-  <a class="cta-btn texture-cta" href="https://eventi.badiani1932.com/?lang=en" target="_blank" rel="noopener noreferrer" data-form-link data-modal-open="formModal"><span class="btn-label" data-i18n="contact.cta">REQUEST SAMPLES AND PRICES NOW</span><svg class="bd-icon bd-btn__icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M1 8h13M9 3l5 5-5 5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square"/></svg></a>
+  <a class="cta-btn texture-cta" href="https://eventi.badiani1932.com/?lang=en&amp;tipo=barattolo" target="_blank" rel="noopener noreferrer" data-form-link data-modal-open="formModal"><span class="btn-label" data-i18n="contact.cta">REQUEST SAMPLES AND PRICES NOW</span><svg class="bd-icon bd-btn__icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M1 8h13M9 3l5 5-5 5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square"/></svg></a>
 </section>
 
 
@@ -3720,12 +3680,12 @@
   <h2>Partner With Badiani</h2>
   <p class="highlight">Bring the authentic taste of Florence to your customers</p>
   <p class="contact-links"><a href="mailto:retail@badiani1932.com">retail@badiani1932.com</a> &middot; <a href="https://www.badiani1932.com/">www.badiani1932.com</a></p>
-  <a class="cta-btn" href="https://eventi.badiani1932.com/?lang=en" target="_blank" rel="noopener noreferrer" data-form-link data-modal-open="formModal" id="requestDistributionBtn"><span class="btn-label" data-i18n="contact.cta">REQUEST SAMPLES AND PRICES NOW</span><svg class="bd-icon bd-btn__icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M1 8h13M9 3l5 5-5 5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square"/></svg></a>
+  <a class="cta-btn" href="https://eventi.badiani1932.com/?lang=en&amp;tipo=barattolo" target="_blank" rel="noopener noreferrer" data-form-link data-modal-open="formModal" id="requestDistributionBtn"><span class="btn-label" data-i18n="contact.cta">REQUEST SAMPLES AND PRICES NOW</span><svg class="bd-icon bd-btn__icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M1 8h13M9 3l5 5-5 5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square"/></svg></a>
 </section>
 
 <footer class="site-footer">
   <div class="site-footer__inner">
-    <a class="site-footer__logo" href="https://www.badiani1932.com/" aria-label="Badiani"><img src="assets/img/logo-480.webp" width="480" height="185" alt="Badiani" loading="lazy" decoding="async"></a>
+    <a class="site-footer__logo" href="https://www.badiani1932.com/" aria-label="Badiani"><svg class="bd-logo" viewBox="0 0 184 71" width="184" height="71" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><use href="#bd-script"/><use href="#bd-logo-rest"/></svg></a>
     <ul class="site-footer__social" aria-label="Social">
       <li><a href="https://www.instagram.com/badiani1932" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></a></li>
       <li><a href="https://www.facebook.com/badiani1932" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a></li>
@@ -3744,8 +3704,8 @@
     <p class="form-modal__title" id="formModalTitle" data-i18n="form.title">Request samples and prices</p>
     <button class="form-modal__close" type="button" data-modal-close aria-label="Close"><svg class="bd-icon" viewBox="0 0 22 22" aria-hidden="true" focusable="false"><path d="M3 3l16 16M19 3L3 19" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square"/></svg></button>
   </div>
-  <iframe class="form-modal__frame" data-src="https://eventi.badiani1932.com/?lang=en" title="Request samples and prices" referrerpolicy="strict-origin-when-cross-origin"></iframe>
-  <p class="form-modal__note"><span data-i18n="form.fallback">If the form doesn’t load:</span> <a href="https://eventi.badiani1932.com/?lang=en" data-form-link target="_blank" rel="noopener noreferrer" data-i18n="form.openForm">open it in a new tab</a> &middot; <span data-i18n="form.emailAlt">or write to</span> <a href="mailto:retail@badiani1932.com" dir="ltr">retail@badiani1932.com</a></p>
+  <iframe class="form-modal__frame" data-src="https://eventi.badiani1932.com/?lang=en&amp;tipo=barattolo" title="Request samples and prices" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+  <p class="form-modal__note"><span data-i18n="form.fallback">If the form doesn’t load:</span> <a href="https://eventi.badiani1932.com/?lang=en&amp;tipo=barattolo" data-form-link target="_blank" rel="noopener noreferrer" data-i18n="form.openForm">open it in a new tab</a> &middot; <span data-i18n="form.emailAlt">or write to</span> <a href="mailto:retail@badiani1932.com" dir="ltr">retail@badiani1932.com</a></p>
 </dialog>
 
 <script>
@@ -4020,87 +3980,173 @@ document.addEventListener('keydown', function(e) {
   }
 });
 
-const menuToggle = document.getElementById('menuToggle');
-const navMenu = document.getElementById('navMenu');
+// ---- Intestazione COME IL SITO (v2/js/bd.js, sezioni 1–3): barra compatta scorrendo, menu a tutto schermo (dialog modale: focus
+//      intrappolato, Esc, ritorno del focus, pagina ferma e inerte), voce della sezione in vista sottolineata, logo che riporta in cima.
+//      Vanilla, nessuna dipendenza; ogni blocco è isolato: se uno fallisce, gli altri continuano. ----
+(function () {
+  const doc = document;
+  const root = doc.documentElement;
+  const FOCUSABLE = 'a[href],button:not([disabled]),input:not([disabled]),select:not([disabled]),textarea:not([disabled]),[tabindex]:not([tabindex="-1"])';
+  const reduce = !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+  function run(fn) { try { fn(); } catch (e) { if (window.console && console.error) console.error('[barattolo]', e); } }
+  function toTop() { window.scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' }); }
 
-// Crea overlay per menu mobile
-const menuOverlay = document.createElement('div');
-menuOverlay.className = 'menu-overlay';
-menuOverlay.style.cssText = 'position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.6);z-index:999;opacity:0;visibility:hidden;transition:all 0.3s ease;-webkit-backdrop-filter:blur(3px);backdrop-filter:blur(3px);';
-document.body.appendChild(menuOverlay);
-
-menuToggle.addEventListener('click', () => {
-  menuToggle.classList.toggle('active');
-  navMenu.classList.toggle('active');
-  const open = navMenu.classList.contains('active');
-  menuToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
-  if(open){
-    menuOverlay.style.opacity = '1';
-    menuOverlay.style.visibility = 'visible';
-    document.body.style.overflow = 'hidden';
-  } else {
-    menuOverlay.style.opacity = '0';
-    menuOverlay.style.visibility = 'hidden';
-    document.body.style.overflow = '';
-  }
-});
-
-menuOverlay.addEventListener('click', () => {
-  menuToggle.classList.remove('active');
-  menuToggle.setAttribute('aria-expanded', 'false');
-  navMenu.classList.remove('active');
-  menuOverlay.style.opacity = '0';
-  menuOverlay.style.visibility = 'hidden';
-  document.body.style.overflow = '';
-});
-
-// Logo tap: scroll back to top (hero) and close menu if open
-const logoLink = document.getElementById('logoLink');
-if (logoLink) {
-  logoLink.addEventListener('click', (e) => {
-    e.preventDefault();
-    // Close mobile menu if open
-    if (menuToggle && navMenu && menuOverlay) {
-      menuToggle.classList.remove('active');
-      menuToggle.setAttribute('aria-expanded', 'false');
-      navMenu.classList.remove('active');
-      menuOverlay.style.opacity = '0';
-      menuOverlay.style.visibility = 'hidden';
-      document.body.style.overflow = '';
+  // 1. Barra: .is-compact oltre 24px di scorrimento (torna piena sotto 4px: niente sfarfallio sulla soglia); un solo aggiornamento per frame.
+  //    Non si nasconde mai (Marco, 5/10/2026: la barra resta sempre visibile).
+  function initHeader() {
+    const hd = doc.querySelector('.bd-hd');
+    if (!hd) return;
+    let compact = false;
+    let queued = false;
+    function update() {
+      queued = false;
+      const y = window.pageYOffset || root.scrollTop || 0;
+      const next = compact ? y > 4 : y > 24;
+      if (next !== compact) { compact = next; hd.classList.toggle('is-compact', compact); }
     }
+    window.addEventListener('scroll', () => { if (!queued) { queued = true; window.requestAnimationFrame(update); } }, { passive: true });
+    update();
+  }
 
-    // in cima alla pagina (con la barra fissa, scorrere alla copertina ne lasciava nascosta la parte alta)
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  });
-}
+  // 2. Menu: dialog modale (focus intrappolato, Esc, ritorno del focus, blocco scroll, inert)
+  function initMenu() {
+    const menu = doc.getElementById('bd-menu');
+    const openers = Array.from(doc.querySelectorAll('[data-bd-menu-open]'));
+    if (!menu || !openers.length) return;
+    const closer = menu.querySelector('[data-bd-menu-close]');
+    const hasInert = 'inert' in HTMLElement.prototype;
+    let isOpen = false;
+    let lastFocus = null;
+    let dimmed = [];
 
-navMenu.querySelectorAll('a').forEach(link => {
-  link.addEventListener('click', () => {
-    menuToggle.classList.remove('active');
-    menuToggle.setAttribute('aria-expanded', 'false');
-    navMenu.classList.remove('active');
-    menuOverlay.style.opacity = '0';
-    menuOverlay.style.visibility = 'hidden';
-    document.body.style.overflow = '';
-  });
-});
+    // Tutto il resto della pagina diventa inerte (niente focus, niente lettori di schermo); le finestre <dialog> restano fuori:
+    // in primo piano fanno da sé (il pulsante del modulo nel menu apre la finestra e chiude il pannello)
+    function setInert(on) {
+      if (on) {
+        dimmed = [];
+        Array.from(doc.body.children).forEach((el) => {
+          if (el === menu || /^(SCRIPT|STYLE|LINK|NOSCRIPT|TEMPLATE|DIALOG)$/.test(el.tagName)) return;
+          if (hasInert) { if (el.inert) return; el.inert = true; }
+          else { if (el.getAttribute('aria-hidden') === 'true') return; el.setAttribute('aria-hidden', 'true'); }
+          dimmed.push(el);
+        });
+      } else {
+        dimmed.forEach((el) => { if (hasInert) el.inert = false; else el.removeAttribute('aria-hidden'); });
+        dimmed = [];
+      }
+    }
+    function open() {
+      if (isOpen) return;
+      isOpen = true;
+      lastFocus = doc.activeElement;
+      menu.classList.add('is-open');
+      root.classList.add('bd-lock');
+      openers.forEach((o) => o.setAttribute('aria-expanded', 'true'));
+      setInert(true);
+      (closer || menu).focus({ preventScroll: true });
+    }
+    function close(restoreFocus) {
+      if (!isOpen) return;
+      isOpen = false;
+      menu.classList.remove('is-open');
+      root.classList.remove('bd-lock');
+      openers.forEach((o) => o.setAttribute('aria-expanded', 'false'));
+      setInert(false);
+      if (restoreFocus !== false) {
+        const back = lastFocus && lastFocus.focus && doc.contains(lastFocus) ? lastFocus : openers[0];
+        back.focus({ preventScroll: true });
+      }
+    }
+    openers.forEach((o) => o.addEventListener('click', open));
+    if (closer) closer.addEventListener('click', () => close());
+    menu.addEventListener('click', (e) => {
+      const a = e.target.closest ? e.target.closest('a[href]') : null;
+      if (!a) return;
+      if (a.hasAttribute('data-lang')) return;                        // cambio lingua: si resta nel menu (lo gestisce i18n.js)
+      if (a.hasAttribute('data-modal-open')) { close(false); return; } // la finestra del modulo si apre dal suo listener; il focus tornerà al bottone della barra
+      if (a.classList.contains('bd-menu__logo')) { e.preventDefault(); close(); toTop(); return; }
+      close(a.target === '_blank');   // si va a una sezione (la pagina scorre lì, sotto la barra: scroll-padding-top); nuova scheda: si resta qui
+    });
+    doc.addEventListener('keydown', (e) => {
+      if (!isOpen) return;
+      if (e.key === 'Escape') { e.preventDefault(); close(); return; }
+      if (e.key !== 'Tab') return;
+      const items = Array.from(menu.querySelectorAll(FOCUSABLE)).filter((el) => el.offsetParent !== null);
+      if (!items.length) { e.preventDefault(); return; }
+      const first = items[0];
+      const last = items[items.length - 1];
+      const active = doc.activeElement;
+      if (e.shiftKey && (active === first || !menu.contains(active))) { e.preventDefault(); last.focus(); }
+      else if (!e.shiftKey && (active === last || !menu.contains(active))) { e.preventDefault(); first.focus(); }
+    });
+    // Se la finestra diventa larga (compaiono le voci nella barra) il menu non serve più
+    const wide = window.matchMedia('(min-width: 75em)');
+    const onWide = (e) => { if (e.matches) close(false); };
+    if (wide.addEventListener) wide.addEventListener('change', onWide); else if (wide.addListener) wide.addListener(onWide);
+    window.addEventListener('pageshow', (e) => { if (e.persisted) close(false); });
+  }
+
+  // 3. Voce attiva nella barra: la sezione che passa sotto una riga posta a un terzo dello schermo, sotto la barra, sottolinea la sua voce
+  //    (aria-current="location"); le sezioni senza voce tengono quella precedente. Osservatore ricostruito se cambia l'altezza della finestra.
+  function initSpy() {
+    const links = Array.from(doc.querySelectorAll('.bd-hd__link[data-nav]'));
+    if (!links.length || !('IntersectionObserver' in window)) return;
+    const MAP = { hero: 'home', story: 'story', heritage: 'story', barattolo: 'products', products: 'products', mission: 'products', gallery: 'products', locations: 'products', why: 'contact', contact: 'contact' };
+    const sections = Object.keys(MAP).map((id) => doc.getElementById(id)).filter(Boolean);
+    let current = '';
+    let io = null;
+    function mark(key) {
+      if (!key || key === current) return;
+      current = key;
+      links.forEach((a) => { if (a.getAttribute('data-nav') === key) a.setAttribute('aria-current', 'location'); else a.removeAttribute('aria-current'); });
+    }
+    function build() {
+      if (io) io.disconnect();
+      const hd = doc.querySelector('.bd-hd');
+      const top = (hd ? hd.offsetHeight : 0) + Math.round(window.innerHeight * 0.3);
+      const bottom = Math.max(0, window.innerHeight - top - 1);
+      io = new IntersectionObserver((entries) => {
+        entries.forEach((en) => { if (en.isIntersecting) mark(MAP[en.target.id]); });
+      }, { rootMargin: '-' + top + 'px 0px -' + bottom + 'px 0px', threshold: 0 });
+      sections.forEach((sec) => io.observe(sec));
+    }
+    build();
+    let queued = false;
+    window.addEventListener('resize', () => { if (!queued) { queued = true; window.requestAnimationFrame(() => { queued = false; build(); }); } });
+  }
+
+  // 4. Logo: in cima alla pagina (con la barra fissa, scorrere alla copertina ne lasciava nascosta la parte alta)
+  function initLogo() {
+    const logo = doc.getElementById('logoLink');
+    if (!logo) return;
+    logo.addEventListener('click', (e) => { e.preventDefault(); toTop(); });
+  }
+
+  run(initHeader);
+  run(initMenu);
+  run(initSpy);
+  run(initLogo);
+})();
 
 // Modulo «Richiedi campioni e prezzi» (https://eventi.badiani1932.com/): l'indirizzo si costruisce SOLO qui,
-// base + lingua della pagina + eventuali altri parametri (oggetto). Lo usano i pulsanti, l'iframe della finestra e il link «aprilo in una nuova scheda».
+// base + lingua della pagina + tipo=barattolo (dal 21/10/2026 il modulo si apre già su «Il Barattolo per la vendita al dettaglio» /
+// «Retail / distribuzione» e la mail va a retail@) + eventuali altri parametri (oggetto). Lo usano i pulsanti della pagina, della barra
+// e del menu, l'iframe della finestra e il link «aprilo in una nuova scheda». Gli href scritti nella pagina sono il ripiego senza JS.
 const FORM_BASE = 'https://eventi.badiani1932.com/';
+const FORM_TYPE = 'barattolo';
 function formUrl(params) {
   const lang = (window.BadianiI18n && window.BadianiI18n.getLang)
     ? window.BadianiI18n.getLang()
     : String(document.documentElement.lang || 'en').toLowerCase().split('-')[0];
   const url = new URL(FORM_BASE);
-  const all = Object.assign({ lang: lang }, params || {});
+  const all = Object.assign({ lang: lang, tipo: FORM_TYPE }, params || {});
   Object.keys(all).forEach((k) => {
     if (all[k] === null || all[k] === undefined || all[k] === '') return;
     url.searchParams.set(k, String(all[k]));
   });
   return url.toString();
 }
-window.BadianiForm = { base: FORM_BASE, url: formUrl };
+window.BadianiForm = { base: FORM_BASE, type: FORM_TYPE, url: formUrl };
 
 document.addEventListener('DOMContentLoaded', () => {
   document.documentElement.classList.add('js');
@@ -4133,7 +4179,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const closeBtn = dlg.querySelector('[data-modal-close]');
 
       function openModal(from){
-        opener = from;
+        opener = (from && from.closest && from.closest('.bd-menu')) ? document.querySelector('[data-bd-menu-open]') : from;
         if (frame && !frame.getAttribute('src')) frame.setAttribute('src', frame.getAttribute('data-src'));
         document.documentElement.classList.add('modal-lock');
         dlg.showModal();

@@ -26,6 +26,15 @@
       'nav.heritage': 'Heritage',
       'nav.barattolo': 'Il Barattolo',
       'nav.contact': 'Contact',
+      // barra e menu come il sito, pulsante «campioni», occhiello del Barattolo (21/10/2026)
+      'nav.menu': 'Menu',
+      'nav.closeMenu': 'Close menu',
+      'nav.ariaMain': 'Main navigation',
+      'nav.ariaLang': 'Language',
+      'cta.samples': 'Request samples and prices',
+      'cta.samplesBar': 'Request samples',
+      'cta.samplesShort': 'Samples',
+      'barattolo.kicker': 'For retail',
 
       // 'header.beInspired': 'BE INSPIRED',
 
@@ -238,6 +247,15 @@
       'nav.heritage': 'Heritage',
       'nav.barattolo': 'Il Barattolo',
       'nav.contact': 'Contatti',
+      // barra e menu come il sito, pulsante «campioni», occhiello del Barattolo (21/10/2026)
+      'nav.menu': 'Menu',
+      'nav.closeMenu': 'Chiudi il menu',
+      'nav.ariaMain': 'Navigazione principale',
+      'nav.ariaLang': 'Lingua',
+      'cta.samples': 'Richiedi campioni e prezzi',
+      'cta.samplesBar': 'Richiedi campioni',
+      'cta.samplesShort': 'Campioni',
+      'barattolo.kicker': 'Per la distribuzione',
 
       // 'header.beInspired': 'LASCIATI ISPIRARE',
 
@@ -450,6 +468,15 @@
       'nav.heritage': 'Herencia',
       'nav.barattolo': 'Il Barattolo',
       'nav.contact': 'Contacto',
+      // barra e menu come il sito, pulsante «campioni», occhiello del Barattolo (21/10/2026)
+      'nav.menu': 'Menú',
+      'nav.closeMenu': 'Cerrar el menú',
+      'nav.ariaMain': 'Navegación principal',
+      'nav.ariaLang': 'Idioma',
+      'cta.samples': 'Solicita muestras y precios',
+      'cta.samplesBar': 'Solicita muestras',
+      'cta.samplesShort': 'Muestras',
+      'barattolo.kicker': 'Para la distribución',
 
       // 'header.beInspired': 'INSPÍRATE',
 
@@ -662,6 +689,15 @@
       'nav.heritage': 'Héritage',
       'nav.barattolo': 'Il Barattolo',
       'nav.contact': 'Contact',
+      // barra e menu come il sito, pulsante «campioni», occhiello del Barattolo (21/10/2026)
+      'nav.menu': 'Menu',
+      'nav.closeMenu': 'Fermer le menu',
+      'nav.ariaMain': 'Navigation principale',
+      'nav.ariaLang': 'Langue',
+      'cta.samples': 'Demander des échantillons et les prix',
+      'cta.samplesBar': 'Demander des échantillons',
+      'cta.samplesShort': 'Échantillons',
+      'barattolo.kicker': 'Pour la distribution',
 
       // 'header.beInspired': 'SOIS INSPIRÉ',
 
@@ -939,6 +975,14 @@
 
     document.documentElement.setAttribute('lang', currentLang);
 
+    try {
+      const url = new URL(window.location.href);
+      url.searchParams.set('lang', currentLang);
+      window.history.replaceState(window.history.state, '', url);
+    } catch {
+      // ignore
+    }
+
     applyTranslations();
     listeners.forEach((fn) => {
       try { fn(); } catch { /* ignore */ }
@@ -987,220 +1031,70 @@
     return value;
   }
 
-  function injectLanguageSwitcherStyles() {
-    if (document.getElementById('badiani-lang-switcher-styles')) return;
-
-    const style = document.createElement('style');
-    style.id = 'badiani-lang-switcher-styles';
-    style.textContent = `
-      .lang-switcher{ position:relative; display:inline-flex; align-items:center; flex:none; }
-      .lang-switcher__btn{
-        -webkit-appearance:none; -moz-appearance:none; appearance:none;
-        display:inline-flex; align-items:center; gap:8px; min-height:44px; margin:0; padding:calc(2 * .1em) 8px 0;
-        border:0; border-radius:0; background:none; color:#fff; cursor:pointer; -webkit-tap-highlight-color:transparent;
-        font-family:'SuperGroteskC', Arial, sans-serif; font-weight:400; font-size:.8125rem; line-height:1; letter-spacing:.08em; text-transform:uppercase;
-      }
-      .lang-switcher__btn:hover, .lang-switcher__btn:active, .lang-switcher__btn[aria-expanded="true"]{ background:none; transform:none; }
-      .lang-switcher__btn:focus{ outline:none; }
-      .lang-switcher__btn:focus-visible{ outline:3px solid #fff; outline-offset:3px; }
-      .lang-switcher__chev{ position:relative; top:-.161em; width:10px; height:10px; flex:none; transition:rotate .28s cubic-bezier(.16,1,.3,1); }
-      .lang-switcher__btn[aria-expanded="true"] .lang-switcher__chev{ rotate:180deg; }
-
-      .lang-switcher__menu{
-        position:absolute; top:calc(100% + 8px); right:0; min-width:11rem; margin:0; padding:8px;
-        background:#fff; border:1px solid rgba(33,64,152,.32); border-radius:0; box-shadow:0 12px 32px -12px rgba(26,50,117,.28);
-        display:none; z-index:99999;
-      }
-      .lang-switcher__menu.is-open{ display:block; animation:lang-rise .28s cubic-bezier(.16,1,.3,1); }
-      @keyframes lang-rise{ from{ opacity:0; translate:0 -8px; } to{ opacity:1; translate:0 0; } }
-
-      .lang-switcher__item{
-        display:flex; align-items:center; gap:12px; width:100%; min-height:44px; margin:0; padding:0 12px;
-        border:0; border-radius:0; background:none; color:#4f515e; cursor:pointer; white-space:nowrap; text-align:left;
-        font-family:'SuperGroteskA', Arial, sans-serif; font-size:.875rem; letter-spacing:0; line-height:1.3;
-      }
-      .lang-switcher__item::before{ content:""; width:6px; height:6px; flex:none; background:transparent; }
-      .lang-switcher__item:hover, .lang-switcher__item:focus-visible{ background:none; color:#214098; text-decoration:underline; text-decoration-thickness:1px; text-underline-offset:5px; }
-      .lang-switcher__item:focus-visible{ outline:3px solid #214098; outline-offset:-3px; }
-      .lang-switcher__item[aria-checked="true"]{ background:none; color:#214098; }
-      .lang-switcher__item[aria-checked="true"]::before{ background:#214098; }
-
-      /* Telefono: compatto, in linea con le voci */
-      @media (max-width: 900px), (max-height: 500px) and (hover: none){
-        .lang-switcher__btn{ min-height:40px; padding:calc(2 * .161em) 4px 0; gap:6px; font-size:11px; letter-spacing:.05em; }
-        .lang-switcher__menu{ min-width:9.5rem; }
-      }
-      @media (prefers-reduced-motion: reduce){
-        .lang-switcher__menu.is-open{ animation:none; }
-        .lang-switcher__chev{ transition:none; }
-      }
-    `;
-
-    document.head.appendChild(style);
-  }
-
+  /* Selettore lingua COME IL SITO (v2/js/bd.js, sezione 3): nella barra un bottone «IT» + chevron apre una tendina di link veri
+     (?lang=…: senza JS ricaricano la pagina nella lingua); col JS il clic cambia lingua senza ricaricare. Nel menu del telefono la
+     riga delle quattro lingue (.bd-menu__langs) fa lo stesso. Frecce su/giù, Home/Fine, Esc, chiusura al clic fuori e all'uscita del focus. */
   function ensureLanguageSwitcher() {
-    const nav = document.getElementById('navMenu');
-    if (!nav) return;
+    const box = document.getElementById('langSwitcher');
+    if (!box || box.dataset.ready) return;
+    box.dataset.ready = '1';
+    const btn = box.querySelector('.bd-lang__btn');
+    const code = box.querySelector('.bd-lang__code');
+    const list = box.querySelector('.bd-lang__list');
+    if (!btn || !list) return;
+    const links = Array.from(list.querySelectorAll('a[data-lang]'));
 
-    if (document.getElementById('langSwitcher')) return;
-
-    injectLanguageSwitcherStyles();
-
-    const wrap = document.createElement('div');
-    wrap.className = 'lang-switcher';
-    wrap.id = 'langSwitcher';
-
-    const btn = document.createElement('button');
-    btn.type = 'button';
-    btn.className = 'lang-switcher__btn';
-    btn.id = 'langSwitcherBtn';
-    btn.setAttribute('aria-haspopup', 'menu');
-    btn.setAttribute('aria-expanded', 'false');
-    btn.setAttribute('aria-label', currentLang.toUpperCase() + ' – ' + t('lang.name.' + currentLang));
-
-    const code = document.createElement('span');
-    code.id = 'langSwitcherCode';
-    code.textContent = currentLang.toUpperCase();
-
-    // chevron SVG (come icons.njk del sito: tratto 2px, estremi quadri); i font non hanno frecce
-    const chev = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-    chev.setAttribute('class', 'lang-switcher__chev');
-    chev.setAttribute('viewBox', '0 0 10 10');
-    chev.setAttribute('aria-hidden', 'true');
-    chev.setAttribute('focusable', 'false');
-    const chevPath = document.createElementNS('http://www.w3.org/2000/svg', 'path');
-    chevPath.setAttribute('d', 'M1 3l4 4 4-4');
-    chevPath.setAttribute('fill', 'none');
-    chevPath.setAttribute('stroke', 'currentColor');
-    chevPath.setAttribute('stroke-width', '2');
-    chevPath.setAttribute('stroke-linecap', 'square');
-    chev.appendChild(chevPath);
-
-    btn.appendChild(code);
-    btn.appendChild(chev);
-
-    const menu = document.createElement('div');
-    menu.className = 'lang-switcher__menu';
-    menu.id = 'langSwitcherMenu';
-    menu.setAttribute('role', 'menu');
-
-    /** @type {Array<{lang:string,labelKey:string}>} */
-    const items = [
-      { lang: 'en', labelKey: 'lang.name.en' },
-      { lang: 'it', labelKey: 'lang.name.it' },
-      { lang: 'es', labelKey: 'lang.name.es' },
-      { lang: 'fr', labelKey: 'lang.name.fr' }
-    ];
-
-    items.forEach(({ lang, labelKey }) => {
-      const item = document.createElement('button');
-      item.type = 'button';
-      item.className = 'lang-switcher__item';
-      item.dataset.lang = lang;
-      item.setAttribute('role', 'menuitemradio');
-      item.setAttribute('aria-checked', String(lang === currentLang));
-      item.textContent = t(labelKey);
-      item.addEventListener('click', () => {
-        setLang(lang);
-        closeMenu();
-      });
-      menu.appendChild(item);
-    });
-
-    function positionMenu() {
-      const rect = btn.getBoundingClientRect();
-      const vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
-      const vh = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0);
-      const isMobile = window.matchMedia && window.matchMedia('(max-width: 900px), (max-height: 500px) and (hover: none)').matches;
-      const navMenu = document.getElementById('navMenu');
-      const navIsOpen = navMenu && navMenu.classList.contains('active');
-
-      if (isMobile && navIsOpen && navMenu) {
-        // Mobile: render as a simple static panel inside the menu.
-        menu.style.position = 'static';
-        menu.style.left = 'auto';
-        menu.style.right = 'auto';
-        menu.style.top = 'auto';
-        menu.style.bottom = 'auto';
-        return;
-      }
-
-      // Desktop (or when mobile menu is not open): use fixed positioning in viewport.
-      menu.style.position = 'fixed';
-      const top = Math.min(rect.bottom + 10, vh - 10);
-      menu.style.top = `${top}px`;
-
-      // Clamp horizontally within the viewport.
-      const menuWidth = menu.offsetWidth || 180;
-      const minLeft = 10;
-      const maxLeft = Math.max(minLeft, vw - menuWidth - 10);
-      const desiredLeft = rect.right - menuWidth;
-      const left = Math.min(Math.max(desiredLeft, minLeft), maxLeft);
-      menu.style.left = `${left}px`;
-      menu.style.right = 'auto';
-      menu.style.bottom = 'auto';
-    }
-
-    function openMenu() {
-      menu.classList.add('is-open');
+    function isOpen() { return !list.hidden; }
+    function open(focusItem) {
+      list.hidden = false;
       btn.setAttribute('aria-expanded', 'true');
-      positionMenu();
+      if (focusItem) (list.querySelector('a[aria-current]') || links[0]).focus();
     }
-
-    function closeMenu() {
-      menu.classList.remove('is-open');
+    function close(restoreFocus) {
+      if (!isOpen()) return;
+      list.hidden = true;
       btn.setAttribute('aria-expanded', 'false');
+      if (restoreFocus) btn.focus();
     }
+    btn.addEventListener('click', () => { if (isOpen()) close(false); else open(false); });
+    btn.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowDown') { e.preventDefault(); open(true); }
+    });
+    list.addEventListener('keydown', (e) => {
+      const i = links.indexOf(document.activeElement);
+      const n = links.length;
+      if (e.key === 'ArrowDown') { e.preventDefault(); links[(i + 1) % n].focus(); }
+      else if (e.key === 'ArrowUp') { e.preventDefault(); links[(i - 1 + n) % n].focus(); }
+      else if (e.key === 'Home') { e.preventDefault(); links[0].focus(); }
+      else if (e.key === 'End') { e.preventDefault(); links[n - 1].focus(); }
+    });
+    box.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && isOpen()) { e.stopPropagation(); close(true); }
+    });
+    box.addEventListener('focusout', (e) => {
+      if (isOpen() && e.relatedTarget && !box.contains(e.relatedTarget)) close(false);
+    });
+    document.addEventListener('click', (e) => { if (!box.contains(e.target)) close(false); });
 
-    function toggleMenu() {
-      if (menu.classList.contains('is-open')) closeMenu();
-      else openMenu();
-    }
-
-    btn.addEventListener('click', (e) => {
+    // scelta della lingua (tendina e riga del menu): col JS niente ricaricamento; con un tasto modificatore il browser fa come al solito
+    function pick(e) {
+      if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button === 1) return;
       e.preventDefault();
-      e.stopPropagation();
-      toggleMenu();
-    });
+      setLang(e.currentTarget.dataset.lang);
+    }
+    links.forEach((a) => a.addEventListener('click', (e) => { pick(e); close(true); }));
+    document.querySelectorAll('.bd-menu__langs a[data-lang]').forEach((a) => a.addEventListener('click', pick));
 
-    document.addEventListener('click', (e) => {
-      if (!menu.classList.contains('is-open')) return;
-      const tEl = e && e.target;
-      // Check if click is inside the button wrapper or the menu itself
-      if (tEl && (wrap.contains(tEl) || menu.contains(tEl))) return;
-      closeMenu();
-    });
-
-    window.addEventListener('resize', () => {
-      if (menu.classList.contains('is-open')) positionMenu();
-    });
-
-    window.addEventListener('scroll', () => {
-      if (menu.classList.contains('is-open')) positionMenu();
-    }, { passive: true });
-
-    document.addEventListener('keydown', (e) => {
-      if (e.key !== 'Escape') return;
-      if (menu.classList.contains('is-open')) closeMenu();
-    });
-
-    wrap.appendChild(btn);
-    // Append menu to body to avoid clipping issues with sticky header in Chrome/Safari
-    document.body.appendChild(menu);
-    nav.appendChild(wrap);
-
-    // Update labels when language changes.
-    onChange(() => {
-      code.textContent = currentLang.toUpperCase();
-      btn.setAttribute('aria-label', currentLang.toUpperCase() + ' – ' + t('lang.name.' + currentLang));
-      Array.from(menu.querySelectorAll('.lang-switcher__item')).forEach((el) => {
-        const lang = el.dataset.lang;
-        el.setAttribute('aria-checked', String(lang === currentLang));
-        const labelKey = `lang.name.${lang}`;
-        el.textContent = t(labelKey);
+    function refresh() {
+      const up = currentLang.toUpperCase();
+      if (code) code.textContent = up;
+      btn.setAttribute('aria-label', up + ' — ' + t('nav.ariaLang'));
+      document.querySelectorAll('.bd-lang__list a[data-lang], .bd-menu__langs a[data-lang]').forEach((a) => {
+        if (a.dataset.lang === currentLang) a.setAttribute('aria-current', 'true'); else a.removeAttribute('aria-current');
       });
-    });
+    }
+    refresh();
+    onChange(refresh);
   }
 
   /**
@@ -1262,15 +1156,18 @@
     // Header / nav
     // bindText('#beInspiredText', 'header.beInspired');
 
-    // Desktop nav (story/products/contact)
-    bindText('#navMenu a[href="#story"]', 'nav.story');
-    bindText('#navMenu a[href="#products"]', 'nav.products');
-    bindText('#navMenu a[href="#contact"]', 'nav.contact');
-
-    // Mobile nav (home + more anchors)
-    bindText('#navMenu a[href="#hero"]', 'nav.home');
-    bindText('#navMenu a[href="#heritage"]', 'nav.heritage');
-    bindText('#navMenu a[href="#barattolo"]', 'nav.barattolo');
+    // Barra e menu come il sito: le voci, «Menu» e i pulsanti hanno data-i18n (gancio generico in fondo); qui gli attributi
+    bindAttr('.bd-hd__nav', 'aria-label', 'nav.ariaMain');
+    bindAttr('.bd-menu__nav', 'aria-label', 'nav.ariaMain');
+    bindAttr('#bd-menu', 'aria-label', 'nav.menu');
+    bindAttr('.bd-menu__close', 'aria-label', 'nav.closeMenu');
+    bindAttr('.bd-hd__home', 'aria-label', 'nav.home');
+    bindAttr('.bd-hd__home', 'title', 'nav.home');
+    bindAttr('.bd-menu__langnav', 'aria-label', 'nav.ariaLang');
+    bindings.push(() => {
+      const label = 'Badiani — ' + t('nav.home');
+      document.querySelectorAll('#logoLink, .bd-menu__logo').forEach((a) => a.setAttribute('aria-label', label));
+    });
 
     // Music button label is controlled by the page script; we just provide keys.
 
@@ -1356,7 +1253,7 @@
 
     // Barattolo paragraphs (keep highlight spans)
     bindings.push(() => {
-      const p = Array.from(document.querySelectorAll('#barattolo .barattolo-text p'));
+      const p = Array.from(document.querySelectorAll('#barattolo .barattolo-text p:not(.bd-kicker)'));
       if (p[0]) p[0].innerHTML = t('barattolo.p1Html');
       if (p[1]) p[1].textContent = t('barattolo.p2');
       if (p[2]) p[2].innerHTML = t('barattolo.p3Html');
@@ -1483,11 +1380,6 @@
     bindText('#contact > h2', 'contact.title');
     bindText('#contact .highlight', 'contact.highlight');
     bindText('#requestDistributionBtn .btn-label', 'contact.cta');
-    bindings.push(() => {
-      document.querySelectorAll('.barattolo-cta .btn-label').forEach((el) => {
-        el.textContent = t('contact.cta');
-      });
-    });
 
     // Finestra del modulo: titolo e nota via data-i18n; qui gli attributi
     bindAttr('#formModal .form-modal__close', 'aria-label', 'form.close');
