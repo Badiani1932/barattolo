@@ -169,6 +169,12 @@
       'contact.highlight': 'Bring the authentic taste of Florence to your customers',
       'contact.cta': 'REQUEST SAMPLES AND PRICES NOW',
       'contact.ctaAria': 'Request distribution information via email',
+      // finestra del modulo «Richiedi campioni e prezzi» (stesse parole della home del sito)
+      'form.title': 'Request samples and prices',
+      'form.close': 'Close',
+      'form.fallback': 'If the form doesn’t load:',
+      'form.openForm': 'open it in a new tab',
+      'form.emailAlt': 'or write to',
       'mail.subject': 'Il Barattolo Gelato – request for samples and prices',
       'mail.body': 'Hello,\n\nI would like to receive samples and prices for Il Barattolo Gelato.\n\nCompany:\nCountry / city:\nType of business (supermarket, delicatessen, distributor, HoReCa…):\nNumber of stores:\nFlavours of interest (Classico, La Dolcevita, Pistacchio):\nPhone:\n\nThank you,\n',
 
@@ -375,6 +381,12 @@
       'contact.highlight': 'Porta il gusto autentico di Firenze ai tuoi clienti',
       'contact.cta': 'RICHIEDI CAMPIONI E PREZZI ORA',
       'contact.ctaAria': 'Richiedi informazioni sulla distribuzione via email',
+      // finestra del modulo «Richiedi campioni e prezzi» (stesse parole della home del sito)
+      'form.title': 'Richiedi campioni e prezzi',
+      'form.close': 'Chiudi',
+      'form.fallback': 'Se il modulo non si carica:',
+      'form.openForm': 'aprilo in una nuova scheda',
+      'form.emailAlt': 'oppure scrivi a',
       'mail.subject': 'Il Barattolo Gelato – richiesta campioni e prezzi',
       'mail.body': 'Buongiorno,\n\nvorrei ricevere campioni e prezzi per Il Barattolo Gelato.\n\nAzienda:\nPaese / città:\nTipo di attività (supermercato, gastronomia, distributore, HoReCa…):\nNumero di punti vendita:\nGusti di interesse (Classico, La Dolcevita, Pistacchio):\nTelefono:\n\nGrazie,\n',
 
@@ -581,6 +593,12 @@
       'contact.highlight': 'Lleva el auténtico sabor de Florencia a tus clientes',
       'contact.cta': 'SOLICITA MUESTRAS Y PRECIOS AHORA',
       'contact.ctaAria': 'Solicitar información de distribución por email',
+      // finestra del modulo «Richiedi campioni e prezzi» (stesse parole della home del sito)
+      'form.title': 'Solicita muestras y precios',
+      'form.close': 'Cerrar',
+      'form.fallback': 'Si el formulario no carga:',
+      'form.openForm': 'ábrelo en una nueva pestaña',
+      'form.emailAlt': 'o escribe a',
       'mail.subject': 'Il Barattolo Gelato – solicitud de muestras y precios',
       'mail.body': 'Hola:\n\nme gustaría recibir muestras y precios de Il Barattolo Gelato.\n\nEmpresa:\nPaís / ciudad:\nTipo de negocio (supermercado, tienda gourmet, distribuidor, HORECA…):\nNúmero de tiendas:\nSabores de interés (Classico, La Dolcevita, Pistacchio):\nTeléfono:\n\nGracias,\n',
 
@@ -787,6 +805,12 @@
       'contact.highlight': 'Apportez le goût authentique de Florence à vos clients',
       'contact.cta': 'DEMANDEZ DES ÉCHANTILLONS ET LES PRIX MAINTENANT',
       'contact.ctaAria': 'Demander les informations de distribution par email',
+      // finestra del modulo «Richiedi campioni e prezzi» (stesse parole della home del sito)
+      'form.title': 'Demander des échantillons et les prix',
+      'form.close': 'Fermer',
+      'form.fallback': 'Si le formulaire ne se charge pas :',
+      'form.openForm': 'ouvrez-le dans un nouvel onglet',
+      'form.emailAlt': 'ou écrivez à',
       'mail.subject': 'Il Barattolo Gelato – demande d’échantillons et de prix',
       'mail.body': 'Bonjour,\n\nje souhaiterais recevoir des échantillons et les prix d’Il Barattolo Gelato.\n\nSociété :\nPays / ville :\nType d’activité (supermarché, épicerie fine, distributeur, CHR…) :\nNombre de points de vente :\nParfums qui vous intéressent (Classico, La Dolcevita, Pistacchio) :\nTéléphone :\n\nMerci,\n',
 
@@ -969,110 +993,46 @@
     const style = document.createElement('style');
     style.id = 'badiani-lang-switcher-styles';
     style.textContent = `
-      .lang-switcher{ position:relative; display:-webkit-inline-flex; display:inline-flex; -webkit-align-items:center; align-items:center; }
+      .lang-switcher{ position:relative; display:inline-flex; align-items:center; flex:none; }
       .lang-switcher__btn{
         -webkit-appearance:none; -moz-appearance:none; appearance:none;
-        border:none;
-        background:rgba(255,255,255,0.05);
-        color:#fff;
-        font-size:clamp(13px, 1.15vw, 16px);
-        letter-spacing:clamp(1px, 0.18vw, 2px);
-        text-transform:uppercase;
-        padding:clamp(9px, 1.0vw, 12px) clamp(12px, 1.6vw, 18px);
-        border-radius:25px;
-        font-weight:600;
-        font-family:inherit;
-        line-height:1.1;
-        display:-webkit-inline-flex; display:inline-flex;
-        -webkit-align-items:center; align-items:center;
-        gap:8px;
-        cursor:pointer;
-        -webkit-tap-highlight-color:transparent;
+        display:inline-flex; align-items:center; gap:8px; min-height:44px; margin:0; padding:calc(2 * .1em) 8px 0;
+        border:0; border-radius:0; background:none; color:#fff; cursor:pointer; -webkit-tap-highlight-color:transparent;
+        font-family:'SuperGroteskC', Arial, sans-serif; font-weight:400; font-size:.8125rem; line-height:1; letter-spacing:.08em; text-transform:uppercase;
       }
-      .lang-switcher__btn:hover{ background:rgba(240,103,166,0.92); -webkit-transform:translateY(-2px); transform:translateY(-2px); }
-      .lang-switcher__btn:focus, .lang-switcher__btn:focus-visible{ outline:none; }
-      .lang-switcher__btn .globe{ font-size:0.95em; opacity:0.95; }
+      .lang-switcher__btn:hover, .lang-switcher__btn:active, .lang-switcher__btn[aria-expanded="true"]{ background:none; transform:none; }
+      .lang-switcher__btn:focus{ outline:none; }
+      .lang-switcher__btn:focus-visible{ outline:3px solid #fff; outline-offset:3px; }
+      .lang-switcher__chev{ position:relative; top:-.161em; width:10px; height:10px; flex:none; transition:rotate .28s cubic-bezier(.16,1,.3,1); }
+      .lang-switcher__btn[aria-expanded="true"] .lang-switcher__chev{ rotate:180deg; }
 
       .lang-switcher__menu{
-        position:absolute;
-        top: calc(100% + 10px);
-        right: 0;
-        background: rgba(30,57,141,0.98);
-        border: 1px solid rgba(255,255,255,0.18);
-        border-radius: 14px;
-        padding: 8px;
-        min-width: 165px;
-        box-shadow: 0 18px 50px rgba(0,0,0,0.35);
-        display:none;
-        z-index: 99999;
+        position:absolute; top:calc(100% + 8px); right:0; min-width:11rem; margin:0; padding:8px;
+        background:#fff; border:1px solid rgba(33,64,152,.32); border-radius:0; box-shadow:0 12px 32px -12px rgba(26,50,117,.28);
+        display:none; z-index:99999;
       }
-      .lang-switcher__menu.is-open{ display:block; }
+      .lang-switcher__menu.is-open{ display:block; animation:lang-rise .28s cubic-bezier(.16,1,.3,1); }
+      @keyframes lang-rise{ from{ opacity:0; translate:0 -8px; } to{ opacity:1; translate:0 0; } }
 
       .lang-switcher__item{
-        width:100%;
-        border:none;
-        background:transparent;
-        color:#fff;
-        padding:10px 10px;
-        border-radius: 10px;
-        text-align:left;
-        font-family: inherit;
-        cursor:pointer;
-        letter-spacing:0.6px;
+        display:flex; align-items:center; gap:12px; width:100%; min-height:44px; margin:0; padding:0 12px;
+        border:0; border-radius:0; background:none; color:#4f515e; cursor:pointer; white-space:nowrap; text-align:left;
+        font-family:'SuperGroteskA', Arial, sans-serif; font-size:.875rem; letter-spacing:0; line-height:1.3;
       }
-      .lang-switcher__item:hover{ background: rgba(240,103,166,0.9); }
-      .lang-switcher__item[aria-checked="true"]{ background: rgba(255,255,255,0.10); }
+      .lang-switcher__item::before{ content:""; width:6px; height:6px; flex:none; background:transparent; }
+      .lang-switcher__item:hover, .lang-switcher__item:focus-visible{ background:none; color:#214098; text-decoration:underline; text-decoration-thickness:1px; text-underline-offset:5px; }
+      .lang-switcher__item:focus-visible{ outline:3px solid #214098; outline-offset:-3px; }
+      .lang-switcher__item[aria-checked="true"]{ background:none; color:#214098; }
+      .lang-switcher__item[aria-checked="true"]::before{ background:#214098; }
 
-      /* Mobile: keep switcher compact and inline */
-      @media (max-width: 900px){
-        .lang-switcher{ width:auto; }
-        .lang-switcher__btn{
-          width:auto;
-          justify-content:center;
-          font-size:10px;
-          padding:6px 8px;
-          border-radius:18px;
-          letter-spacing:0.7px;
-        }
-        .lang-switcher__btn{ transition: background 0.3s ease; }
-        .lang-switcher__menu{
-          position:absolute;
-          right:0;
-          top: calc(100% + 8px);
-          width:auto;
-          min-width:120px;
-          box-shadow:0 18px 50px rgba(0,0,0,0.35);
-          border-radius:12px;
-        }
+      /* Telefono: compatto, in linea con le voci */
+      @media (max-width: 900px), (max-height: 500px) and (hover: none){
+        .lang-switcher__btn{ min-height:40px; padding:calc(2 * .161em) 4px 0; gap:6px; font-size:11px; letter-spacing:.05em; }
+        .lang-switcher__menu{ min-width:9.5rem; }
       }
-
-      /* Mobile touch: prevent hover/active transform that clips the top edge */
-      @media (hover: none) and (pointer: coarse){
-        .lang-switcher__btn,
-        .lang-switcher__btn:hover,
-        .lang-switcher__btn:active,
-        .lang-switcher__btn:focus{
-          transform:none !important;
-          background:rgba(255,255,255,0.05);
-        }
-        .lang-switcher__btn[aria-expanded="true"]{
-          transform:none !important;
-          background:rgba(240,103,166,0.92) !important;
-        }
-      }
-
-      /* Fallback for mobile devices: prevent transform on small screens */
-      @media (max-width: 900px){
-        .lang-switcher__btn:hover,
-        .lang-switcher__btn:active,
-        .lang-switcher__btn:focus{
-          transform:none !important;
-          background:rgba(255,255,255,0.05);
-        }
-        .lang-switcher__btn[aria-expanded="true"]{
-          transform:none !important;
-          background:rgba(240,103,166,0.92) !important;
-        }
+      @media (prefers-reduced-motion: reduce){
+        .lang-switcher__menu.is-open{ animation:none; }
+        .lang-switcher__chev{ transition:none; }
       }
     `;
 
@@ -1097,17 +1057,28 @@
     btn.id = 'langSwitcherBtn';
     btn.setAttribute('aria-haspopup', 'menu');
     btn.setAttribute('aria-expanded', 'false');
-
-    const globe = document.createElement('span');
-    globe.className = 'globe';
-    globe.textContent = '🌐';
+    btn.setAttribute('aria-label', currentLang.toUpperCase() + ' – ' + t('lang.name.' + currentLang));
 
     const code = document.createElement('span');
     code.id = 'langSwitcherCode';
     code.textContent = currentLang.toUpperCase();
 
-    btn.appendChild(globe);
+    // chevron SVG (come icons.njk del sito: tratto 2px, estremi quadri); i font non hanno frecce
+    const chev = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+    chev.setAttribute('class', 'lang-switcher__chev');
+    chev.setAttribute('viewBox', '0 0 10 10');
+    chev.setAttribute('aria-hidden', 'true');
+    chev.setAttribute('focusable', 'false');
+    const chevPath = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+    chevPath.setAttribute('d', 'M1 3l4 4 4-4');
+    chevPath.setAttribute('fill', 'none');
+    chevPath.setAttribute('stroke', 'currentColor');
+    chevPath.setAttribute('stroke-width', '2');
+    chevPath.setAttribute('stroke-linecap', 'square');
+    chev.appendChild(chevPath);
+
     btn.appendChild(code);
+    btn.appendChild(chev);
 
     const menu = document.createElement('div');
     menu.className = 'lang-switcher__menu';
@@ -1164,7 +1135,7 @@
       const menuWidth = menu.offsetWidth || 180;
       const minLeft = 10;
       const maxLeft = Math.max(minLeft, vw - menuWidth - 10);
-      const desiredLeft = rect.left;
+      const desiredLeft = rect.right - menuWidth;
       const left = Math.min(Math.max(desiredLeft, minLeft), maxLeft);
       menu.style.left = `${left}px`;
       menu.style.right = 'auto';
@@ -1222,6 +1193,7 @@
     // Update labels when language changes.
     onChange(() => {
       code.textContent = currentLang.toUpperCase();
+      btn.setAttribute('aria-label', currentLang.toUpperCase() + ' – ' + t('lang.name.' + currentLang));
       Array.from(menu.querySelectorAll('.lang-switcher__item')).forEach((el) => {
         const lang = el.dataset.lang;
         el.setAttribute('aria-checked', String(lang === currentLang));
@@ -1321,7 +1293,7 @@
     // Hero
     bindText('#hero .hero-subtitle', 'hero.subtitle');
     bindText('#hero .hero-content > p:not(.hero-subtitle)', 'hero.lead');
-    bindText('#hero .hero-cta', 'hero.ctaExplore');
+    bindText('#hero .hero-cta .btn-label', 'hero.ctaExplore');
 
     // Banners (data + visible divider paragraphs)
     bindDataTextForSection('hero', 'banner.hero');
@@ -1465,7 +1437,7 @@
     bindText('#gallery [data-i18n="gallery.badge.award"]', 'gallery.badge.award');
     document.querySelectorAll('#gallery [data-i18n="gallery.badge.retail"]').forEach((el) => { el.textContent = t('gallery.badge.retail'); });
     bindText('#gallery [data-i18n="gallery.badge.global"]', 'gallery.badge.global');
-    bindText('#gallery .texture-cta', 'contact.cta');
+    bindText('#gallery .texture-cta .btn-label', 'contact.cta');
 
     // Locations headline
     bindAttr('#locations .world-means-title', 'aria-label', 'locations.aria');
@@ -1510,12 +1482,16 @@
     // Contact
     bindText('#contact > h2', 'contact.title');
     bindText('#contact .highlight', 'contact.highlight');
-    bindText('#requestDistributionBtn', 'contact.cta');
+    bindText('#requestDistributionBtn .btn-label', 'contact.cta');
     bindings.push(() => {
-      document.querySelectorAll('.barattolo-cta').forEach((el) => {
+      document.querySelectorAll('.barattolo-cta .btn-label').forEach((el) => {
         el.textContent = t('contact.cta');
       });
     });
+
+    // Finestra del modulo: titolo e nota via data-i18n; qui gli attributi
+    bindAttr('#formModal .form-modal__close', 'aria-label', 'form.close');
+    bindAttr('#formModal iframe', 'title', 'form.title');
 
     // Pulsanti email: la mail si apre con oggetto e una traccia da compilare, nella lingua scelta
     bindings.push(() => {
@@ -1525,7 +1501,7 @@
     });
 
     // Footer
-    bindHTML('footer', 'footer.html', { year: new Date().getFullYear() });
+    bindHTML('#footerLegal', 'footer.html', { year: new Date().getFullYear() });
 
     // Generic data-i18n hooks (text/HTML) for any future elements
     bindings.push(() => {
