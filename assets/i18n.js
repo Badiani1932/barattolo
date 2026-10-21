@@ -56,7 +56,7 @@
       'flavor.blueberry': 'Blueberry',
 
       'hero.titleHtml': 'Il Barattolo <span>GELATO</span>',
-      'hero.subtitle': 'A Creative Flavour Journey from Florence',
+      'hero.kicker': 'Firenze · 1932',   // occhiello della copertina, in italiano in tutte le lingue come sul sito
       'hero.lead': 'Authentic Florentine gelato for premium retail distribution. Over 90 years of gelato-making excellence from the birthplace of gelato.',
       'hero.ctaExplore': 'Explore Flavours',
       'hero.ctaAria': 'Jump to products',
@@ -277,7 +277,7 @@
       'flavor.blueberry': 'Mirtillo',
 
       'hero.titleHtml': 'Il Barattolo <span>GELATO</span>',
-      'hero.subtitle': 'Un viaggio creativo nei sapori da Firenze',
+      'hero.kicker': 'Firenze · 1932',   // occhiello della copertina, in italiano in tutte le lingue come sul sito
       'hero.lead': "Gelato fiorentino autentico per la distribuzione retail premium. Oltre 90 anni di eccellenza nella gelateria, dalla città in cui è nato il gelato.",
       'hero.ctaExplore': 'Scopri i gusti',
       'hero.ctaAria': 'Vai ai prodotti',
@@ -498,7 +498,7 @@
       'flavor.blueberry': 'Arándano',
 
       'hero.titleHtml': 'Il Barattolo <span>GELATO</span>',
-      'hero.subtitle': 'Un viaje creativo de sabores desde Florencia',
+      'hero.kicker': 'Firenze · 1932',   // occhiello della copertina, in italiano in tutte le lingue come sul sito
       'hero.lead': 'Helado florentino auténtico para distribución retail premium. Más de 90 años de excelencia heladera desde la cuna del helado.',
       'hero.ctaExplore': 'Explorar sabores',
       'hero.ctaAria': 'Ir a productos',
@@ -719,7 +719,7 @@
       'flavor.blueberry': 'Myrtille',
 
       'hero.titleHtml': 'Il Barattolo <span>GELATO</span>',
-      'hero.subtitle': 'Un voyage créatif de saveurs depuis Florence',
+      'hero.kicker': 'Firenze · 1932',   // occhiello della copertina, in italiano in tutte le lingue come sul sito
       'hero.lead': 'Gelato florentin authentique pour la distribution retail premium. Plus de 90 ans d’excellence depuis le berceau du gelato.',
       'hero.ctaExplore': 'Découvrir les parfums',
       'hero.ctaAria': 'Aller aux produits',
@@ -1188,9 +1188,7 @@
     bindTextAll('#customizerModal .flavor-option[data-name="Blueberry"] .flavor-name', 'flavor.blueberry');
 
     // Hero
-    bindText('#hero .hero-subtitle', 'hero.subtitle');
-    bindText('#hero .hero-content > p:not(.hero-subtitle)', 'hero.lead');
-    bindText('#hero .hero-cta .btn-label', 'hero.ctaExplore');
+    // (occhiello, titolo, paragrafo e azioni della copertina hanno data-i18n / data-i18n-html: gancio generico in fondo)
 
     // Banners (data + visible divider paragraphs)
     bindDataTextForSection('hero', 'banner.hero');
@@ -1345,7 +1343,7 @@
 
     // Why
     bindings.push(() => {
-      const h2 = document.querySelector('#why > h2');
+      const h2 = document.querySelector('#why h2');
       if (!h2) return;
       const span = h2.querySelector('span');
       if (!span) {

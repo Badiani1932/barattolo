@@ -39,6 +39,10 @@
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
   <meta name="theme-color" content="#214098">
   <meta name="format-detection" content="telephone=no">
+  <!-- Foto della copertina = immagine principale (LCP): preload per computer (foto intera) e telefono (ritaglio sui barattoli), con le
+       stesse condizioni del <picture> della copertina, così si scarica una volta sola -->
+  <link rel="preload" as="image" href="freezer-prodotti.webp" fetchpriority="high" media="(min-width: 900.02px) and (min-height: 500.02px), (min-width: 900.02px) and (hover: hover)">
+  <link rel="preload" as="image" href="assets/img/freezer-m-1200.webp" fetchpriority="high" media="(max-width: 900px), (max-height: 500px) and (hover: none)">
   <link rel="preload" as="image" href="assets/img/firenze.webp" media="(min-width: 900.02px) and (min-height: 500.02px), (min-width: 900.02px) and (hover: hover)">
   <link rel="preload" as="image" href="assets/img/firenze-m.webp" media="(max-width: 900px), (max-height: 500px) and (hover: none)">
   <link rel="preload" as="font" type="font/woff2" href="fonts/SuperGroteskA-Rg[7511].woff2" crossorigin>
@@ -1168,7 +1172,7 @@
       #hero{ margin-top: -1px; }
 
       /* Pagina unica: gli elementi del telefono qui non si vedono */
-      .hero-cta, .mv-tabs, .global-presence-bg, .global-presence-arrows, .global-presence-scroll-hint, .hero-scroll-hint{ display:none !important; }
+      .hero-cta, .mv-tabs, .global-presence-bg, .global-presence-arrows, .global-presence-scroll-hint{ display:none !important; }
       .hero{ grid-template-columns:100%; }
       /* titoli su più righe: righe vicine; su una riga restano alti come prima (1,1 + 0,25 + 0,25 = 1,6) */
       .story-title, .section-title, .heritage h2, .contact h2, .barattolo-text h2, .why h2, .mission-box h2, .vision-box h2{ line-height:1.1; padding-block:0.25em; }
@@ -1500,9 +1504,6 @@
         box-shadow:0 14px 36px rgba(236,65,140,0.42);
         background:#1a3275;
       }
-
-      /* Hero scroll hint is mobile-only (injected via JS) */
-      .hero-scroll-hint{ display:none; }
 
       /* SEZIONE STORIA CON SFONDO FIRENZE */
       .buontalenti-story{
@@ -2175,45 +2176,6 @@
         .hero{ padding:0; }
         .hero .hero-bg{ height:clamp(320px, 52vh, 480px); background:#214098; overflow:hidden; }
         .hero .hero-bg img{ width:190%; max-width:none; height:100%; object-fit:cover; object-position:center; margin-left:-45%; transform:none; transition: margin-left 0.3s ease; }
-
-        /* Hero scroll mode - tap to explore full image */
-        .hero.scroll-mode .hero-content{ 
-          pointer-events:none; 
-          background:transparent !important;
-          transition:all 0.3s ease; 
-        }
-        .hero.scroll-mode .hero-content h1,
-        .hero.scroll-mode .hero-content .hero-subtitle,
-        .hero.scroll-mode .hero-content p{ opacity:0 !important; transition:opacity 0.3s ease; }
-        .hero.scroll-mode .hero-content .hero-cta{ opacity:1 !important; pointer-events:auto; position:relative; z-index:10; }
-        .hero.scroll-mode .hero-bg{ overflow-x:auto; overflow-y:hidden; -webkit-overflow-scrolling:touch; scroll-snap-type:x mandatory; filter:none !important; }
-        .hero.scroll-mode .hero-bg img{ width:190%; margin-left:0; scroll-snap-align:start; filter:brightness(1); }
-        .hero.scroll-mode .hero-bg::-webkit-scrollbar{ display:none; }
-        /* Mobile: replace the big “scroll” pill with subtle arrows so the image stays visible */
-        .hero-scroll-hint{ display:none !important; }
-
-        .hero.scroll-mode::before,
-        .hero.scroll-mode::after{
-          position:absolute;
-          top:50%;
-          transform:translateY(-50%);
-          width:34px;
-          height:34px;
-          border-radius:999px;
-          display:flex;
-          align-items:center;
-          justify-content:center;
-          background:rgba(0,0,0,0.28);
-          color:rgba(255,255,255,0.92);
-          font-size:24px;
-          line-height:1;
-          z-index:6;
-          pointer-events:none;
-          box-shadow:0 6px 18px rgba(0,0,0,0.22);
-          text-shadow:0 2px 10px rgba(0,0,0,0.35);
-        }
-        .hero.scroll-mode::before{ content:"\2039"; left:10px; }
-        .hero.scroll-mode::after{ content:"\203A"; right:10px; }
 
         /* Locations (expanded): show arrows on the image layer */
         .global-presence-scroll-hint{ display:none !important; }
@@ -3023,21 +2985,74 @@
     .bd-acc--pink{ background:var(--badiani-pink); } .bd-acc--dia{ rotate:45deg; } .bd-acc--m{ --s:28px; }
     .bd-menu .bd-acc{ position:static; flex:none; margin-inline:12px; }
 
-    /* ---- copertina: il testo resta (prima spariva al passaggio del mouse, ma ora c'è un pulsante); due azioni ---- */
-    .hero:hover .hero-content{ opacity:1; pointer-events:auto; transform:none; filter:none; }
-    .hero:hover .hero-bg{ filter:brightness(0.32); transform:none; }
-    .hero .hero-actions{ display:flex; flex-wrap:wrap; align-items:center; justify-content:center; gap:16px 28px; margin-top:28px; }
-    .hero.scroll-mode .hero-content .hero-actions{ opacity:1 !important; pointer-events:auto; position:relative; z-index:10; }
+    /* ---- link con la freccia (.bd-link--arrow del sito) ---- */
     .arrow-link{ display:inline-flex; align-items:center; gap:8px; min-height:44px; color:var(--badiani-blue); text-decoration:none; font-family:var(--ff-a); font-weight:400; }
     .arrow-link > .btn-label{ text-decoration:underline; text-decoration-thickness:1px; text-underline-offset:4px; }
     .arrow-link:hover > .btn-label, .arrow-link:focus-visible > .btn-label{ text-decoration-thickness:2px; }
     .arrow-link .bd-btn__icon{ top:0; }
     .arrow-link:hover .bd-btn__icon{ translate:4px 0; }
-    .hero .hero-cta, .hero .hero-cta:hover, .hero .hero-cta:focus-visible{
-      display:inline-flex !important; margin:0; padding:0; border:0; border-radius:0; background:none !important; box-shadow:none !important;
-      color:#fff !important; font-family:var(--ff-a); font-size:1.0625rem; letter-spacing:0; text-transform:none; font-weight:400; transform:none !important;
+    .arrow-link:focus-visible{ outline:3px solid var(--badiani-blue); outline-offset:3px; }
+
+    /* ---- COPERTINA come la home del sito (.hm-cover in v2/css/pages/home.css; Marco, 21/10/2026: «la home con la foto sotto il testo
+       non si legge bene»). Sotto i 900px: foto in alto alta min(125vw, 50svh, 760px) (58svh da 600px), poi il testo sul bianco con lo
+       swoosh tono su tono sfumato in basso (maschera: pieno fino al 55%), allineato a sinistra; pulsante a tutta larghezza e link
+       centrato sotto (da 600px sulla stessa riga). Da 900px: alta come il sito alla stessa larghezza (100svh − barra − 4,5rem, fra 440 e
+       1000px, a pixel interi: a 1440×900 va da 80 a 828px), foto nella metà finale (da 50% + metà dell'interlinea della griglia fino al
+       bordo) a tutta altezza e senza niente sopra, testo nelle prime 6 colonne su 12 del contenitore (1320px, margini --gutter) centrato
+       in verticale: parte dallo stesso margine della casa nella barra. Lo swoosh copre solo la metà bianca. Occhiello nel C, titolo nel B
+       («GELATO» rosa su una riga sua), paragrafo come .bd-lead del sito, pulsante blu pieno e link con la freccia.
+       Ritaglio della foto (2600×768; i tre barattoli stanno fra x 660 e 1920, 1260px: la metà destra ne mostra ~720 a 1440×900, quindi
+       il Dolcevita intero al centro e mezzo Pistacchio e mezzo Classico ai lati); sul telefono il file è già ritagliato sui barattoli
+       (freezer-m-1200.webp = x 690–1890 del file intero, 48 KB invece di 121). La foto è alta solo 768px: in copertina viene ingrandita
+       (~2× sugli schermi retina). Il «tocca per scorrere la foto» e l'effetto al passaggio del mouse della vecchia copertina sono tolti. ---- */
+    .hero.bd-cover{
+      position:relative; display:block; height:auto; min-height:0; margin:0; padding:0; overflow:hidden; grid-template-columns:none;
+      place-items:normal; place-content:normal;   /* il vecchio .hero aveva place-items:center: Chrome applica justify-self anche ai blocchi in flusso e il corpo si stringeva al contenuto (1276,8px a 1440) */
+      background:#fff; color:var(--badiani-gray); text-align:left;
     }
-    .hero .hero-cta:focus-visible{ outline:3px solid #fff; outline-offset:3px; }
+    .bd-cover__body{ place-self:auto; width:100%; }
+    #hero.bd-cover{ margin-top:0; }
+    .bd-cover__media{ position:relative; width:100%; height:min(125vw, 50svh, 760px); height:round(down, min(125vw, 50svh, 760px), 1px); background:var(--badiani-line); }
+    @media (min-width: 600px){ .bd-cover__media{ height:min(125vw, 58svh, 760px); height:round(down, min(125vw, 58svh, 760px), 1px); } }
+    .bd-cover__media picture, .bd-cover__media img{ display:block; width:100%; height:100%; max-width:none; margin:0; padding:0; }
+    .bd-cover__media picture{ overflow:hidden; }
+    .bd-cover__media img{ object-fit:cover; object-position:50% 50%; border:0; border-radius:0; box-shadow:none; filter:none; transform:none; }
+    .bd-cover__body{ position:relative; z-index:1; isolation:isolate; }
+    .bd-cover__sw{
+      position:absolute; inset:0; z-index:-1; pointer-events:none;
+      background:url('assets/img/swoosh-blue.webp') center / cover no-repeat; opacity:var(--sw-blue);
+      -webkit-mask-image:linear-gradient(#000 55%, transparent); mask-image:linear-gradient(#000 55%, transparent);
+    }
+    .bd-cover__inner{ width:100%; max-width:var(--container); margin:0 auto; padding:24px var(--gutter) 48px; }
+    .bd-cover__text{ display:flex; flex-direction:column; align-items:flex-start; gap:16px; min-width:0; }
+    .hero.bd-cover .hero-kicker{ margin:0; padding:0; color:var(--badiani-blue); font-family:var(--ff-c); font-weight:400; font-size:.8125rem; line-height:1.3; letter-spacing:.16em; text-transform:uppercase; }
+    .hero.bd-cover h1{
+      margin:0; padding:0; color:var(--badiani-blue); font-family:'SuperGroteskCDigits', var(--ff-b); font-weight:400;
+      font-size:clamp(2.5rem, 12.5vw, 6rem); line-height:.92; letter-spacing:0; text-transform:uppercase; text-shadow:none; overflow-wrap:normal; hyphens:none;
+    }
+    .hero.bd-cover h1 span{ display:block; color:var(--badiani-pink); white-space:nowrap; }
+    .hero.bd-cover .hero-lead{
+      margin:0; padding:0; max-width:34rem; color:var(--badiani-gray); font-family:'SuperGroteskDigits', 'SuperGroteskLower', 'SuperGroteskA', sans-serif; font-weight:400;
+      font-size:clamp(1.1875rem, 1.05rem + .55vw, 1.5rem); line-height:1.45; text-shadow:none; text-wrap:pretty;
+    }
+    .hero.bd-cover .hero-actions{ display:grid; gap:4px; width:100%; margin:8px 0 0; }
+    .hero.bd-cover .hero-actions .cta-btn{ display:flex; width:100%; }
+    .hero.bd-cover .hero-actions .arrow-link{ justify-content:center; }
+    @media (min-width: 600px){
+      .hero.bd-cover .hero-actions{ display:flex; flex-wrap:wrap; align-items:center; gap:16px 32px; width:auto; }
+      .hero.bd-cover .hero-actions .cta-btn{ display:inline-flex; width:auto; }
+      .hero.bd-cover .hero-actions .arrow-link{ justify-content:flex-start; }
+    }
+    @media (min-width: 900.02px) and (min-height: 500.02px), (min-width: 900.02px) and (hover: hover){
+      .hero.bd-cover{ min-height:min(max(calc(100svh - var(--header-h) - 4.5rem), 440px), 1000px); min-height:round(down, min(max(calc(100svh - var(--header-h) - 4.5rem), 440px), 1000px), 1px); }
+      .bd-cover__media{ position:absolute; z-index:2; inset-block:0; inset-inline-start:calc(50% + var(--grid-gap) / 2); inset-inline-start:round(up, calc(50% + var(--grid-gap) / 2), 1px); inset-inline-end:0; width:auto; height:auto; }
+      .bd-cover__media img{ object-position:50% 50%; }   /* al centro il Dolcevita intero, ai lati mezzo Pistacchio e mezzo Classico */
+      .bd-cover__body{ display:flex; min-height:inherit; }
+      .bd-cover__sw{ inset-inline-end:calc(50% - var(--grid-gap) / 2); }
+      .bd-cover__inner{ display:grid; grid-template-columns:repeat(12, minmax(0, 1fr)); column-gap:var(--grid-gap); align-items:center; min-height:inherit; padding-block:0; }
+      .bd-cover__text{ grid-column:1 / span 6; padding-block:64px; padding-inline-end:24px; }
+      .hero.bd-cover h1{ font-size:clamp(3rem, min(6.2vw, 12svh), 6.5rem); }
+    }
 
     /* ---- bottoni come .bd-btn: quadrati, bordo 2px, font C maiuscolo .875rem, nessun alone, solo translateY(1px) alla pressione ---- */
     .cta-btn{
@@ -3230,13 +3245,60 @@
     .vision-box h2::before{ background:var(--badiani-blue); }
     .mission-box p strong, .vision-box p strong{ font-weight:400; }
 
-    /* ---- Perché scegliere Badiani: riquadri con filetto (sul video un velo blu per leggere), titoli bianchi ---- */
-    .why{ background:var(--badiani-blue); }
-    .why h2{ text-shadow:none; }
-    .why h2 span{ color:#fff; }
-    .benefit, .benefit:hover{ background:transparent; border:1px solid var(--badiani-line-onblue); border-radius:0; box-shadow:none; transform:none; transition:none; -webkit-backdrop-filter:none; backdrop-filter:none; }
-    .benefit h3{ color:#fff; text-shadow:none; }
-    .benefit p{ text-shadow:none; opacity:1; }
+    /* ---- PERCHÉ SCEGLIERE BADIANI: sezione bianca PULITA (Marco, 21/10/2026: il video a tutta larghezza col velo blu e le schede sopra
+       «non mi piace»). Contenitore del sito (1320px, margini --gutter); da 900px griglia 6fr · 5fr col testo a sinistra e il video a
+       destra, centrati in verticale (come «Per le aziende» del sito, specchiato). Titolo nel B blu a sinistra; quattro ragioni in griglia
+       2×2 (una colonna sotto 600px): filetto sottile in alto, quadratino rosa pieno in alto a destra, titoletto nel C maiuscolo blu
+       (come le voci di .hm-biz__points del sito), testo nell'A grigio con le evidenziazioni blu. Niente riquadri pieni né trasparenze.
+       Video del supermercato (1920×700; i tre barattoli stanno fra x 325 e 1550 a piena altezza) nella cornice blu piena sfalsata in
+       basso a destra (.bd-frame, l'opposto della rosa del Barattolo), riquadro 1,85:1 (il «flat» del cinema): è il rapporto più stretto
+       che tiene interi i tre barattoli (4:3 e 1:1 li tagliavano); object-position 47% perché stanno un po' a sinistra del centro
+       (centro a x 937). Bordi del filmato misurati con ffmpeg (fotogrammi ogni 0,25 s): 2 colonne nere a destra (x 1918–1919) in tutti
+       i fotogrammi, niente a sinistra, sopra e sotto; come nel Barattolo, video e immagine d'attesa (fotogramma a 0,5 s, <img> sotto il
+       video) sbordano dello 0,8% per lato e di 1px sopra e sotto, con le stesse misure: quando parte il video non c'è nessun salto.
+       Sul telefono il video non si carica (data-desktop-only) e non si disegna: resta l'immagine nella cornice, SOPRA il testo (come
+       il video del Barattolo e la copertina: la foto apre la sezione, poi titolo e ragioni).
+       Stacco da «Collabora» (anche lei bianca, con lo swoosh): un filetto in fondo al contenitore, come i filetti dentro il contenitore
+       del sito (.bd-sechead, .hm-biz__points), con lo stesso spazio sopra e sotto (--space-xl: quello di Collabora). ---- */
+    .why{ position:relative; overflow:visible; min-height:0; margin:0; padding:var(--section-y) 0 0; background:#fff; color:var(--badiani-gray); text-align:left; }
+    .why > *{ position:static; z-index:auto; }
+    .why-inner{
+      display:grid; grid-template-areas:"media" "text"; gap:48px; align-items:center;
+      width:100%; max-width:var(--container); margin:0 auto; padding:0 var(--gutter) var(--space-xl); border-block-end:1px solid var(--badiani-line);
+    }
+    .why-media{ grid-area:media; min-width:0; }
+    .bd-frame--blue{ --fc:var(--badiani-blue); }
+    .why-pila{ position:relative; display:block; aspect-ratio:37 / 20; width:100%; max-width:none; height:auto; max-height:none; margin:0; padding:0; overflow:hidden; background:var(--badiani-line); }
+    .why-pila .why-poster{ position:absolute; top:-1px; left:-0.8%; display:block; width:101.6%; height:calc(100% + 2px); max-width:none; margin:0; object-fit:cover; object-position:47% 50%; border:0; border-radius:0; box-shadow:none; filter:none; transform:none; }
+    .why-pila video{ position:relative; display:block; width:101.6%; height:calc(100% + 2px); max-width:none; max-height:none; min-height:0; margin:-1px -0.8%; padding:0; object-fit:cover; object-position:47% 50%; border:0; border-radius:0; box-shadow:none; filter:none; transform:none; background:transparent; }
+    .why-pila video::-webkit-media-controls-start-playback-button{ display:none !important; -webkit-appearance:none; }
+    .why-text{ grid-area:text; display:flex; flex-direction:column; align-items:flex-start; gap:24px; min-width:0; }
+    .why .benefits{ transform:none; }   /* la vecchia regola del computer spostava la griglia in giù del 30% */
+    .why h2{
+      margin:0 !important; padding:0; color:var(--badiani-blue); font-family:'SuperGroteskCDigits', var(--ff-b); font-weight:400;
+      font-size:clamp(2rem, 1.5rem + 2.6vw, 4rem) !important; line-height:1 !important; letter-spacing:0 !important; text-transform:uppercase; text-align:left; text-shadow:none; text-wrap:balance;
+    }
+    .why h2 span{ color:var(--badiani-blue); }
+    .benefits{ display:grid; grid-template-columns:repeat(2, minmax(0, 1fr)); gap:32px var(--grid-gap); width:100%; max-width:none; margin:0; padding:0; overflow:visible; scroll-snap-type:none; }
+    @media (max-width: 599.98px){ .benefits{ grid-template-columns:minmax(0, 1fr); gap:24px; } }
+    .benefit, .benefit:hover{
+      position:relative; display:block; flex:none; min-width:0; max-width:none; min-height:0; margin:0; padding:14px 0 0; scroll-snap-align:none;
+      border:0; border-block-start:1px solid var(--badiani-line); border-radius:0; background:transparent; box-shadow:none; transform:none; transition:none;
+      -webkit-backdrop-filter:none; backdrop-filter:none; text-align:left;
+    }
+    .benefit::before{ content:""; position:absolute; top:16px; right:0; width:8px; height:8px; background:var(--badiani-pink); pointer-events:none; }   /* centrato sulle maiuscole del titoletto: misurato a 2× e 3× (21/10/2026), scarto 0,25px */
+    .benefit h3{ margin:0 0 8px !important; padding:0 20px 0 0; color:var(--badiani-blue); font-family:var(--ff-c); font-weight:400; font-size:.8125rem; line-height:1.3; letter-spacing:.16em; text-transform:uppercase; text-shadow:none; flex:none; }
+    .benefit p{
+      display:block; flex:none; margin:0 !important; padding:0; color:var(--badiani-gray); font-family:'SuperGroteskDigits', 'SuperGroteskLower', 'SuperGroteskA', sans-serif; font-weight:400;
+      font-size:clamp(1rem, .96rem + .2vw, 1.125rem) !important; line-height:1.5 !important; text-align:left; text-shadow:none; opacity:1; text-wrap:pretty;
+    }
+    .why .highlight-pink, .benefit p .highlight-pink{ color:var(--badiani-blue); white-space:normal; margin:0; }
+    @media (min-width: 900.02px) and (min-height: 500.02px), (min-width: 900.02px) and (hover: hover){
+      .why-inner{ grid-template-areas:"text media"; grid-template-columns:minmax(0, 6fr) minmax(0, 5fr); column-gap:calc(var(--grid-gap) * 2); }
+    }
+    @media (max-width: 900px), (max-height: 500px) and (hover: none){
+      .why-pila video{ display:none; }   /* sul telefono il video non si carica: resta l'immagine d'attesa */
+    }
 
     /* ---- Collabora ---- */
     .contact p.highlight{ color:var(--badiani-blue); }
@@ -3289,8 +3351,6 @@
 
     /* ---- telefono (stessa soglia di MOBILE_MQ): numeri 2×2 senza accavallamenti, fascia blu del Barattolo, frecce quadrate ---- */
     @media (max-width: 900px), (max-height: 500px) and (hover: none){
-      .hero .hero-actions{ justify-content:flex-start; gap:12px 22px; margin-top:16px; }
-      .hero .hero-cta, .hero .hero-cta:hover, .hero .hero-cta:focus-visible{ font-size:1rem; }
       .stats{ grid-template-columns:repeat(2, minmax(0, 1fr)); gap:10px; }
       .stat, .stat:nth-child(2), .stat:nth-child(3), .stat:nth-child(4){ padding:26px 10px 24px; gap:8px; }
       .stat-num{ font-size:clamp(1.75rem, 8vw, 2.25rem); }
@@ -3300,18 +3360,14 @@
       .benefit p{ display:block; }   /* era un flex: l'evidenziazione («Dal 1932») finiva su una riga a sé */
       .contact p.highlight{ white-space:normal; }   /* a 320px la frase usciva dallo schermo */
     }
-    /* telefoni stretti (fino a 360px): frecce quadrate della copertina e della mappa */
+    /* telefoni stretti (fino a 360px): frecce quadrate della mappa */
     @media (max-width: 360px){
-      .hero.scroll-mode::before, .hero.scroll-mode::after,
       .global-presence.is-expanded .global-presence-arrows::before, .global-presence.is-expanded .global-presence-arrows::after{
         content:""; border-radius:0; background-color:rgba(26,50,117,.6); box-shadow:none; text-shadow:none; font-size:0;
         background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 10'%3E%3Cpath d='M3 1l4 4-4 4' fill='none' stroke='%23fff' stroke-width='2' stroke-linecap='square'/%3E%3C/svg%3E");
         background-repeat:no-repeat; background-position:center; background-size:14px 14px;
       }
-      .hero.scroll-mode::before, .global-presence.is-expanded .global-presence-arrows::before{ transform:translateY(-50%) scaleX(-1); }
-    }
-    @media (min-width: 900.02px){
-      .benefit, .benefit:hover{ background:var(--badiani-scrim); }   /* sul video: un velo blu dietro il testo, come la --c-scrim del sito */
+      .global-presence.is-expanded .global-presence-arrows::before{ transform:translateY(-50%) scaleX(-1); }
     }
   </style>
 </head>
@@ -3398,17 +3454,30 @@
 </noscript>
 
 
-<section id="hero" class="hero">
-  <div class="hero-bg" aria-hidden="true">
-    <img src="assets/img/freezer-1625.webp" srcset="assets/img/freezer-975.webp 975w, assets/img/freezer-1625.webp 1625w, freezer-prodotti.webp 2600w" sizes="100vw" width="2600" height="768" alt="" fetchpriority="high">
+<!-- Copertina COME la home del sito (.hm-cover; Marco, 21/10/2026: «la home con la foto sotto il testo non si legge bene»): da 900px metà
+     bianca a sinistra con lo swoosh tono su tono e il testo, metà destra con la foto del frigorifero a tutta altezza e senza niente sopra;
+     sul telefono foto in alto (al massimo metà schermo) e testo sotto, sul bianco. La foto resta l'immagine principale (LCP):
+     fetchpriority="high" e preload in testa; sul telefono il ritaglio sui tre barattoli (assets/img/freezer-m-1200.webp, dal file intero).
+     Gli elementi interni hanno nomi nuovi (bd-cover__*): le vecchie regole di .hero-bg/.hero-content non li toccano. -->
+<section id="hero" class="hero bd-cover" aria-labelledby="hero-title">
+  <div class="bd-cover__media" aria-hidden="true">
+    <picture>
+      <source media="(max-width: 900px), (max-height: 500px) and (hover: none)" srcset="assets/img/freezer-m-1200.webp" width="1200" height="768">
+      <img src="freezer-prodotti.webp" width="2600" height="768" alt="" fetchpriority="high" decoding="async">
+    </picture>
   </div>
-  <div class="hero-content">
-    <h1 data-i18n-html="hero.titleHtml">Il Barattolo <span>GELATO</span></h1>
-    <p class="hero-subtitle">A Creative Flavour Journey from Florence</p>
-    <p>Authentic Florentine gelato for premium retail distribution. Over 90 years of gelato-making excellence from the birthplace of gelato.</p>
-    <div class="hero-actions">
-      <a class="cta-btn cta-btn--onblue hero-cta-main" href="https://eventi.badiani1932.com/?lang=en&amp;tipo=barattolo" target="_blank" rel="noopener noreferrer" data-form-link data-modal-open="formModal"><span class="btn-label" data-i18n="contact.cta">REQUEST SAMPLES AND PRICES NOW</span><svg class="bd-icon bd-btn__icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M1 8h13M9 3l5 5-5 5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square"/></svg></a>
-      <a class="hero-cta arrow-link" href="#products"><span class="btn-label" data-i18n="hero.ctaExplore">Explore Flavours</span><svg class="bd-icon bd-btn__icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M1 8h13M9 3l5 5-5 5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square"/></svg></a>
+  <div class="bd-cover__body">
+    <div class="bd-cover__sw" aria-hidden="true"></div>
+    <div class="bd-cover__inner">
+      <div class="bd-cover__text">
+        <p class="bd-kicker hero-kicker" lang="it" data-i18n="hero.kicker">Firenze · 1932</p>
+        <h1 id="hero-title" data-i18n-html="hero.titleHtml">Il Barattolo <span>GELATO</span></h1>
+        <p class="hero-lead" data-i18n="hero.lead">Authentic Florentine gelato for premium retail distribution. Over 90 years of gelato-making excellence from the birthplace of gelato.</p>
+        <div class="hero-actions">
+          <a class="cta-btn" href="https://eventi.badiani1932.com/?lang=en&amp;tipo=barattolo" target="_blank" rel="noopener noreferrer" data-form-link data-modal-open="formModal"><span class="btn-label" data-i18n="cta.samples">Request samples and prices</span><svg class="bd-icon bd-btn__icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M1 8h13M9 3l5 5-5 5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square"/></svg></a>
+          <a class="arrow-link" href="#products"><span class="btn-label" data-i18n="hero.ctaExplore">Explore Flavours</span><svg class="bd-icon bd-btn__icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M1 8h13M9 3l5 5-5 5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square"/></svg></a>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -3672,30 +3741,41 @@
 </section>
 
 
-<section id="why" class="why">
-  <div class="why-video-bg" aria-hidden="true">
-    <video autoplay muted loop playsinline preload="none" data-lazy-video data-desktop-only>
-      <source data-src="assets/video/spesa.webm" type="video/webm">
-      <source data-src="assets/video/spesa.mp4" type="video/mp4">
-    </video>
-  </div>
-  <h2>Why Choose <span>Badiani</span></h2>
-  <div class="benefits">
-    <div class="benefit">
-      <h3>Heritage</h3>
-      <p><span class="highlight-pink">Since 1932</span>: gelato-making excellence from Florence, the birthplace of gelato</p>
+<!-- Perché scegliere Badiani: sezione bianca pulita (Marco, 21/10/2026: il video a tutta larghezza col velo e le schede sopra «non mi
+     piace»). Testo a sinistra (titolo e quattro ragioni in griglia 2×2), video del supermercato a destra nella cornice blu sfalsata in
+     basso a destra (.bd-frame, l'opposto della cornice rosa del Barattolo). Sul telefono il video non si carica (data-desktop-only) e
+     resta l'immagine d'attesa nella cornice, sopra il testo. Immagine d'attesa = <img> sotto il video (fotogramma a 0,5 s), non poster. -->
+<section id="why" class="why" aria-labelledby="why-title">
+  <div class="why-inner">
+    <div class="bd-frame bd-frame--blue why-media" aria-hidden="true">
+      <div class="why-pila">
+        <img class="why-poster" src="assets/img/spesa-poster.webp" alt="" width="1280" height="467" loading="lazy" decoding="async">
+        <video autoplay muted loop playsinline webkit-playsinline preload="none" width="1920" height="700" data-lazy-video data-desktop-only>
+          <source data-src="assets/video/spesa.webm" type="video/webm">
+          <source data-src="assets/video/spesa.mp4" type="video/mp4">
+        </video>
+      </div>
     </div>
-    <div class="benefit">
-      <h3>Global Presence</h3>
-      <p>30+ stores worldwide including the <span class="highlight-pink">Carrousel du Louvre</span> in Paris</p>
-    </div>
-    <div class="benefit">
-      <h3>Quality</h3>
-      <p>Premium Italian ingredients and award-winning recipes, bringing the true heritage of Florence to the world.</p>
-    </div>
-    <div class="benefit">
-      <h3>Retail Ready</h3>
-      <p>500ml format, <span class="highlight-pink">24-month shelf life</span> at -18°C, EUR/EPAL pallet compatible</p>
+    <div class="why-text">
+      <h2 id="why-title">Why Choose <span>Badiani</span></h2>
+      <div class="benefits">
+        <div class="benefit">
+          <h3>Heritage</h3>
+          <p><span class="highlight-pink">Since 1932</span>: gelato-making excellence from Florence, the birthplace of gelato</p>
+        </div>
+        <div class="benefit">
+          <h3>Global Presence</h3>
+          <p>30+ stores worldwide including the <span class="highlight-pink">Carrousel du Louvre</span> in Paris</p>
+        </div>
+        <div class="benefit">
+          <h3>Quality</h3>
+          <p>Premium Italian ingredients and award-winning recipes, bringing the true heritage of Florence to the world.</p>
+        </div>
+        <div class="benefit">
+          <h3>Retail Ready</h3>
+          <p>500ml format, <span class="highlight-pink">24-month shelf life</span> at -18°C, EUR/EPAL pallet compatible</p>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -4522,60 +4602,6 @@ document.addEventListener('DOMContentLoaded', () => {
     })();
 
 });
-</script>
-
-<script>
-  // Hero tap-to-scroll functionality (solo telefono)
-  (function(){
-    if (!window.matchMedia(MOBILE_MQ).matches) return;
-    const hero = document.querySelector('.hero');
-    if(!hero) return;
-    const heroBg = hero.querySelector('.hero-bg');
-    const heroContent = hero.querySelector('.hero-content');
-    if(!heroBg) return;
-
-    // Add hint element
-    const hint = document.createElement('div');
-    hint.className = 'hero-scroll-hint';
-    hint.textContent = (window.BadianiI18n && window.BadianiI18n.t)
-      ? window.BadianiI18n.t('mobile.scrollHint')
-      : '← Scorri per vedere tutto →';
-    hero.appendChild(hint);
-
-    let isScrollMode = false;
-
-    // Tap on hero (but not on CTA button) to toggle scroll mode
-    hero.addEventListener('click', function(e){
-      // If clicking the CTA button, let it work normally
-      if(e.target.closest('.hero-actions')) return;
-      
-      // Toggle scroll mode
-      isScrollMode = !isScrollMode;
-      hero.classList.toggle('scroll-mode', isScrollMode);
-      if(isScrollMode){
-        heroBg.scrollLeft = heroBg.scrollWidth / 4; // Start centered
-      }
-    });
-
-    // Auto-exit scroll-mode when the hero leaves the viewport
-    if ('IntersectionObserver' in window) {
-      const obs = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) return;
-          isScrollMode = false;
-          hero.classList.remove('scroll-mode');
-          // Reset scroll position so the hero is consistent when coming back
-          if (heroBg) heroBg.scrollLeft = 0;
-        });
-      }, { threshold: 0.15 });
-      obs.observe(hero);
-    }
-
-    // Prevent scrolling from bubbling and toggling mode
-    heroBg.addEventListener('scroll', function(e){
-      e.stopPropagation();
-    });
-  })();
 </script>
 
 <script>
