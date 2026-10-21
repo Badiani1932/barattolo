@@ -39,10 +39,9 @@
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
   <meta name="theme-color" content="#214098">
   <meta name="format-detection" content="telephone=no">
-  <!-- Foto della copertina = immagine principale (LCP): preload per computer (foto intera) e telefono (ritaglio sui barattoli), con le
-       stesse condizioni del <picture> della copertina, così si scarica una volta sola -->
-  <link rel="preload" as="image" href="freezer-prodotti.webp" fetchpriority="high" media="(min-width: 900.02px) and (min-height: 500.02px), (min-width: 900.02px) and (hover: hover)">
-  <link rel="preload" as="image" href="assets/img/freezer-m-1200.webp" fetchpriority="high" media="(max-width: 900px), (max-height: 500px) and (hover: none)">
+  <!-- Foto della copertina = immagine principale (LCP): un solo preload con le stesse misure dell'<img> della copertina, così il browser
+       scarica una volta sola il file giusto per lo schermo -->
+  <link rel="preload" as="image" imagesrcset="assets/img/barattoli-diagonale-600.webp 600w, assets/img/barattoli-diagonale-900.webp 900w, assets/img/barattoli-diagonale-1333.webp 1333w" imagesizes="(min-width: 900.02px) and (min-height: 500.02px) 50vw, (min-width: 900.02px) and (hover: hover) 50vw, 100vw" fetchpriority="high">
   <link rel="preload" as="image" href="assets/img/firenze.webp" media="(min-width: 900.02px) and (min-height: 500.02px), (min-width: 900.02px) and (hover: hover)">
   <link rel="preload" as="image" href="assets/img/firenze-m.webp" media="(max-width: 900px), (max-height: 500px) and (hover: none)">
   <link rel="preload" as="font" type="font/woff2" href="fonts/SuperGroteskA-Rg[7511].woff2" crossorigin>
@@ -3001,10 +3000,9 @@
        bordo) a tutta altezza e senza niente sopra, testo nelle prime 6 colonne su 12 del contenitore (1320px, margini --gutter) centrato
        in verticale: parte dallo stesso margine della casa nella barra. Lo swoosh copre solo la metà bianca. Occhiello nel C, titolo nel B
        («GELATO» rosa su una riga sua), paragrafo come .bd-lead del sito, pulsante blu pieno e link con la freccia.
-       Ritaglio della foto (2600×768; i tre barattoli stanno fra x 660 e 1920, 1260px: la metà destra ne mostra ~720 a 1440×900, quindi
-       il Dolcevita intero al centro e mezzo Pistacchio e mezzo Classico ai lati); sul telefono il file è già ritagliato sui barattoli
-       (freezer-m-1200.webp = x 690–1890 del file intero, 48 KB invece di 121). La foto è alta solo 768px: in copertina viene ingrandita
-       (~2× sugli schermi retina). Il «tocca per scorrere la foto» e l'effetto al passaggio del mouse della vecchia copertina sono tolti. ---- */
+       Foto verticale 1333×2000 (barattoli in diagonale, 21/10/2026): object-fit cover, ritaglio in verticale centrato sul Pistacchio aperto
+       (600/900/1333 px, il browser sceglie). Il «tocca per scorrere la foto» e l'effetto al passaggio del mouse della vecchia copertina
+       sono tolti. ---- */
     .hero.bd-cover{
       position:relative; display:block; height:auto; min-height:0; margin:0; padding:0; overflow:hidden; grid-template-columns:none;
       place-items:normal; place-content:normal;   /* il vecchio .hero aveva place-items:center: Chrome applica justify-self anche ai blocchi in flusso e il corpo si stringeva al contenuto (1276,8px a 1440) */
@@ -3046,7 +3044,7 @@
     @media (min-width: 900.02px) and (min-height: 500.02px), (min-width: 900.02px) and (hover: hover){
       .hero.bd-cover{ min-height:min(max(calc(100svh - var(--header-h) - 4.5rem), 440px), 1000px); min-height:round(down, min(max(calc(100svh - var(--header-h) - 4.5rem), 440px), 1000px), 1px); }
       .bd-cover__media{ position:absolute; z-index:2; inset-block:0; inset-inline-start:calc(50% + var(--grid-gap) / 2); inset-inline-start:round(up, calc(50% + var(--grid-gap) / 2), 1px); inset-inline-end:0; width:auto; height:auto; }
-      .bd-cover__media img{ object-position:50% 50%; }   /* al centro il Dolcevita intero, ai lati mezzo Pistacchio e mezzo Classico */
+      .bd-cover__media img{ object-position:50% 50%; }   /* al centro il Pistacchio aperto, sopra il Classico e sotto la Dolcevita */
       .bd-cover__body{ display:flex; min-height:inherit; }
       .bd-cover__sw{ inset-inline-end:calc(50% - var(--grid-gap) / 2); }
       .bd-cover__inner{ display:grid; grid-template-columns:repeat(12, minmax(0, 1fr)); column-gap:var(--grid-gap); align-items:center; min-height:inherit; padding-block:0; }
@@ -3455,15 +3453,15 @@
 
 
 <!-- Copertina COME la home del sito (.hm-cover; Marco, 21/10/2026: «la home con la foto sotto il testo non si legge bene»): da 900px metà
-     bianca a sinistra con lo swoosh tono su tono e il testo, metà destra con la foto del frigorifero a tutta altezza e senza niente sopra;
+     bianca a sinistra con lo swoosh tono su tono e il testo, metà destra con la foto a tutta altezza e senza niente sopra;
      sul telefono foto in alto (al massimo metà schermo) e testo sotto, sul bianco. La foto resta l'immagine principale (LCP):
-     fetchpriority="high" e preload in testa; sul telefono il ritaglio sui tre barattoli (assets/img/freezer-m-1200.webp, dal file intero).
+     fetchpriority="high" e preload in testa. Foto: i barattoli in diagonale col Pistacchio aperto (rullino di Marco, 21/10/2026:
+     «in copertina metti la mia foto dei barattoli in diagonale»), bilanciata con balance-photo.py del sito sul piano bianco.
      Gli elementi interni hanno nomi nuovi (bd-cover__*): le vecchie regole di .hero-bg/.hero-content non li toccano. -->
 <section id="hero" class="hero bd-cover" aria-labelledby="hero-title">
   <div class="bd-cover__media" aria-hidden="true">
     <picture>
-      <source media="(max-width: 900px), (max-height: 500px) and (hover: none)" srcset="assets/img/freezer-m-1200.webp" width="1200" height="768">
-      <img src="freezer-prodotti.webp" width="2600" height="768" alt="" fetchpriority="high" decoding="async">
+      <img src="assets/img/barattoli-diagonale-1333.webp" srcset="assets/img/barattoli-diagonale-600.webp 600w, assets/img/barattoli-diagonale-900.webp 900w, assets/img/barattoli-diagonale-1333.webp 1333w" sizes="(min-width: 900.02px) and (min-height: 500.02px) 50vw, (min-width: 900.02px) and (hover: hover) 50vw, 100vw" width="1333" height="2000" alt="" fetchpriority="high" decoding="async">
     </picture>
   </div>
   <div class="bd-cover__body">
