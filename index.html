@@ -3219,12 +3219,15 @@
     .texture-card p{ color:var(--badiani-gray); }
     .texture-badges span{ display:inline-flex; align-items:center; min-height:24px; padding:calc(3px + .127em) 10px calc(3px - .127em); border:1px solid var(--badiani-blue); border-radius:0; background:#fff; color:var(--badiani-blue); font-family:var(--ff-c); font-weight:400; font-size:.75rem; line-height:1.2; letter-spacing:.16em; text-transform:uppercase; }
 
-    /* ---- Missione / Visione: blu e blu scuro (niente velo rosa), rosa solo come quadratino accanto al titolo ---- */
+    /* ---- Missione / Visione: Missione blu; Visione col fondo rosa per staccare (Marco, 21/10/2026: «lo sfondo rosato in visione ci stava
+       bene per staccare, e il quadratino fallo blu»). Quadratino accanto al titolo: rosa sul blu, blu sul rosa ---- */
     .mission-box{ background:var(--badiani-blue); }
-    .vision-box{ background:var(--badiani-blue-ink); }
+    .vision-box{ background:var(--badiani-pink); }
     .mission-box:hover::before, .vision-box:hover::before{ transform:none; opacity:0.18; }
     .mission-box h2, .vision-box h2, .mission-box p, .vision-box p{ text-shadow:none; }
+    .vision-box h2, .vision-box p{ text-shadow:0 1px 3px rgba(26,50,117,.28); }   /* bianco sul rosa con la foto: un'ombra blu leggerissima per leggerlo meglio */
     .mission-box h2::before, .vision-box h2::before{ content:""; display:inline-block; width:12px; height:12px; margin-right:14px; background:var(--badiani-pink); vertical-align:0.08em; }
+    .vision-box h2::before{ background:var(--badiani-blue); }
     .mission-box p strong, .vision-box p strong{ font-weight:400; }
 
     /* ---- Perché scegliere Badiani: riquadri con filetto (sul video un velo blu per leggere), titoli bianchi ---- */
@@ -3293,6 +3296,7 @@
       .stat-num{ font-size:clamp(1.75rem, 8vw, 2.25rem); }
       .stat-label{ font-size:.6875rem; letter-spacing:.1em; line-height:1.35; }
       .mission-box p strong::before, .vision-box p strong::before{ content:""; display:inline-block; width:9px; height:9px; margin-right:10px; background:var(--badiani-pink); vertical-align:0.08em; }
+      .vision-box p strong::before{ background:var(--badiani-blue); }
       .benefit p{ display:block; }   /* era un flex: l'evidenziazione («Dal 1932») finiva su una riga a sé */
       .contact p.highlight{ white-space:normal; }   /* a 320px la frase usciva dallo schermo */
     }
