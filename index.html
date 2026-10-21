@@ -2999,9 +2999,10 @@
        in verticale: parte dallo stesso margine della casa nella barra. Lo swoosh copre solo la metà bianca. Occhiello nel C, titolo nel B
        («GELATO» rosa su una riga sua), paragrafo come .bd-lead del sito, pulsante blu pieno e link con la freccia.
        Foto 4:5 (i tre barattoli dello studio, servizio «Barattolini» del Drive, 21/10/2026; 600/900/1400/1900 px, il browser sceglie):
-       object-fit cover; i barattoli stanno fra il 28% e il 76% dell'altezza, quindi object-position 58% in verticale li tiene interi e
-       centrati sia nel riquadro quasi quadrato (computer, telefono) sia in quello largo del tablet (768×594). Il «tocca per scorrere la
-       foto» e l'effetto al passaggio del mouse della vecchia copertina sono tolti. ---- */
+       object-fit cover; i barattoli (con l'ombra) stanno fra il 29% e l'81% dell'altezza, quindi object-position 60% in verticale li
+       tiene interi sia nel riquadro quasi quadrato (computer, telefono) sia in quelli larghi del tablet (768×594) e della finestra
+       stretta da computer (768×522). Il «tocca per scorrere la foto» e l'effetto al passaggio del mouse della vecchia copertina sono
+       tolti. ---- */
     .hero.bd-cover{
       position:relative; display:block; height:auto; min-height:0; margin:0; padding:0; overflow:hidden; grid-template-columns:none;
       place-items:normal; place-content:normal;   /* il vecchio .hero aveva place-items:center: Chrome applica justify-self anche ai blocchi in flusso e il corpo si stringeva al contenuto (1276,8px a 1440) */
@@ -3013,7 +3014,7 @@
     @media (min-width: 600px){ .bd-cover__media{ height:min(125vw, 58svh, 760px); height:round(down, min(125vw, 58svh, 760px), 1px); } }
     .bd-cover__media picture, .bd-cover__media img{ display:block; width:100%; height:100%; max-width:none; margin:0; padding:0; }
     .bd-cover__media picture{ overflow:hidden; }
-    .bd-cover__media img{ object-fit:cover; object-position:50% 58%; border:0; border-radius:0; box-shadow:none; filter:none; transform:none; }
+    .bd-cover__media img{ object-fit:cover; object-position:50% 60%; border:0; border-radius:0; box-shadow:none; filter:none; transform:none; }
     .bd-cover__body{ position:relative; z-index:1; isolation:isolate; }
     .bd-cover__sw{
       position:absolute; inset:0; z-index:-1; pointer-events:none;
