@@ -3352,6 +3352,9 @@
     .form-modal__note a{ color:var(--badiani-blue); text-decoration:underline; text-decoration-thickness:1px; text-underline-offset:4px; }
     .form-modal__note a:hover{ text-decoration-thickness:2px; }
     .form-modal__note a:focus-visible{ outline:3px solid var(--badiani-blue); outline-offset:3px; }
+    /* indirizzi (sito, email): anche le cifre nel carattere A, come nella riga dei contatti, non nel C delle cifre (Marco, 13/10/2026) */
+    .site-footer__site, .site-footer__site.sgc-has-lower,
+    .form-modal__note a[href^="mailto:"], .form-modal__note a[href^="mailto:"].sgc-has-lower{ font-family:'SuperGroteskA', sans-serif !important; }
     html.modal-lock{ overflow:hidden; scrollbar-gutter:stable; }
     @media (max-width: 599.98px){ .form-modal{ width:100%; height:100%; } }
 
