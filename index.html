@@ -3099,6 +3099,11 @@
     .heritage::before{ background-position:center 20%; }
     .contact::before{ background-position:center 80%; }
     .gallery::before{ background-position:70% center; }
+    /* 10/11/2026, riunione del lancio (Leo, d'accordo Massimo e Rachele): tolte Mission e Vision. Ora «I gusti» e «Dentro il barattolo»,
+       tutte e due bianche con lo swoosh, si toccano: senza la fascia colorata in mezzo i due disegni finivano con un taglio dritto.
+       Lo swoosh dei gusti sfuma verso il basso e quello di «Dentro il barattolo» nasce dall'alto, come nella copertina. */
+    .products::before{ -webkit-mask-image:linear-gradient(#000 70%, transparent); mask-image:linear-gradient(#000 70%, transparent); }
+    .gallery::before{ -webkit-mask-image:linear-gradient(transparent, #000 30%); mask-image:linear-gradient(transparent, #000 30%); }
     /* ---- Il Barattolo: COME «Per le aziende» della home del sito (.hm-biz + .bd-frame): fascia blu con lo swoosh bianco tono su tono,
        contenuto nel contenitore del sito (1320px, margini --gutter), da 900px griglia 5fr · 6fr col video a sinistra e il testo a destra
        centrati in verticale; il video in un riquadro 4:5 (object-fit:cover, il poster resta finché non parte) dentro la cornice rosa
@@ -3642,24 +3647,6 @@
       </div>
     </article>
 
-  </div>
-</section>
-
-
-<section id="mission" class="mission-vision">
-  <nav class="mv-tabs" role="tablist" aria-label="Mission and Vision tabs">
-    <button class="mv-tab is-active" role="tab" data-target="mission-box" aria-selected="true" data-i18n="mission.tab.mission">Mission</button>
-    <button class="mv-tab" role="tab" data-target="vision-box" aria-selected="false" data-i18n="mission.tab.vision">Vision</button>
-  </nav>
-  <div class="mission-box is-active">
-    <h2>Our Mission</h2>
-    <p><strong>Bring Flavour to Your Life</strong></p>
-    <p>To bring joy to consumers of all ages through our iconic gelato, always adhering to principles of high quality and sustainability.</p>
-  </div>
-  <div class="vision-box">
-    <h2>Our Vision</h2>
-    <p><strong>Inspiring the World with Gelato</strong></p>
-    <p>To become the finest gelato brand in the world and inspire people with the taste of freshly made gelato.</p>
   </div>
 </section>
 
@@ -4380,27 +4367,6 @@ document.addEventListener('DOMContentLoaded', () => {
           obs.observe(storySection);
         }
       }
-    })();
-
-    // Mission/Vision tab switcher
-    (function setupMVTabs(){
-      const container = document.querySelector('.mission-vision');
-      if (!container) return;
-      const tabs = container.querySelectorAll('.mv-tab');
-      const missionBox = container.querySelector('.mission-box');
-      const visionBox = container.querySelector('.vision-box');
-      if (!tabs.length || !missionBox || !visionBox) return;
-
-      tabs.forEach(tab => {
-        tab.addEventListener('click', () => {
-          tabs.forEach(t => { t.classList.remove('is-active'); t.setAttribute('aria-selected', 'false'); });
-          tab.classList.add('is-active');
-          tab.setAttribute('aria-selected', 'true');
-          const target = tab.dataset.target;
-          missionBox.classList.toggle('is-active', target === 'mission-box');
-          visionBox.classList.toggle('is-active', target === 'vision-box');
-        });
-      });
     })();
 
     // Global Presence interactive zoom
